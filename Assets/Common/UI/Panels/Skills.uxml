@@ -1,0 +1,29 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
+    <Style src="project://database/Assets/Common/UI/USS/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <engine:VisualElement name="Skills" class="panel-rect-small panel-dark" style="top: 25%;">
+        <engine:VisualElement name="Head" class="head">
+            <engine:VisualElement name="Heading" class="heading" style="align-self: center;">
+                <engine:Label text="Skills" class="space-zero label" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:VisualElement>
+            <engine:Button name="Close" class="close-btn" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Body" style="flex-grow: 1; height: 75%;">
+            <engine:VisualElement name="Top" style="flex-grow: 1; height: 75%; flex-direction: row; justify-content: center;">
+                <engine:VisualElement style="width: 80%; height: 100%; position: relative; align-self: center;">
+                    <engine:ScrollView name="Slots-view" class="panel-light" style="width: 100%; height: 100%;" />
+                    <engine:Label text="You have no weapons equiped" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-font-definition: url(&quot;project://database/Assets/Common/UI/Fonts/Dungeon%20font%20HEAD.ttf?fileID=12800000&amp;guid=af008a01b3d76fb428395516ac50f9ed&amp;type=3#Dungeon font HEAD&quot;); font-size: 9px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="Bottom" style="flex-grow: 1; height: 25%;">
+                <engine:VisualElement class="row" style="justify-content: space-between; width: 50%; margin-left: 30px; margin-top: 5px;">
+                    <HotbarUISlot />
+                    <HotbarUISlot />
+                    <HotbarUISlot />
+                    <HotbarUISlot />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

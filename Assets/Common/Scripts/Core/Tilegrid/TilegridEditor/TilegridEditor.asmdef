@@ -1,0 +1,19 @@
+{
+    "name": "TilegridEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:536b4b10abd38f74e94e02cd3a8de59b",
+        "GUID:700871136e40f154cae59cd69fa1632c"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

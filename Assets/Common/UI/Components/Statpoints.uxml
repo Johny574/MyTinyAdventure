@@ -1,0 +1,11 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Common/UI/USS/Components.uss?fileID=7433441132597879392&amp;guid=47ee1c243e2a449469e547a40ca6f224&amp;type=3#Components" />
+    <Style src="project://database/Assets/Common/UI/USS/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
+    <Style src="project://database/Assets/Common/UI/USS/Spacing.uss?fileID=7433441132597879392&amp;guid=f8eeec346359d744dab02629fa9b3e7e&amp;type=3#Spacing" />
+    <Style src="project://database/Assets/Common/UI/USS/Buttons.uss?fileID=7433441132597879392&amp;guid=ebf97e02173f5a84caa14728c65d121c&amp;type=3#Buttons" />
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <engine:VisualElement name="Statpoints-container" class="even-row" style="flex-wrap: nowrap; width: 100%;">
+        <engine:Label name="Key" text="label" class="space-zero label" style="width: 50%; margin-left: 5px;" />
+        <engine:Label name="Value" text="label" class="space-zero label" style="width: 50%; margin-left: 5px;" />
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,4 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Common/UI/Components/Components.uss?fileID=7433441132597879392&amp;guid=47ee1c243e2a449469e547a40ca6f224&amp;type=3#Components" />
+    <engine:ProgressBar value="100" title="my-progress" name="Bar" data-source-type="BarData, DataStructures"  style="height: 15px; width: 100%;" />
+</engine:UXML>

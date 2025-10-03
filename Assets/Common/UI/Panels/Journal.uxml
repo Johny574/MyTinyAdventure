@@ -1,0 +1,22 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <engine:VisualElement name="Journal" class="panel-rect-small panel-dark" style="top: 25%;">
+        <engine:VisualElement name="Head" class="head">
+            <engine:VisualElement name="Heading" class="heading" style="align-self: center;">
+                <engine:Label text="Journal" class="space-zero label" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:VisualElement>
+            <engine:Button name="Close" class="close-btn" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Body" style="flex-grow: 1; height: 85%; flex-direction: row;">
+            <engine:VisualElement style="flex-grow: 1; width: 50%;">
+                <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-892333524&amp;guid=f9e1bb27c7e71654eae0729c2eac6ba7&amp;type=3#tilemap_packed 1_0&quot;); width: 80%; height: 80%; align-self: flex-end; left: auto; right: 10px;">
+                    <engine:ListView name="Slots-view" class="panel-light" style="flex-grow: 1;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement style="flex-grow: 1; width: 50%;">
+                <engine:VisualElement class="panel-light" style="width: 80%; height: 80%; align-self: flex-start; left: 10px;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

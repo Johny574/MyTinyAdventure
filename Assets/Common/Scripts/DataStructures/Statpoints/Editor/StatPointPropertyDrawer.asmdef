@@ -1,0 +1,17 @@
+{
+    "name": "StatsEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:700871136e40f154cae59cd69fa1632c",
+        "GUID:68355f68c21ebfa42990744c5734f751"
+    ],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

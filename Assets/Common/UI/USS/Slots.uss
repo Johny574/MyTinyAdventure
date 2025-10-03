@@ -1,0 +1,77 @@
+.slot-small {
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+    margin: 0;
+    justify-content: center;
+}
+
+.slot-medium {
+    width: 30px;
+    height: 30px;
+    padding: 7px;
+    margin: 0;
+    justify-content: center;
+}
+
+.slot-large {
+    width: 60px;
+    height: 60px;
+    padding: 15px;
+    margin: 0;
+    justify-content: center;
+}
+
+.crafting-slot {
+    flex-direction: row;
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-99519389&guid=f9e1bb27c7e71654eae0729c2eac6ba7&type=3#tilemap_packed 1_24");
+}
+
+.row {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.even-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.gear-slot {
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-892333524&guid=f9e1bb27c7e71654eae0729c2eac6ba7&type=3#tilemap_packed 1_0");
+    -unity-slice-scale: 1px;
+    -unity-slice-left: 1;
+    -unity-slice-top: 1;
+    -unity-slice-right: 1;
+    -unity-slice-bottom: 1;
+    -unity-slice-type: sliced;
+}
+
+.stack-label {
+    margin: 0px 3px 0px 0px;
+    padding: 0px 3px 0px 0px;
+    font-size: 8px;
+    -unity-text-align: middle-right;
+    align-self: flex-end;
+    position: absolute;
+    width: 100%;
+    bottom: 3px;
+}
+
+.inventory-slot {
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-892333524&guid=f9e1bb27c7e71654eae0729c2eac6ba7&type=3#tilemap_packed 1_0");
+}
+
+.hotbar-slot {
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=993594669&guid=f9e1bb27c7e71654eae0729c2eac6ba7&type=3#tilemap_packed 1_11");
+}
+
+.slot-icon {
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+}

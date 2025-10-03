@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement data-source-type="InventoryComponent, Systems" name="Slot" style="-unity-slice-scale: 0.75px; width: 30px; height: 30px;">
+        <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Weapons/weapons_.png?fileID=-1268895722731899225&amp;guid=42badd563e2b0e846b72025cf931180a&amp;type=3#weapons__4&quot;); -unity-background-scale-mode: scale-to-fit; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+            <Bindings>
+                <engine:DataBinding property="style.backgroundImage" data-source-path="Item.Sprite" binding-mode="ToTarget" />
+            </Bindings>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

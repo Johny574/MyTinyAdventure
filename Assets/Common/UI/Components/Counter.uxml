@@ -1,0 +1,10 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <engine:VisualElement style="justify-content: space-around; flex-direction: row;">
+        <engine:Label text="Label" class="space-zero" style="flex-shrink: 1; font-size: 7px;" />
+        <engine:VisualElement style="flex-direction: row; height: 9px; width: 50px; justify-content: space-around;">
+            <engine:Button text="+" name="Button" class="space-zero" style="flex-shrink: 1; font-size: 7px; width: 10px;" />
+            <engine:Label text="Label" class="space-zero" style="flex-shrink: 1; font-size: 7px;" />
+            <engine:Button text="-" class="space-zero" style="flex-shrink: 1; font-size: 7px; width: 10px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

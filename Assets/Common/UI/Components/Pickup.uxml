@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <Style src="project://database/Assets/Common/UI/USS/Spacing.uss?fileID=7433441132597879392&amp;guid=f8eeec346359d744dab02629fa9b3e7e&amp;type=3#Spacing" />
+    <engine:VisualElement name="Pickup" class="panel-light" style="height: 35px; width: 125px; align-self: flex-end;">
+        <engine:Label class="space-zero label" style="width: 100%; height: 100%; -unity-text-align: middle-center; -unity-font-definition: url(&quot;project://database/Assets/Common/UI/Fonts/ClassicShit.ttf?fileID=12800000&amp;guid=216a5ad79abccfa4e9e7aa2893314647&amp;type=3#ClassicShit&quot;);" />
+    </engine:VisualElement>
+</engine:UXML>

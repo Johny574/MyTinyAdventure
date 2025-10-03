@@ -1,0 +1,17 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <engine:Template name="Currency" src="project://database/Assets/Common/UI/Components/Currency.uxml?fileID=9197481963319205126&amp;guid=2a72a2456c0a8634dbb62ede9418f860&amp;type=3#Currency" />
+    <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <engine:VisualElement name="Inventory" class="panel-rect-small panel-dark" style="right: 15%;">
+        <engine:VisualElement name="Head" class="head" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 10%;">
+            <engine:VisualElement name="Heading" class="heading" style="align-self: center;">
+                <engine:Label text="Inventory" class="space-zero label" style="flex-grow: 1; -top: 0; -unity-text-align: middle-center;" />
+            </engine:VisualElement>
+            <engine:Button name="Close" class="close-btn" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Body" style="flex-grow: 1; height: 85%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px;">
+            <engine:ScrollView name="ScrollView" class="panel-light" style="flex-grow: 1; flex-direction: row;" />
+            <engine:Instance name="Currency" template="Currency" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,19 @@
+
+
+.space-zero
+{
+    padding:0;
+    margin:0;
+}
+
+.space-small
+{
+    padding:15px;
+    margin:0px;
+}
+
+.space-med
+{
+    padding:30px;
+    margin:0px;
+}

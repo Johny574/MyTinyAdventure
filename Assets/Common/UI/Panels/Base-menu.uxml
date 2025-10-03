@@ -1,0 +1,12 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Common/UI/USS/HUD.uss?fileID=7433441132597879392&amp;guid=26f6e70415289f24497e4fe5987deed9&amp;type=3#HUD" />
+    <engine:VisualElement name="Menu" class="menu" style="top: 25%;">
+        <engine:VisualElement name="Head" class="head">
+            <engine:VisualElement name="Heading" class="heading" style="align-self: center;">
+                <engine:Label text="Inventory" class="space-zero" style="flex-grow: 1; -unity-text-align: middle-center; font-size: 24px; -unity-font-definition: url(&quot;project://database/Assets/Common/UI/Fonts/Dungeon%20font%20HEAD.ttf?fileID=12800000&amp;guid=af008a01b3d76fb428395516ac50f9ed&amp;type=3#Dungeon font HEAD&quot;); color: rgb(255, 255, 255); text-shadow: 1px 1px 0 rgb(0, 0, 0);" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Close" class="close-btn" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Body" style="flex-grow: 1; height: 85%;" />
+    </engine:VisualElement>
+</engine:UXML>

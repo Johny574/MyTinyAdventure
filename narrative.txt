@@ -1,0 +1,19 @@
+[Dim cave interior. Rain echoes from above. The player stirs.]
+
+GRUK (softly): You're awake. Good. I thought you'd bleed out like the others.
+
+[He hands the player a damp cloth and a cracked flask.]
+
+GRUK: I dragged you from the battlefield. They saw me. Called me traitor. Banished me.
+
+[He turns away, voice bitter.]
+
+GRUK: I don't regret it. Not yet.
+
+[Pause. The player stands.]
+
+GRUK: If you're smart, you'll leave. If you're foolish... maybe you'll help me fix this mess.
+
+[He tosses a torn map onto the ground.]
+
+GRUK: Your kind and mine? We used to share fire. Now we share graves.

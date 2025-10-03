@@ -1,0 +1,27 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
+    <Style src="project://database/Assets/Common/UI/USS/Buttons.uss?fileID=7433441132597879392&amp;guid=ebf97e02173f5a84caa14728c65d121c&amp;type=3#Buttons" />
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <engine:VisualElement name="Escape" class="panel-light" style="position: absolute; width: 20%; height: 242px; alight-self: center;">
+        <engine:VisualElement name="Body" class="space-small" style="justify-content: space-evenly; align-items: center; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; height: 100%;">
+            <engine:Button name="Close" class="btn-normal btn-rect-med">
+                <engine:Label text="Continue" class="space-zero text" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:Button>
+            <engine:Button name="Load" class="btn-normal btn-rect-med">
+                <engine:Label text="Load" class="space-zero text" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:Button>
+            <engine:Button name="Save" class="btn-normal btn-rect-med">
+                <engine:Label text="Save" class="space-zero text" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:Button>
+            <engine:Button name="Map" class="btn-normal btn-rect-med">
+                <engine:Label text="Map" class="space-zero text" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:Button>
+            <engine:Button name="Options" class="btn-normal btn-rect-med">
+                <engine:Label text="Options" class="space-zero text" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:Button>
+            <engine:Button name="Exit" class="btn-normal btn-rect-med">
+                <engine:Label text="Exit" class="space-zero text" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:Button>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

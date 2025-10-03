@@ -1,0 +1,19 @@
+{
+    "name": "InputMappingsPropertyDrawer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:700871136e40f154cae59cd69fa1632c",
+        "GUID:379eb54b6b0f0304db57ec6860ad3335"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

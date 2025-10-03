@@ -1,0 +1,71 @@
+.head {
+    height: 15%;
+    width: 100%;
+}
+
+.body {
+    height: 100%;
+    width: 100%;
+}
+
+.heading {
+    background-color: rgba(255, 0, 0, 0);
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-848552353&guid=f9e1bb27c7e71654eae0729c2eac6ba7&type=3#tilemap_packed 1_47");
+    position: absolute;
+    align-self: center;
+    top: -25px;
+    width: 150px;
+    height: 55px;
+}
+
+.panel-rect-small {
+    width: 35%;
+    height: 50%;
+    align-self: center;
+    position: absolute;
+    top: 25%;
+}
+
+.panel-small {
+    align-self: center;
+    position: absolute;
+    top: 25%;
+}
+
+.panel-rect-medium {
+    align-self: center;
+    position: absolute;
+    top: 25%;
+}
+
+.panel-med {
+    align-self: center;
+    position: absolute;
+    top: 25%;
+}
+
+.panel-light {
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-892333524&guid=f9e1bb27c7e71654eae0729c2eac6ba7&type=3#tilemap_packed 1_0");
+    -unity-slice-left: 5;
+    -unity-slice-top: 5;
+    -unity-slice-right: 5;
+    -unity-slice-bottom: 5;
+}
+
+.panel-dark {
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=770894370&guid=f9e1bb27c7e71654eae0729c2eac6ba7&type=3#tilemap_packed 1_1");
+    -unity-slice-left: 5;
+    -unity-slice-top: 5;
+    -unity-slice-right: 5;
+    -unity-slice-bottom: 5;
+    -unity-slice-scale: 1px;
+}
+
+#Menu > #Body > VisualElement > VisualElement > .unity-text-field > #unity-text-input {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 69px;
+    -unity-text-align: middle-center;
+}

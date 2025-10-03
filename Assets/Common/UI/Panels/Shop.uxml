@@ -1,0 +1,28 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <engine:Template name="Currency" src="project://database/Assets/Common/UI/Components/Currency.uxml?fileID=9197481963319205126&amp;guid=2a72a2456c0a8634dbb62ede9418f860&amp;type=3#Currency" />
+    <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <engine:VisualElement name="Shop" class="panel-rect-small panel-dark" style="left: 15%;">
+        <engine:VisualElement name="Head" class="head" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 10%;">
+            <engine:VisualElement name="Heading" class="heading" style="align-self: center;">
+                <engine:Label text="Shop" class="space-zero label" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            </engine:VisualElement>
+            <engine:Button name="Close" class="close-btn" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Body" style="flex-grow: 1; height: 85%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px;">
+            <engine:ScrollView name="ScrollView" class="panel-light" style="flex-grow: 1; flex-direction: row; height: 60%;" />
+            <engine:VisualElement style="flex-direction: row; justify-content: flex-start; align-self: flex-start; width: 100%;">
+                <engine:VisualElement class="space-small panel-light" style="margin-top: 5px; width: 100%;">
+                    <engine:VisualElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editor="UnityEditor.UIElements" template="Inventory-slot" name="Cart" style="flex-direction: row; align-items: flex-start; justify-content: flex-start; flex-grow: 1; height: 30px;">
+                        <Style src="project://database/Assets/Common/UI/USS/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement style="align-self: center; justify-content: flex-start; flex-grow: 1; flex-shrink: 0; flex-direction: row; width: 100%; margin-top: 5px;">
+                <engine:Instance name="Currency" template="Currency" style="margin-top: 5px; margin-bottom: 5px; align-self: center; width: 70%;" />
+                <engine:Button text="Cancel" name="Cancel" class="btn-rect-med btn-cancel" style="align-self: center; margin-right: 5px;" />
+                <engine:Button text="Checkout" name="Checkout" class="btn-confirm btn-rect-med" style="align-self: center;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

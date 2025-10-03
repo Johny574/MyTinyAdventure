@@ -1,0 +1,104 @@
+.gridview {
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    padding:15px;
+}
+
+.unity-progress-bar__container {
+    --progress-color: red;
+    min-width: 0;
+    min-height: 0;
+    flex-grow: 1;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.unity-progress-bar__background {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed.png?fileID=891339981&guid=66fc38681fe32f24fa63658adb5ece9e&type=3#tilemap_packed_83");
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.unity-progress-bar__progress {
+    background-image: url("project://database/Assets/Common/Assets/Textures/UI/tilemap_packed.png?fileID=1965078243&guid=66fc38681fe32f24fa63658adb5ece9e&type=3#tilemap_packed_85");
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.unity-text-element.unity-label.unity-progress-bar__title {
+    font-size: 8px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-font-definition: url("project://database/Assets/Common/UI/Fonts/ClassicShit.ttf?fileID=12800000&guid=216a5ad79abccfa4e9e7aa2893314647&type=3#ClassicShit");
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 0 rgb(0, 0, 0);
+}
+
+.unity-progress-bar__title-container {
+}
+
+.bar {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.bar-label {
+    color: rgb(255, 255, 255);
+    -unity-font-definition: url("project://database/Assets/Common/UI/Fonts/ClassicShit.ttf?fileID=12800000&guid=216a5ad79abccfa4e9e7aa2893314647&type=3#ClassicShit");
+    -unity-text-align: middle-center;
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgb(0, 0, 0);
+    bottom: 1px;
+}
+
+.currency-cotainer {
+    flex-direction: row;
+}
+
+.currency-label {
+    color: rgb(255, 255, 255);
+    -unity-font-definition: url("project://database/Assets/Common/UI/Fonts/ClassicShit.ttf?fileID=12800000&guid=216a5ad79abccfa4e9e7aa2893314647&type=3#ClassicShit");
+    text-shadow: 1px 1px 0 rgb(0, 0, 0);
+    margin-left: 4px;
+    margin-top: 4px;
+    top: 1px;
+}
+
+.statbar
+{
+    flex-grow: 1; 
+    flex-direction: row;
+}
+
+.bar
+{
+    flex-grow:1;
+}
+
+.tooltip
+{
+    min-width:200px;
+    min-height:200px;
+    position:absolute;
+    padding:15px;
+}

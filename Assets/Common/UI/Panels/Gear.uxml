@@ -1,0 +1,57 @@
+<engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <engine:Template name="Counter" src="project://database/Assets/Common/UI/Components/Counter.uxml?fileID=9197481963319205126&amp;guid=ef2d7769cc3a8ce429658c6e007d0286&amp;type=3#Counter" />
+    <engine:Template name="Statpoints" src="project://database/Assets/Common/UI/Components/Statpoints.uxml?fileID=9197481963319205126&amp;guid=b74dc3a5c861181478506efb90ebb15a&amp;type=3#Statpoints" />
+    <engine:Template name="Bar" src="project://database/Assets/Common/UI/Components/Bar.uxml?fileID=9197481963319205126&amp;guid=d27967a320039f1459a29ffbaa5f3a6c&amp;type=3#Bar" />
+    <Style src="project://database/Assets/Common/UI/USS/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
+    <Style src="project://database/Assets/Common/UI/USS/Spacing.uss?fileID=7433441132597879392&amp;guid=f8eeec346359d744dab02629fa9b3e7e&amp;type=3#Spacing" />
+    <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
+    <Style src="project://database/Assets/Common/UI/USS/Buttons.uss?fileID=7433441132597879392&amp;guid=ebf97e02173f5a84caa14728c65d121c&amp;type=3#Buttons" />
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <engine:VisualElement name="Gear" class="panel-rect-small panel-dark" style="width: 25%; left: 15%;">
+        <engine:VisualElement name="Head" class="head" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 10%;">
+            <engine:VisualElement name="Heading" class="heading" style="align-self: center;">
+                <engine:Label text="Gear" class="label" style="flex-grow: 1; -unity-text-align: middle-center; font-size: 24px; -unity-font-definition: url(&quot;project://database/Assets/Common/UI/Fonts/Dungeon%20font%20HEAD.ttf?fileID=12800000&amp;guid=af008a01b3d76fb428395516ac50f9ed&amp;type=3#Dungeon font HEAD&quot;);" />
+            </engine:VisualElement>
+            <engine:Button name="Close" class="close-btn" style="position: relative; top: 15px; right: 15px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Body" class="space-small" style="flex-grow: 1; justify-content: center;">
+            <engine:VisualElement class="panel-light" style="background-image: url(&quot;project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-892333524&amp;guid=f9e1bb27c7e71654eae0729c2eac6ba7&amp;type=3#tilemap_packed 1_0&quot;); padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px;">
+                <engine:VisualElement name="VisualElement" class="space-zero" style="justify-content: flex-start; flex-direction: row;">
+                    <engine:VisualElement name="GearSlots" class="space-small panel-dark" style="background-image: url(&quot;project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=770894370&amp;guid=f9e1bb27c7e71654eae0729c2eac6ba7&amp;type=3#tilemap_packed 1_1&quot;); align-items: stretch; justify-content: space-evenly;">
+                        <engine:VisualElement name="Row" class="even-row" style="margin-top: 1px;">
+                            <GearUISlot name="Helmet" style="-unity-slice-left: 1; -unity-slice-top: 1; -unity-slice-right: 1; -unity-slice-bottom: 1;" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="Row" class="even-row" style="margin-top: 1px;">
+                            <GearUISlot name="Primary" />
+                            <GearUISlot name="Torso" />
+                            <GearUISlot name="Secondary" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="Row" class="even-row" style="margin-top: 1px;">
+                            <GearUISlot name="Ring1" />
+                            <GearUISlot name="Pants" />
+                            <GearUISlot name="Ring2" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="Row" class="even-row" style="margin-top: 1px;">
+                            <GearUISlot name="Tome" />
+                            <GearUISlot name="Boots" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    <engine:VisualElement name="BaseStats" style="flex-shrink: 1; height: 50px; justify-content: space-around; margin-left: 10px;">
+                        <engine:Instance name="Strength" template="Counter" />
+                        <engine:Instance name="Agility" template="Counter" />
+                        <engine:Instance name="Intelligence" template="Counter" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="Statpoints" style="flex-shrink: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                    <engine:Instance name="Melee Attack" template="Statpoints" class="statbar" style="margin-top: 5px;" />
+                    <engine:Instance name="Melee Defense" template="Statpoints" class="statbar" />
+                    <engine:Instance name="Ranged Attack" template="Statpoints" class="statbar" />
+                    <engine:Instance name="Ranged Defense" template="Statpoints" class="statbar" />
+                    <engine:Instance name="Magic Attack" template="Statpoints" class="statbar" />
+                    <engine:Instance name="Magic Defense" template="Statpoints" class="statbar" />
+                </engine:VisualElement>
+                <engine:Instance name="XP-bar" template="Bar" style="width: 103%; align-self: center; align-items: center;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

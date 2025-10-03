@@ -1,0 +1,17 @@
+{
+    "name": "DungeonGenerators",
+    "rootNamespace": "",
+    "references": [
+        "GUID:536b4b10abd38f74e94e02cd3a8de59b",
+        "GUID:6ef345f2c47c70b40a26f1c662e74235"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

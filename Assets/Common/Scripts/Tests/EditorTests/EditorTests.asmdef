@@ -1,0 +1,25 @@
+{
+    "name": "ComponentTests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6ef345f2c47c70b40a26f1c662e74235",
+        "GUID:68355f68c21ebfa42990744c5734f751",
+        "GUID:536b4b10abd38f74e94e02cd3a8de59b",
+        "GUID:f622b26089cb27040986f5df5dfc94c8",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

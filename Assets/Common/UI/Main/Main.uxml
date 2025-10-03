@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <Style src="project://database/Assets/Common/UI/USS/Buttons.uss?fileID=7433441132597879392&amp;guid=ebf97e02173f5a84caa14728c65d121c&amp;type=3#Buttons" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; position: absolute; width: 100%; height: 100%;">
+        <ui:Label text="My Tiny Adventure" class="title" style="-unity-text-align: middle-center; height: 35%;" />
+        <ui:VisualElement style="width: 30%; height: auto; left: 50px; bottom: 50px; position: absolute;">
+            <ui:Button text="Continue" name="Continue" class="heading" />
+            <ui:Button text="New Game" name="NewGame" class="heading" />
+            <ui:Button text="Load" name="Load" class="heading" />
+            <ui:Button text="Options" name="Options" class="heading" />
+            <ui:Button text="Exit" name="Exit" class="heading" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
