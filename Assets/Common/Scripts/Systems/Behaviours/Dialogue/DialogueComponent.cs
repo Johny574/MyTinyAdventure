@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DialogueComponent : Component
 {
-    public ActiveDialogue ActiveDialogue { get; set; }
-    ActiveDialogue _defaultActiveDialogue = new(new string[0], null);
+    public Dialogue ActiveDialogue { get; set; }
+    Dialogue _defaultActiveDialogue = new(new string[0], null);
     JournalComponent _journal;
     EmoteComponent _emote;
     Sprite _questEmote, _dialogueEmote;
 
-    public DialogueComponent(DialogueBehaviour behaviour, ActiveDialogue action, EmoteComponent emote, Sprite questEmote, Sprite dialogueEmote) : base(behaviour) {
+    public DialogueComponent(DialogueBehaviour behaviour, Dialogue action, EmoteComponent emote, Sprite questEmote, Sprite dialogueEmote) : base(behaviour) {
         _defaultActiveDialogue = action;
         _emote = emote;
         _questEmote = questEmote;
@@ -57,9 +57,9 @@ public class DialogueComponent : Component
     /// </summary>
     /// <param name="accesor">The accesor's journal</param>
     /// <returns></returns>
-    ActiveDialogue GetActiveDialogue(GameObject accesor) {
+    Dialogue GetActiveDialogue(GameObject accesor) {
         QuestingComponent questing = accesor.GetComponent<QuestingBehaviour>().Questing;
-        ActiveDialogue? activeDialogue = GetActiveDialogueForDialogueQueststeps(questing);
+        Dialogue? activeDialogue = GetActiveDialogueForDialogueQueststeps(questing);
 
         if (activeDialogue == null)
             activeDialogue = GetActiveDialogueForQuests(questing);
@@ -70,14 +70,14 @@ public class DialogueComponent : Component
         if (activeDialogue == null)
             activeDialogue = _defaultActiveDialogue;
 
-        return (ActiveDialogue)activeDialogue;
+        return (Dialogue)activeDialogue;
     }
 
     /// <summary>
     /// Checks if current npc sells item and handles dialogue accordingly.
     /// </summary>
     /// <returns></returns>
-    ActiveDialogue? GetActiveDialogueForShop(GameObject accesor) {
+    Dialogue? GetActiveDialogueForShop(GameObject accesor) {
         ShopBehaviour shop;
         if (Behaviour.TryGetComponent(out shop))
             return shop.Shop.Dialogue(accesor);
@@ -90,10 +90,10 @@ public class DialogueComponent : Component
     /// </summary>
     /// <param name="journal">The accesor's journal component.</param>
     /// <returns></returns>
-    ActiveDialogue? GetActiveDialogueForQuests(JournalComponent accesor) {
+    Dialogue? GetActiveDialogueForQuests(JournalComponent accesor) {
         if (_journal.Quests.Count > 0) {
             QuestSO firstAvailable = Behaviour.GetComponent<QuestingBehaviour>().Questing.ActiveQuests[0].SO;
-            return new ActiveDialogue(firstAvailable.StartDialogue, () => accesor.Quests.Add(firstAvailable));
+            return new Dialogue(firstAvailable.StartDialogue, () => accesor.Quests.Add(firstAvailable));
         }
 
         return null;
@@ -104,7 +104,7 @@ public class DialogueComponent : Component
     /// </summary>
     /// <param name="accesor">The accessor's questing component.</param>
     /// <returns></returns>
-    ActiveDialogue? GetActiveDialogueForDialogueQueststeps(QuestingComponent accesor) {
+    Dialogue? GetActiveDialogueForDialogueQueststeps(QuestingComponent accesor) {
         List<Quest> accesorQuests = accesor.ActiveQuests;
 
         if (accesorQuests.Count <= 0)
@@ -117,6 +117,6 @@ public class DialogueComponent : Component
         if (activeDialogueQuests.Count <= 0)
             return null;
 
-        return  new ActiveDialogue(((DialogueQueststepSO)activeDialogueQuests[0].CurrentStep().Data).Dialogue, () => activeDialogueQuests[0].CurrentStep().Complete());
+        return  new Dialogue(((DialogueQueststepSO)activeDialogueQuests[0].CurrentStep().Data).Dialogue, () => activeDialogueQuests[0].CurrentStep().Complete());
     }
 }

@@ -13,7 +13,7 @@ public class DialogueController : Singleton<DialogueController>
     [SerializeField] VisualElement _dialogue_e;
     public string CurrentText = "";
     [SerializeField] AudioSource _dialogueAudio;
-    ActiveDialogue? _activeDialogue = null;
+    Dialogue? _activeDialogue = null;
     GameObject _dialogue;
 
     protected override void Awake() {
@@ -32,7 +32,7 @@ public class DialogueController : Singleton<DialogueController>
         label.dataSource = this;
     }
 
-    IEnumerator Play(ActiveDialogue dialogue) {
+    IEnumerator Play(Dialogue dialogue) {
         string displayedText;
         for (int i = 0; i < dialogue.Dialogue.Length; i++) {
             displayedText = "";
@@ -57,7 +57,7 @@ public class DialogueController : Singleton<DialogueController>
             _dialogueIcon.style.backgroundImage = new StyleBackground(_dialogue.GetComponent<SpriteRenderer>().sprite);
     }
 
-    public void Open(ActiveDialogue activeDialogue, GameObject dialogue) {
+    public void Open(Dialogue activeDialogue, GameObject dialogue) {
         _activeDialogue = activeDialogue;
         _dialogue_e.style.visibility = Visibility.Visible;
         _dialogue = dialogue;

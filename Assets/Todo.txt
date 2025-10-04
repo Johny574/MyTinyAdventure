@@ -1,25 +1,28 @@
 
 re mother fucking factor
+
 # test
 coins
 orb drops
 storage position
 stamina stops sprint
 currency margins
-
+armor equipable
 # --- 
 
 blink particles
-sound on load remove
 feedback on load remove
-armor equipable
-
+sound on load remove
 minimap 1st scene needs to be moved
 minimap marker moet beweeg
 navmesh surface rebake
 
-UI
+! game stuff
+prices
+! --- 
 
+
+UI
 menu headings
 tooltip
 skills fine print

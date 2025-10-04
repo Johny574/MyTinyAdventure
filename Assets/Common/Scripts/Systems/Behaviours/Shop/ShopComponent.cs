@@ -19,8 +19,8 @@ public class ShopComponent : Component
         get => Shop.Inventory.Where(x => x.Item != null).ToList();
     }
 
-    public ActiveDialogue Dialogue(GameObject accesor) {
-        return new ActiveDialogue(_dialogue, () => ShopEvents.Instance.Open.Invoke(this, accesor));
+    public Dialogue Dialogue(GameObject accesor) {
+        return new Dialogue(_dialogue, () => ShopEvents.Instance.Open.Invoke(this, accesor));
     }
 
     public ShopComponent(MonoBehaviour behaviour, ItemStack[] items, string[] dialogue) : base(behaviour) {

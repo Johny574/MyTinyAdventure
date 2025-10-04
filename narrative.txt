@@ -1,19 +1,26 @@
-[Dim cave interior. Rain echoes from above. The player stirs.]
-
-GRUK (softly): You're awake. Good. I thought you'd bleed out like the others.
-
-[He hands the player a damp cloth and a cracked flask.]
-
-GRUK: I dragged you from the battlefield. They saw me. Called me traitor. Banished me.
-
-[He turns away, voice bitter.]
-
-GRUK: I don't regret it. Not yet.
-
-[Pause. The player stands.]
-
-GRUK: If you're smart, you'll leave. If you're foolish... maybe you'll help me fix this mess.
-
-[He tosses a torn map onto the ground.]
-
-GRUK: Your kind and mine? We used to share fire. Now we share graves.
+gnurk : Aah i see you wakey wakey.
+player : where am i.
+gnurk : human in gnurk gave. gnurk find human on battlefield 
+player : whaaa ? 
+gnurk : big field where humans fight my people.
+player : there was a battle ? 
+gnurk : yes and humans hurt my people. why humans no like goblin people.
+player : i can't remember a thing gnurk.
+gnurk : gnurk like you, gnurk take you back home and make you all better.
+player: thanks i really appreciate that. im sorry i can recall what happened.
+gnurk : humans and goblins fight. gnurk no want fight. gnurk like the humans. gnurk help human, human must help gnurk.
+player : what can i do possibly help you gnurk ?
+gnurk : human must make other human not fight with goblin people.
+player : how am i supposed to do that ? 
+gnurk : human must show humans, goblins are good too. we no want to fight.
+player: I don’t even know who I am… how can I convince anyone of anything?
+gnurk: memory come back soon. gnurk believe. maybe human was important before battle.
+player: Important? Like a soldier?
+gnurk: maybe leader. maybe peace-maker. gnurk not know. but gnurk feel it in bones.
+player: That’s… a lot to take in.
+gnurk: gnurk help. gnurk teach human goblin ways. show human goblin heart.
+player: Goblin heart?
+gnurk: goblin heart strong. goblin heart kind. goblin heart not want war.
+player: Then let’s start there. Teach me, Gnurk. Maybe if I understand your people, I can help stop the fighting.
+gnurk : yes! gnurk teach! first lesson: goblin stew not scary. very tasty. even if it wiggle. and if you want use gnurk fire, gnurk allow.
+you are gnurk friend.
