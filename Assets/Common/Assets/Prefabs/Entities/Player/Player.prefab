@@ -11637,6 +11637,7 @@ GameObject:
   - component: {fileID: 3946529965224232553}
   - component: {fileID: 6309251470908735324}
   - component: {fileID: 7166850583194778117}
+  - component: {fileID: 3309951647195588781}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -12416,7 +12417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733300d54ab3d674088fdebae469be5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _persistant: 1
+  _persistant: 0
   Health: {fileID: 0}
   Stamina: {fileID: 0}
   Mana: {fileID: 0}
@@ -12433,6 +12434,20 @@ MonoBehaviour:
   Location: {fileID: 0}
   Cache: {fileID: 0}
   Renderer: {fileID: 0}
+--- !u!114 &3309951647195588781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969901322208024353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1bcf8db52c8d0742a68f05cb4178d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minimapMarker: {fileID: 1003146855, guid: 66fc38681fe32f24fa63658adb5ece9e, type: 3}
+  UID: 0
 --- !u!1 &4984653538717140457
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using System.Collections;
 using DG.Tweening;
-using FletcherLibraries;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,7 +13,7 @@ public class DialogueController : Singleton<DialogueController>
     public string CurrentText = "";
     [SerializeField] AudioSource _dialogueAudio;
     Dialogue? _activeDialogue = null;
-    GameObject _dialogue;
+    SpriteRenderer _speaker;
 
     protected override void Awake() {
         base.Awake();
@@ -34,33 +33,34 @@ public class DialogueController : Singleton<DialogueController>
 
     IEnumerator Play(Dialogue dialogue) {
         string displayedText;
-        for (int i = 0; i < dialogue.Dialogue.Length; i++) {
-            displayedText = "";
-            for (int c = 0; c < dialogue.Dialogue[i].Length ; c++) {
-                displayedText += dialogue.Dialogue[i][c];
-                yield return new WaitForSeconds(.1f);
-                CurrentText = displayedText;
-                _dialogueAudio.Play();
-            }
 
+        for (int i = 0; i < dialogue.Exchanges.Length; i++) {
+            displayedText = "";
+            var n = dialogue.Exchanges[i];
+            _speaker = SceneTracker.Instance.Objects[typeof(Entity)].Find(x => x.GetComponent<Entity>().UID.Equals(n.Speaker.UID)).GetComponent<SpriteRenderer>();
+
+            foreach (var line in dialogue.Exchanges[i].Lines) {
+                for (int c = 0; c < line.Length; c++) {
+                    displayedText += line[c];
+                    yield return new WaitForSeconds(.1f);
+                    CurrentText = displayedText;
+                    _dialogueAudio.Play();
+                }
+            }
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Skip);
             Skip = false;
-        }
-        //   dialogue.FinishAction?.Invoke();
-        // Clear();
-        // GameMenuStatemachine.Instance.ChangeState("None");
+        }    
         Close();
     }
 
     void Update() {
-        if (_dialogue != null)
-            _dialogueIcon.style.backgroundImage = new StyleBackground(_dialogue.GetComponent<SpriteRenderer>().sprite);
+        if (_speaker != null)
+            _dialogueIcon.style.backgroundImage = new StyleBackground(_speaker.sprite);
     }
 
-    public void Open(Dialogue activeDialogue, GameObject dialogue) {
+    public void Open(Dialogue activeDialogue) {
         _activeDialogue = activeDialogue;
         _dialogue_e.style.visibility = Visibility.Visible;
-        _dialogue = dialogue;
 
         StartCoroutine(Play(activeDialogue));
         float start = -150f;
@@ -76,7 +76,7 @@ public class DialogueController : Singleton<DialogueController>
         StopAllCoroutines();
         float start = 15f;
         float finish = -150f;
-        _dialogue = null;
+        _speaker = null;
 
         DOTween.To(() => start, x => {
             start = x;

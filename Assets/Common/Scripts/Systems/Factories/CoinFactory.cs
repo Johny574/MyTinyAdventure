@@ -1,18 +1,10 @@
-
-
-
-
-
-using System.Threading.Tasks;
-using FletcherLibraries;
 using UnityEngine;
 
-[RequireComponent(typeof(PoolBehaviour))]
-public class CoinFactory: Singleton<CoinFactory> {
-    public PoolBehaviour Pool;
-    protected override void Awake() {
-        base.Awake();
-        Pool = GetComponent<PoolBehaviour>();
+public class CoinFactory: Factory<CoinFactory, int>
+{
+    public async void Drop(Vector2 origin, int amount)
+    {
+        IPoolObject<int> obj = await GetObject(amount);
+        ((MonoBehaviour)obj).GetComponent<Dropable>().Drop(origin);
     }
-
 }

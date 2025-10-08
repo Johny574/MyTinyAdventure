@@ -10,11 +10,17 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
     float _attackSpeed = .1f;
     HandsComponent _hands;
     GameObject _attackHand = null;
+    bool _attacked = false;
+    LayerMask _enemyLayer;
+    StatpointsBehaviour _stats;
+    float _reach = 1f;
 
-    public WeaponDefaultState(WeaponStatemachine statemachine, HandsComponent hands, GearComponent gear, AimComponent aim) : base(statemachine) {
+    public WeaponDefaultState(WeaponStatemachine statemachine, HandsComponent hands, GearComponent gear, AimComponent aim, LayerMask enemyLayer, StatpointsBehaviour stats) : base(statemachine) {
         _aim = aim;
         _gear = gear;
         _hands = hands;
+        _enemyLayer = enemyLayer;
+        _stats = stats;
     }
 
     public bool GetTransitionCondition() {
@@ -31,9 +37,19 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
         }
 
         if (_attacking) {
+            if (!_attacked) {
+                RaycastHit2D hit = Physics2D.Raycast(_statemachine.transform.position, Rotation2D.GetPointOnCircle(_statemachine.transform.position, _aim.LookAngle), _reach, _enemyLayer);
+
+                if (hit)
+                {
+                    EntityStatemachine entity = hit.collider.gameObject.GetComponent<EntityStatemachine>();
+                    entity.TakeDamage(_statemachine.transform.position, _stats.Stats);
+                }
+            }
+
             if (_attackTime < _attackSpeed) {
                 _attackTime += Time.smoothDeltaTime;
-                var hp = (Vector2)_statemachine.transform.position + Rotation2D.GetPointOnCircle(_statemachine.transform.position, _aim.LookAngle) * 1f;
+                var hp = (Vector2)_statemachine.transform.position + Rotation2D.GetPointOnCircle(_statemachine.transform.position, _aim.LookAngle) * _reach;
                 _attackHand.transform.position = Vector2.Lerp(_attackHand.transform.position, hp, _attackTime);
                 Debug.DrawLine(_statemachine.transform.position, hp, Color.magenta);
             }
@@ -46,6 +62,9 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
         }
 
         else {
+            if (_attacked)
+                _attacked = false;
+
             var lookY = Rotation2D.GetPointOnCircle(_statemachine.transform.position, _aim.LookAngle);
             var offset = new Vector2(_statemachine.transform.position.x, _statemachine.transform.position.y - .5f);
 

@@ -12,6 +12,7 @@ public class PoolBehaviour : MonoBehaviour
     List<GameObject> _objects = new();
     protected int _size = 16;
     [SerializeField] protected AssetReference _prefab;
+    [SerializeField] Vector3 _scale = Vector3.one;
 
     public async void Awake() {
         await Addressables.InitializeAsync().Task;
@@ -26,7 +27,7 @@ public class PoolBehaviour : MonoBehaviour
             throw new System.Exception($"No prefab assigned to pool {this}.");
 
         for (int i = 0; i < _size; i++) {
-            GameObject obj = await InstantiateByReference(_prefab, new SpawnData(Vector3.zero, Vector3.zero, Vector3.one, false, transform));
+            GameObject obj = await InstantiateByReference(_prefab, new SpawnData(Vector3.zero, Vector3.zero, _scale, false, transform));
             _objects.Add(obj);
             _availableObjects.Enqueue(obj);
         }
@@ -34,12 +35,10 @@ public class PoolBehaviour : MonoBehaviour
 
     public async Task<IPoolObject<T>> GetObject<T>() {
         GameObject obj;
-        try {
+        if (_availableObjects.Count > 0)
             obj = _availableObjects.Dequeue();
-        }
-        catch {
-            obj = await InstantiateByReference(_prefab, new SpawnData(Vector3.zero, Vector3.zero, Vector3.one, false, transform));
-        }
+        else
+            obj = await InstantiateByReference(_prefab, new SpawnData(Vector3.zero, Vector3.zero, _scale, false, transform));
 
         obj.gameObject.SetActive(true);
 
@@ -82,6 +81,7 @@ public class PoolBehaviour : MonoBehaviour
 
         GameObject newObject = Object.Instantiate(((AsyncOperationHandle<GameObject>)_loadedReference).Result);
         PoolObject poolObject = newObject.AddComponent<PoolObject>();
+        poolObject.gameObject.SetActive(false);
         poolObject.Disable += (poolobj) => _availableObjects.Enqueue(poolobj);
         transform.SetTransform(newObject.transform);
         return newObject;
@@ -91,5 +91,6 @@ public class PoolBehaviour : MonoBehaviour
         foreach (var obj in _objects) {
             GameObject.Destroy(obj);
         }
+        _availableObjects.Clear();
     }
 }

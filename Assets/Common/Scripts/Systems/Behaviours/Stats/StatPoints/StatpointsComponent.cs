@@ -32,51 +32,51 @@ public class StatpointsComponent : Component, ISerializedComponent<StatPoints>
 
     public int HPPool {
         get =>
-        _xp.Level + 1 * StatpointsModifiers.HPPerLevel +
-        StatPoints.BaseStats[StatPoints.Stat.Strength] * StatpointsModifiers.HPPerStatpoint;
+        _xp.Level + 1 * Modifiers.HPPerLevel +
+        StatPoints.BaseStats[StatPoints.Stat.Strength] * Modifiers.HPPerStatpoint;
     }
 
     public float HPRegen {
         get =>
-        _xp.Level + 1 * StatpointsModifiers.HPRegenPerLevel +
-        StatPoints.BaseStats[StatPoints.Stat.Strength] * StatpointsModifiers.HPRegenPerStatpoint;
+        _xp.Level + 1 * Modifiers.HPRegenPerLevel +
+        StatPoints.BaseStats[StatPoints.Stat.Strength] * Modifiers.HPRegenPerStatpoint;
     }
 
     public int StaminaPool {
         get =>
-        _xp.Level + 1 * StatpointsModifiers.StaminaPerLevel +
-        StatPoints.BaseStats[StatPoints.Stat.Agility] * StatpointsModifiers.StaminaPerStatpoint;
+        _xp.Level + 1 * Modifiers.StaminaPerLevel +
+        StatPoints.BaseStats[StatPoints.Stat.Agility] * Modifiers.StaminaPerStatpoint;
     }
 
     public float StaminaRegen {
         get =>
-        _xp.Level + 1 * StatpointsModifiers.StaminaRegenPerLevel +
-        StatPoints.BaseStats[StatPoints.Stat.Agility] * StatpointsModifiers.StaminaRegenPerStatpoint;
+        _xp.Level + 1 * Modifiers.StaminaRegenPerLevel +
+        StatPoints.BaseStats[StatPoints.Stat.Agility] * Modifiers.StaminaRegenPerStatpoint;
     }
 
     public int ManaPool {
         get =>
-        _xp.Level + 1 * StatpointsModifiers.ManaPerLevel +
-        StatPoints.BaseStats[StatPoints.Stat.Intelligence] * StatpointsModifiers.ManaPerStatpoint;
+        _xp.Level + 1 * Modifiers.ManaPerLevel +
+        StatPoints.BaseStats[StatPoints.Stat.Intelligence] * Modifiers.ManaPerStatpoint;
     }
     
     public float ManaRegen {
         get =>
-        _xp.Level + 1 * StatpointsModifiers.ManaRegenPerLevel +
-        StatPoints.BaseStats[StatPoints.Stat.Intelligence] * StatpointsModifiers.ManaRegenPerStatpoint;
+        _xp.Level + 1 * Modifiers.ManaRegenPerLevel +
+        StatPoints.BaseStats[StatPoints.Stat.Intelligence] * Modifiers.ManaRegenPerStatpoint;
     }
 
     public float MoveSpeed {
         get =>
-        StatpointsModifiers.DefaultMovespeed + 
-        _xp.Level + 1 * StatpointsModifiers.MovespeedPerLevel +
-        StatPoints.BaseStats[StatPoints.Stat.Agility] * StatpointsModifiers.MoveSpeedPerStatpoint;
+        Modifiers.DefaultMovespeed + 
+        _xp.Level + 1 * Modifiers.MovespeedPerLevel +
+        StatPoints.BaseStats[StatPoints.Stat.Agility] * Modifiers.MoveSpeedPerStatpoint;
     }
 
     public float SprintSpeed {
         get =>
-        StatpointsModifiers.DefaultSprintSpeed + 
-        _xp.Level + 1 * StatpointsModifiers.SprintSpeedPerLevel +
-        StatPoints.BaseStats[StatPoints.Stat.Agility] * StatpointsModifiers.SprintSpeedPerStatpoint;
+        Modifiers.DefaultSprintSpeed + 
+        _xp.Level + 1 * Modifiers.SprintSpeedPerLevel +
+        StatPoints.BaseStats[StatPoints.Stat.Agility] * Modifiers.SprintSpeedPerStatpoint;
     }
 }

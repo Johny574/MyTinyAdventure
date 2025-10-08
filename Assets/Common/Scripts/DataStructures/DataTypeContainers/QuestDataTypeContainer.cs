@@ -8,6 +8,6 @@ public class QuestDataTypeContainer : DataBrowserSupportedTypesContainer
 {
     public override void GetSupportedDataBrowserTypes(Dictionary<string, Type> supportedTypes) {
         supportedTypes.Add("Quests", typeof(QuestSO));
-        supportedTypes.Add("Queststeps", typeof(QueststepData));
+        supportedTypes.Add("Queststeps", typeof(QueststepSO));
     }
 }

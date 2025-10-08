@@ -4,7 +4,7 @@ gnurk : human in gnurk gave. gnurk find human on battlefield
 player : whaaa ? 
 gnurk : big field where humans fight my people.
 player : there was a battle ? 
-gnurk : yes and humans hurt my people. why humans no like goblin people.
+gnurk : yes and humans hurt my people. humans no like goblin people.
 player : i can't remember a thing gnurk.
 gnurk : gnurk like you, gnurk take you back home and make you all better.
 player: thanks i really appreciate that. im sorry i can recall what happened.
@@ -22,5 +22,79 @@ gnurk: gnurk help. gnurk teach human goblin ways. show human goblin heart.
 player: Goblin heart?
 gnurk: goblin heart strong. goblin heart kind. goblin heart not want war.
 player: Then let’s start there. Teach me, Gnurk. Maybe if I understand your people, I can help stop the fighting.
-gnurk : yes! gnurk teach! first lesson: goblin stew not scary. very tasty. even if it wiggle. and if you want use gnurk fire, gnurk allow.
-you are gnurk friend.
+gnurk : yes! gnurk teach! first lesson: goblin stew not scary. very tasty. even if it wiggle.
+
+preperation for the stew
+
+gnurk : you take stew to human people ! you give them stew, show them goblin heart.
+
+option 1-A : EAT THE STEW => 
+gnurk: you eat stew ? You feel goblin heart ?
+player: I do. It’s… different. But good. I think I understand you better.
+gnurk: then human go tell other humans goblin people are good. they not want fight, they have big heart.
+*starts the part where the player needs to go to the blacksmith*
+
+option 1-B : TAKE THE STEW TO BLACKSMITH => 
+player: okay gnark ill be back.
+gnurk: you go friend, you give them soup, show them goblin people are good.
+*starts the part where the player needs to go to the blacksmith*
+
+
+PLAYER GOES TO BLACKSMITH
+-------------------------
+BS: aah weary traveler. you look like you've been through a tough time. no matter. what can eldric do for ya today ?
+Player: I found a goblin up in the caves, he saved me after the war.
+BS: A goblin ?? Ayye ya shoulda given him steel
+Player: No this goblin's different. He saved me, took care of me. I'm pretty sure if it wasn't for him i'd be dead.
+BS: A good goblin ya say ? are ya okay lad ?
+Player: yes i'm all better. The goblin wants to make peace between he's people and our people.
+BS: aye i don't think that's possible lad. Even so i'll not be able to help ya, You'll need to take to someone in the military. Go to knight henry
+he can tell you more.
+
+PLAYER GOES TO HENRY
+--------------------
+option 1-A :
+
+option 1-B :
+Henry: Citizen! Knight Henry at your service.
+Player: Knight Henry, i come to u with a case of upmost importance.
+Henry: Speak Citizen !
+Player: The goblins want to make peace with the humans.
+Henry: Is this a joke ?
+Player: No i was rescued by a goblin and he saved my life. He wants to negotiate peace between humans and goblins.
+Henry: Do you have any idea how many of our people died by the hands of goblins ? how many friends and family we've lost.
+Player: I know henry... but this can be peace for both humans and goblins.
+Henry: For years our people have tried to negotiate peace with them, in hopes of putting the war behind us. but without a blessed scroll of trust,
+it's hopeless.
+Player: a blessed scroll of trust ?
+Henry: it's a magically imbued scroll that holds an agreement between two leaders. it ensures that whoever breaks the agreement, will turn to ash.
+Player:Then we need to create one. If the goblin leader is truly serious, he’ll sign it.
+Henry:You think a goblin would bind himself to magic that could kill him? That takes more than words—it takes courage. And trust.
+Player:Let me speak to their leader. If he agrees, will you meet him?
+Henry:That still leaves us with the scroll. The last mage to create such a scroll is long dead.
+Player:We'll try to take care of that problem when we get there.
+
+
+Player:Gnurk, Henry spoke of a scroll. A magical one. It’s the only way peace can happen.
+Gnurk:Scroll of trust? Old magic. Human mage made last one. Mage dead now. But… goblin shaman know bone ways.
+Player:Bone ways?
+Gnurk:Magic deep in bones. Shaman can call spirit back. But need bones. Need place of death. Need goblin heart.
+
+🧭 Phase 2: Find the Mage’s Bones
+- The player travels to a forgotten battlefield or ancient crypt.
+- Faces trials: undead guardians, riddles, or moral choices.
+- Retrieves the bones of the fallen mage.
+
+🧭 Phase 3: Meet the Goblin Shaman
+- The shaman is eerie, wise, and unpredictable.
+- Requires a sacrifice—perhaps a memory, a piece of the player’s soul, or a goblin relic.
+- Performs the ritual. The mage’s spirit returns, bound to the bones.
+
+🧭 Phase 4: The Scroll Forging
+- The resurrected mage agrees to forge the scroll—but only if both leaders meet in person.
+- The scroll is created in a sacred ceremony, glowing with ancient power.
+- Both leaders must sign it with blood and intent.
+
+
+Meeting between henry and goblin leader
+

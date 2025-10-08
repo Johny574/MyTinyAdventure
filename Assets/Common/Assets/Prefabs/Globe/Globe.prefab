@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7242233524959054185}
   - component: {fileID: 8162570085447449045}
   - component: {fileID: 2241164712652114929}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Globe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,8 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaba0ed1c2fe1964dba43f32943605de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amount: 50
-  _type: 0
 --- !u!114 &8162570085447449045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6163620953842467143}
   - component: {fileID: 987091220695402143}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 819155491986644557}
   - component: {fileID: 3634626377504373712}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

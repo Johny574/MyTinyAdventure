@@ -8,24 +8,12 @@ public class InventoryComponent : Component, ISerializedComponent<ItemStackData[
     public ItemStack[] Inventory = new ItemStack[16];
     public Action<ItemStack, ItemStack[]> Added, Removed;
 
-    HealthComponent _health;
-    GearComponent  _gear;
-    ExperienceComponent _xp;
-
     public InventoryComponent(MonoBehaviour behaviour, ItemStack[] inventory) : base(behaviour) {
         Inventory = inventory;
     }
 
-    public void Initilize() {
-        _health = Behaviour.GetComponent<HealthBehaviour>().Health;
-        _gear = Behaviour.GetComponent<GearBehaviour>().Gear;
-        _xp = Behaviour.GetComponent<ExperienceBehaviour>().Experience;
-
-        Inventory = Enumerable.Repeat(new ItemStack(null, 0), _xp.CurrentLevel.InventorySlots).ToArray();
-        _health.Death += OnDeath;
-
-        _gear.Equiped += (item) => Remove(new ItemStack(item, 1));
-        _gear.Unequiped += (item) => Add(new ItemStack(item, 1));
+    public void Initilize(int size) {
+        Inventory = Enumerable.Repeat(new ItemStack(null, 0), size).ToArray();
     }
 
     public void Add(ItemStack stack) {
@@ -123,15 +111,14 @@ public class InventoryComponent : Component, ISerializedComponent<ItemStackData[
     }
 
     public void OnDeath() {
-        for (int i = 0; i < Inventory.Length; i++) {
-            // new InventoryCommands.DropCommand(Inventory[i], Entity, Entity.Component<Transform>().position).Execute();
-        }
+        for (int i = 0; i < Inventory.Length; i++) 
+            ItemFactory.Instance.DropItem(Behaviour.transform.position, Inventory[i]);
     }
 
     public ItemStackData[] Save() => Inventory.Where(x => x.Item != null).Select(x => new ItemStackData(x.Item.GUID, x.Count)).ToArray();
 
     public void Load(ItemStackData[] save) {
-        Inventory = Enumerable.Repeat(new ItemStack(null, 0), _xp.CurrentLevel.InventorySlots).ToArray();
+        Inventory = Enumerable.Repeat(new ItemStack(null, 0), Inventory.Length).ToArray();
         for (int i = 0; i < save.Length; i++) {
             ItemStackData item = save[i]; // keep this reference in memory
 

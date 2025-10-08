@@ -7,7 +7,7 @@ public class SkillsPanelBehaviour : Singleton<SkillsPanelBehaviour>
     [SerializeField] VisualTreeAsset _panel_t;
     [SerializeField] bool _dragable = true;
     [SerializeField] VisualTreeAsset _slot_t, _ghostIcon_t;
-    public PanelController Panel;
+    public SkillsPanelController Panel;
     [SerializeField] protected AudioSource _openAudio, _closeAudio;
 
     protected override void Awake() {
@@ -24,5 +24,5 @@ public class SkillsPanelBehaviour : Singleton<SkillsPanelBehaviour>
         InputManager.Instance.InputMappings["Skills"].Action.action.performed -= ToggleSkillsPanel;
     }
 
-    private void ToggleSkillsPanel(UnityEngine.InputSystem.InputAction.CallbackContext context) => Panel.Toggle();
+    void ToggleSkillsPanel(UnityEngine.InputSystem.InputAction.CallbackContext context) => Panel.Open();
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class CollectItemQueststep : Queststep {
     public ItemStack[] Items;
 
-    public CollectItemQueststep(QueststepData data, QuestingComponent parttaker, Quest quest) : base(data, parttaker, quest) {
+    public CollectItemQueststep(QueststepSO data, QuestingComponent parttaker, Quest quest) : base(data, parttaker, quest) {
         Items = ((CollectItemQuestStepData)data).Items;
         // Item = new Stack<ItemData>(item.Data, 0, item.Counter().Limit);
         // GameEvents.Instance.InventoryEvents.ItemAdded += OnItemCollected;

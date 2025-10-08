@@ -1,22 +1,22 @@
 using UnityEngine;
 
 public class Player : Singleton<Player> {
-   public HealthBehaviour Health;
-    public StaminaBehaviour Stamina;
-    public ManaBehaviour Mana;
-    public ExperienceBehaviour Experience;
-    public InventoryBehaviour Inventory;
-    public InteractBehaviour Interact;
-    public CurrencyBehaviour Currency;
-    public BuffsBehaviour Buffs;
-    public SkillsBehaviour Skills;
-    public ConsumableBehaviour Consumables;
-    public StatpointsBehaviour Stats;
-    public GearBehaviour Gear;
-    public QuestingBehaviour Journal;
-    public LocationBehaviour Location;
-    public CacheBehaviour Cache;
-    public SpriteRenderer Renderer;
+   public HealthBehaviour Health { get; private set; }
+    public StaminaBehaviour Stamina { get; private set; }
+    public ManaBehaviour Mana { get; private set; }
+    public ExperienceBehaviour Experience { get; private set; }
+    public InventoryBehaviour Inventory { get; private set; }
+    public InteractBehaviour Interact { get; private set; }
+    public CurrencyBehaviour Currency { get; private set; }
+    public BuffsBehaviour Buffs { get; private set; }
+    public SkillsBehaviour Skills { get; private set; }
+    public ConsumableBehaviour Consumables { get; private set; }
+    public StatpointsBehaviour Stats { get; private set; }
+    public GearBehaviour Gear { get; private set; }
+    public QuestingBehaviour Journal { get; private set; }
+    public LocationBehaviour Location { get; private set; }
+    public CacheBehaviour Cache { get; private set; }
+    public SpriteRenderer Renderer { get; private set; }
     protected override void Awake() {
         base.Awake();
         Health = GetComponent<HealthBehaviour>();

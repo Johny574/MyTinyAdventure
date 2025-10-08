@@ -8,20 +8,26 @@ public class ExperienceComponent : StatComponent, ISerializedComponent<BarData>
     FeedbackComponent _feedback;
     IPoolObject<string> _levelTag;
     
-    public ExperienceComponent(ExperienceBehaviour behaviour, List<Level> levels) : base(behaviour) {
+    public ExperienceComponent(ExperienceBehaviour behaviour, List<Level> levels, float xp) : base(behaviour) {
         _levels = levels;
         _feedback = new();
-        Data = new(0, _levels[Level].XPRequirement);
+        Data = new(xp, _levels[Level].XPRequirement);
         Changed?.Invoke(Data);
         Changed += async (data) => await _feedback.DisplayFeedback(new FeedbackData($"{data.Amount}", Color.blue), Behaviour.transform.position);
     }
-    public void OnStart() => CreateLevelTag();
 
-    async void CreateLevelTag() { 
+    public void Initilize(HealthComponent health)
+    {
+        health.Death += OnDeath;
+        CreateLevelTag();
+    }
+
+    async void CreateLevelTag() {
         _levelTag = await LevelTagFactory.Instance.Pool.GetObject<string>();
-        _levelTag.Bind((Level+1).ToString());
+        _levelTag.Bind((Level + 1).ToString());
         ((MonoBehaviour)_levelTag).GetComponent<Follower>().Follow(Behaviour.gameObject);
     }
+
     public void Update(float amount) {
         Data.Amount += amount;
         Data.CalculateFill();
@@ -35,22 +41,24 @@ public class ExperienceComponent : StatComponent, ISerializedComponent<BarData>
         AvailableStatPoints += _levels[Level].StatPointsReward;
         _levelTag.Bind((Level+1).ToString());
     }
-    public BarData Save() {
-        return Data;
-    }
-    public void Load(BarData save) {
-        Data = save;
-    }
+
+    public BarData Save() => Data;
+    public void Load(BarData save) => Data = save;
     public Level CurrentLevel => _levels[Level];
 
-    // private void OnDeath() {
-    //     if (_xp.Count <= 0) {
-    //         return;
-    //     }
+    void OnDeath() {
+        DropCurrency();
+        ((MonoBehaviour)_levelTag).gameObject.SetActive(false);
+    }
 
-    //     for (int i = 0; i < (_xp.Count / 50) - (_xp.Count % 50); i++) {
-    //         new ExperienceCommands.DropCommand(50, Entity.Component<Transform>().position).Execute();
-    //     }
-    //     new ExperienceCommands.DropCommand(_xp.Count % 50, Entity.Component<Transform>().position).Execute();
-    // }
+    void DropCurrency() {
+        if (Data.Amount <= 0)
+            return;
+
+        var n = Data.Amount - (Data.Amount % Modifiers.MaxXPOrbSize);
+        for (int i = 0; i < (n/ Modifiers.MaxXPOrbSize); i++)
+            new ExperienceCommands.DropCommand(Modifiers.MaxXPOrbSize, Behaviour.transform.position).Execute();
+
+        new ExperienceCommands.DropCommand(Data.Amount % Modifiers.MaxXPOrbSize, Behaviour.transform.position).Execute();
+    }
 }

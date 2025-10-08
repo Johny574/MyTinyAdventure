@@ -14,7 +14,6 @@
             <engine:VisualElement style="flex-direction: row; justify-content: flex-start; align-self: flex-start; width: 100%;">
                 <engine:VisualElement class="space-small panel-light" style="margin-top: 5px; width: 100%;">
                     <engine:VisualElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editor="UnityEditor.UIElements" template="Inventory-slot" name="Cart" style="flex-direction: row; align-items: flex-start; justify-content: flex-start; flex-grow: 1; height: 30px;">
-                        <Style src="project://database/Assets/Common/UI/USS/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
                     </engine:VisualElement>
                 </engine:VisualElement>
             </engine:VisualElement>

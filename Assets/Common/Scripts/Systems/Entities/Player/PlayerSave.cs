@@ -3,13 +3,6 @@ using UnityEngine;
 [DefaultExecutionOrder(100)]
 public class PlayerSave : SerializedObject<PlayerSaveData>
 {
-    [SerializeField] Sprite _minimapMarker;
-    
-    protected override void Start() {
-        base.Start();
-        MiniMapController.Instance.Register(gameObject, _minimapMarker);   
-    }
-
     public override void Load(PlayerSaveData save) {
         Player.Instance.Health.Health.Load(save.Health);
         Player.Instance.Mana.Mana.Load(save.Mana);

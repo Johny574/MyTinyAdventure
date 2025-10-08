@@ -30,7 +30,7 @@ public class ConsumableComponent : Component, ISerializedComponent<ConsumableDat
         }
     }
 
-    public ConsumableData[] Save() => Consumables.Select(x => x.Equals(null) ? null : new ConsumableData(x.Stack.Item.GUID, x.Stack.Count, x.Timer)).ToArray();
+    public ConsumableData[] Save() => Consumables.Select(x => x == null ? null : new ConsumableData(x.Stack.Item.GUID, x.Stack.Count, x.Timer)).ToArray();
 
     public void Add(int slot, ItemStack consumable) {
         if (consumable.Item.GetType() != typeof(ConsumableSO))
@@ -45,18 +45,29 @@ public class ConsumableComponent : Component, ISerializedComponent<ConsumableDat
         Updated?.Invoke(Consumables);
     }
 
-    public void Update() {
-        for (int i = 0; i < Consumables.Length; i++) {
-            if (Consumables[i] != null) {
+
+    void Consume(int index)
+    {
+        if (Consumables[index] == null || Consumables[index].OnCooldown || Consumables[index].Stack.Item == null)
+            return;
+
+        Consumables[index].Consume(this);
+    }
+
+    public void Update()
+    {
+        for (int i = 0; i < Consumables.Length; i++)
+        {
+            if (Consumables[i] != null)
+            {
                 if (Consumables[i].Stack.Item != null)
                     Consumables[i].Tick();
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
-            Consumables[0].Consume(this);
-
+            Consume(0);
         if (Input.GetKeyDown(KeyCode.Alpha6))
-            Consumables[1].Consume(this);
+            Consume(1);
     }
 }

@@ -5,6 +5,7 @@ public class StaminaComponent : StatComponent, ISerializedComponent<BarData>
     StatpointsComponent _stats;
     public bool Sprinting = false;
     public bool CanSprint = true;
+
     public StaminaComponent(StaminaBehaviour behaviour) : base(behaviour)
     {
     }
@@ -16,7 +17,7 @@ public class StaminaComponent : StatComponent, ISerializedComponent<BarData>
     }
 
     public void Tick() {
-        if (!CanSprint && Data.Amount > 10)
+        if (!CanSprint && Data.Amount > Data.Max * .1f)
             CanSprint = true;
 
         else if (Data.Amount <= 0)
@@ -25,8 +26,8 @@ public class StaminaComponent : StatComponent, ISerializedComponent<BarData>
         if (Data.Amount <= _stats.StaminaPool && !Sprinting)
                 Update(_stats.StaminaRegen * Time.deltaTime);
 
-        else
-            Update(0 - StatpointsModifiers.SprintStaminaDrain);
+            else
+                Update(0 - Modifiers.SprintStaminaDrain);
     }
 
     public void Update(float amount) {

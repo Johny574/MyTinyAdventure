@@ -9,7 +9,7 @@ public class DialogueBehaviour : MonoBehaviour, IInteractable
     Interactable _interactable;
     DialogueComponent _dialogue;
     [SerializeField] Sprite _questEmote, _dialogueEmote;
-    [SerializeField] Dialogue _defaultAction = new(new string[0], null);
+    [SerializeField] Dialogue _defaultAction = new(null, new DialogueExchange[0]);
 
     public void CancelTarget() {
         _interactable.CancelTarget();

@@ -14,7 +14,10 @@ public class InteractComponent : Component {
     public InteractComponent(InteractBehaviour behaviour) : base(behaviour) {
     }
 
-    public void Initilize() {
+    public void Initilize(StaminaComponent stamina) {
+        if (stamina.Sprinting)
+            stamina.Sprinting = false;
+            
         _targets = new();
     }
 

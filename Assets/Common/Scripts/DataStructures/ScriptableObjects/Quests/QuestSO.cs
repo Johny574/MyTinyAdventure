@@ -14,9 +14,7 @@ public class QuestSO : ScriptableObject {
         }
     #endif
     public string GUID;
-    [field: SerializeField] public List<QueststepData> Steps { get; set; }
-    [NonSerialized] public List<ItemStack> ItemRewards = new();
-    [NonSerialized] public int CurrencyRewards;
+    [field: SerializeField] public List<QueststepSO> Steps { get; set; }
     [NonSerialized] public string[] StartDialogue = new string[2]{"test", "test"};
     public string Tag, Title, Description;
 }

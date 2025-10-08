@@ -1,0 +1,92 @@
+{
+  "Health": {
+    "Amount": 8.0,
+    "Max": 8,
+    "Fill": 100.0,
+    "Display": "8/8"
+  },
+  "Stamina": {
+    "Amount": 8.0,
+    "Max": 8,
+    "Fill": 100.0,
+    "Display": "8/8"
+  },
+  "Mana": {
+    "Amount": 3.9749012,
+    "Max": 8,
+    "Fill": 49.686264,
+    "Display": "3.974901/8"
+  },
+  "Experience": {
+    "Amount": 0.0,
+    "Max": 800,
+    "Fill": 0.0,
+    "Display": "0/800"
+  },
+  "Stats": {
+    "BaseStats": {
+      "Strength": 0,
+      "Agility": 0,
+      "Intelligence": 0
+    },
+    "AttackStats": {
+      "Melee": 5,
+      "Ranged": 0,
+      "Magic": 0
+    },
+    "DefenseStats": {
+      "Melee": 0,
+      "Ranged": 0,
+      "Magic": 0
+    }
+  },
+  "Inventory": [],
+  "Currency": {
+    "TotalCopper": 0,
+    "Gold": 0,
+    "Silver": 0,
+    "Copper": 0
+  },
+  "Buffs": [],
+  "Skills": [
+    {
+      "GUID": "4db990749ebb88a41aeb292af5b8d537",
+      "Timer": 3.964137
+    },
+    {
+      "GUID": "5abc7211556ce3641886de198f2c5168",
+      "Timer": 0.0
+    },
+    {
+      "GUID": null,
+      "Timer": 0.0
+    },
+    {
+      "GUID": null,
+      "Timer": 0.0
+    }
+  ],
+  "Gear": [
+    {
+      "Slot": 0,
+      "ItemGUID": "1a9bade2b3ff1c140b2caa7d8b612c02"
+    }
+  ],
+  "Journal": [
+    {
+      "GUID": "02c2a908792f81541b1aece40bae5448",
+      "CurrentStep": 0
+    }
+  ],
+  "Consumables": [
+    null,
+    {
+      "GUID": "4112134a1eb0902499d6c2f679bd8e7d",
+      "Counter": 5,
+      "Timer": 0.0
+    }
+  ],
+  "X": 20.9771976,
+  "Y": -6.52019072,
+  "CurrentScene": 1
+}

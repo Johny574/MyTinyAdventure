@@ -110,8 +110,8 @@
                         <engine:VisualElement name="XP-bar" template="Bar" data-source-type="ExperienceComponent, Systems" data-source-path="Data">
                             <engine:ProgressBar value="34.5" title="my-progress" name="Bar" class="bar" style="height: 15px; width: 98%; margin-bottom: 5px; align-self: center;">
                                 <Bindings>
-                                    <engine:DataBinding property="value" data-source-path="Fill" binding-mode="ToTarget" />
                                     <engine:DataBinding property="title" data-source-path="Display" binding-mode="ToTarget" />
+                                    <engine:DataBinding property="value" data-source-path="Fill" binding-mode="ToTarget" />
                                 </Bindings>
                             </engine:ProgressBar>
                         </engine:VisualElement>

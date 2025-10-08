@@ -4,15 +4,12 @@ using UnityEngine;
 [Serializable]
 public class ExperienceGlobeComponent : GlobeComponent
 {
-    public ExperienceGlobeComponent(GlobeBehaviour behaviour) : base(behaviour) {
+    public ExperienceGlobeComponent(GlobeBehaviour behaviour, float amount) : base(behaviour, amount)
+    {
     }
 
-    // public override void Collect(EntityService collector) {
-    //     base.Collect(collector);
-    //     new ExperienceCommands.AddCommand(amount, collector).Execute();
-    // }
     public override void Collect(GameObject collector) {
-        collector.GetComponent<ExperienceBehaviour>().Experience.Update(_amount);
+        collector.GetComponent<ExperienceBehaviour>().Experience.Update(Amount);
         Behaviour.gameObject.SetActive(false);
     }
 }

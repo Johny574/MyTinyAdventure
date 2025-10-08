@@ -21567,10 +21567,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1677667627758910075, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3988899640507189061, guid: a1dd1aba35d766841b10343f3c345510, type: 3}
     - target: {fileID: 2782120668206029418, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
       propertyPath: m_Name
       value: Gnurk
       objectReference: {fileID: 0}
+    - target: {fileID: 3499722747024623033, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3988899640507189061, guid: a1dd1aba35d766841b10343f3c345510, type: 3}
+    - target: {fileID: 5061441272633335174, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: f4585843eb681134c8cb125fa7eff23a, type: 2}
     - target: {fileID: 5704709681405874557, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5
@@ -21611,6 +21623,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5848759626021045095, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848759626021045095, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -147235098238094630, guid: 87b30d04da17fc349860cad8aa815b33, type: 3}
     m_RemovedComponents:
     - {fileID: 7741522930366157046, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
     m_RemovedGameObjects: []
@@ -23923,6 +23943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1119867444380427488, guid: 62779367fc5cee7418e5c7e56979be64, type: 3}
+      propertyPath: <Destination>k__BackingField
+      value: Forest1-1
+      objectReference: {fileID: 0}
     - target: {fileID: 1600694567635736040, guid: 62779367fc5cee7418e5c7e56979be64, type: 3}
       propertyPath: m_Name
       value: Travelpoint

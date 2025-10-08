@@ -4,7 +4,9 @@ using System.Linq;
 
 public static class Locations
 {
-    public static string[] Scenes = new string[20] {
+    public static string[] Scenes = new string[22] {
+        "GnurksCave",
+        "Shop",
         "Forest1-1",
         "Forest1-2",
         "Forest1-3",

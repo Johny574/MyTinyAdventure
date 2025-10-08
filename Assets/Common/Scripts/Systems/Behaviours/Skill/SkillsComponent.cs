@@ -41,9 +41,6 @@ public class SkillsComponent : Component, ISerializedComponent<SkillData[]>
 
     public SkillData[] Save() => Skills.Select(x => x == null ? new SkillData(null, 0f) : new SkillData(x.Data.GUID, x.Timer)).ToArray();
 
-
-    
-    
     public void Add(SkillSO skill, GameObject caster, int slot) {
         Skills[slot] = new Skill(caster, skill);
         Updated.Invoke(Skills);

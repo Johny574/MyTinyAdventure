@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class KillEnemiesQueststep : Queststep {
-    public KillEnemiesQueststep(QueststepData data, QuestingComponent parttaker, Quest quest) : base(data, parttaker, quest) {
+    public KillEnemiesQueststep(QueststepSO data, QuestingComponent parttaker, Quest quest) : base(data, parttaker, quest) {
     }
 
     // [NonSerialized] public ItemStack<int> Target;

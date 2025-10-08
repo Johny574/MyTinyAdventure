@@ -23,12 +23,7 @@ public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
         Changed += async (bardata) => await _feedback.DisplayFeedback(new($"{bardata.Amount}", Color.red), Behaviour.transform.position);
     }
 
-    async void CreateHealthBar() {
-       _healthbar = await HealthbarFactory.Instance.Pool.GetObject<BarData>();
-        _healthbar.Bind(Data);
-        ((MonoBehaviour)_healthbar).GetComponent<Follower>().Follow(Behaviour.gameObject);
-        Changed += _healthbar.Bind;
-    }
+    async void CreateHealthBar() => _healthbar = await HealthbarFactory.Instance.CreateHealthBar(Data, this);
 
     public void Die() {
         ((MonoBehaviour)_healthbar).gameObject.SetActive(false);
@@ -51,9 +46,7 @@ public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
             Death.Invoke();
     }
 
-    public BarData Save() {
-        return Data;
-    }
+    public BarData Save() => Data;
 
     public void Load(BarData save) {
         Data = save;

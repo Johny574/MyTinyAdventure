@@ -9,8 +9,8 @@ public class JournalTests
     QuestSO _mockQuest;
 
     [Header("Steps")]
-    QueststepData _mockQuestStep;
-    List<QueststepData> _mockQuestSteps;
+    QueststepSO _mockQuestStep;
+    List<QueststepSO> _mockQuestSteps;
 
     [Header("Rewards")]
     ItemSO _mockItemData;
@@ -40,8 +40,6 @@ public class JournalTests
             _mockQuestStep,
         };
 
-        _mockQuest.ItemRewards = _mockItemRewards;
-        _mockQuest.CurrencyRewards = _mockCurrencyReward;
         _mockQuest.Steps = _mockQuestSteps;
 
         _currency = new CurrencyComponent(null, 0);

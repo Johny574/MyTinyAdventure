@@ -4,5 +4,4 @@ using UnityEngine;
 public class MeleeWeaponItemData : WeaponItemData {
     [field: SerializeField] public float Reach = 5f;
     [field: SerializeField] public float Angle = 50f;
-    [field: SerializeField] public AnimatorOverrideController Slash;
 }

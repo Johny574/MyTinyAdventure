@@ -1,14 +1,12 @@
 using System.Threading.Tasks;
-using FletcherLibraries;
 using UnityEngine;
 
-[RequireComponent(typeof(PoolBehaviour))]
-public class HealthbarFactory :  Singleton<HealthbarFactory> {
-    public PoolBehaviour Pool;
-
-    protected override void Awake() {
-        base.Awake();
-        Pool = GetComponent<PoolBehaviour>();
+public class HealthbarFactory : Factory<HealthbarFactory, BarData>
+{
+    public async Task<IPoolObject<BarData>> CreateHealthBar(BarData data, HealthComponent health) {
+        IPoolObject<BarData> obj = await GetObject(data);
+        ((MonoBehaviour)obj).GetComponent<Follower>().Follow(health.Behaviour.gameObject);
+        health.Changed += obj.Bind;
+        return obj;
     }
-
 }

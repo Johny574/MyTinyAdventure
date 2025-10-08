@@ -181,7 +181,7 @@ public class HUDController : MonoBehaviour
         _interactdisplay.style.visibility = Visibility.Visible;
         interact.TargetChanged += (target) => InteractRefresh(target, _interactdisplay);
         _interactdisplay.style.left = new (-100);
-        _interactdisplay.dataSource = Player.Instance.Interact;
+        _interactdisplay.dataSource = Player.Instance.Interact.Interact;
     }
 
     void InteractRefresh(IInteractable target, VisualElement interact) {
@@ -211,7 +211,7 @@ public class HUDController : MonoBehaviour
                 stepslot.style.flexShrink= new StyleFloat(1f);
                 stepslot.dataSource = step;
                 var label = stepslot.Q<Label>("Step");
-                label.text = step.Data.Description;
+                label.text = step.SO.Description;
 
                 if (quest.Index < stepcount)
                     label.style.color = Color.black;

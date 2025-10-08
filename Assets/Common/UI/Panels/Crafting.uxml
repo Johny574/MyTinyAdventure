@@ -1,7 +1,10 @@
 <engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
-    <engine:Template name="Currency" src="project://database/Assets/Common/UI/Components/Currency.uxml?fileID=9197481963319205126&amp;guid=2a72a2456c0a8634dbb62ede9418f860&amp;type=3#Currency" />
+    <engine:Template name="Statpoints" src="project://database/Assets/Common/UI/Components/Statpoints.uxml?fileID=9197481963319205126&amp;guid=b74dc3a5c861181478506efb90ebb15a&amp;type=3#Statpoints" />
     <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
     <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
+    <Style src="project://database/Assets/Common/UI/USS/Buttons.uss?fileID=7433441132597879392&amp;guid=ebf97e02173f5a84caa14728c65d121c&amp;type=3#Buttons" />
+    <Style src="project://database/Assets/Common/UI/USS/Spacing.uss?fileID=7433441132597879392&amp;guid=f8eeec346359d744dab02629fa9b3e7e&amp;type=3#Spacing" />
+    <Style src="project://database/Assets/Common/UI/USS/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
     <engine:VisualElement name="Crafting" class="panel-rect-small panel-dark">
         <engine:VisualElement name="Head" class="head">
             <engine:VisualElement name="Heading" class="heading" style="align-self: center;">
@@ -14,19 +17,36 @@
                 <engine:ListView name="Slots-view" style="width: 100%; height: 100%;" />
             </engine:VisualElement>
             <engine:VisualElement style="width: 50%; margin-left: 7px;">
-                <engine:VisualElement class="panel-light" style="width: 100%; height: 100%;">
-                    <engine:VisualElement style="flex-grow: 1; justify-content: center;">
-                        <engine:VisualElement style="background-color: rgba(255, 0, 0, 0.98); width: 80%; height: 80%; align-self: center;" />
+                <engine:VisualElement class="panel-light space-small" style="width: 100%; height: 100%; justify-content: center;">
+                    <engine:VisualElement style="flex-grow: 1; justify-content: center; height: 62px;">
+                        <engine:VisualElement class="panel-light" style="flex-grow: 1; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+                            <engine:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <engine:VisualElement style="width: 50px; height: 50px; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=770894370&amp;guid=f9e1bb27c7e71654eae0729c2eac6ba7&amp;type=3#tilemap_packed 1_1&quot;); padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+                                    <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Entities/Characters/Player/sword_%20[iron].png?fileID=636123052&amp;guid=7e289bcdf02af6b40a610cd92189e1be&amp;type=3#sword_ [iron]_5&quot;);" />
+                                </engine:VisualElement>
+                                <engine:Label text="Dark sword" class="space-zero label" style="font-size: 14px; flex-grow: 1; height: 25px; -unity-text-align: middle-center;" />
+                            </engine:VisualElement>
+                            <engine:Instance template="Statpoints" />
+                            <engine:Instance template="Statpoints" />
+                            <engine:Instance template="Statpoints" />
+                            <engine:Instance template="Statpoints" />
+                            <engine:Instance template="Statpoints" />
+                            <engine:Instance template="Statpoints" />
+                        </engine:VisualElement>
                     </engine:VisualElement>
-                    <engine:VisualElement style="flex-grow: 1; justify-content: flex-start;">
-                        <engine:VisualElement style="background-color: rgba(255, 0, 0, 0.98); width: 80%; height: 35%; align-self: center;" />
+                    <engine:VisualElement name="VisualElement" style="justify-content: flex-start; margin-top: 10px;">
+                        <engine:VisualElement class="panel-light" style="height: 35px; justify-content: space-evenly; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; flex-direction: row;">
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
+                        </engine:VisualElement>
                     </engine:VisualElement>
-                    <engine:VisualElement style="flex-grow: 1;" />
                 </engine:VisualElement>
-                <engine:Instance template="Currency" style="margin-top: 5px;" />
                 <engine:VisualElement style="justify-content: flex-end; flex-direction: row; margin-top: 10px;">
-                    <engine:Button text="Cancel" name="Cancel" class="btn-rect-med btn-cancel" style="align-self: center;" />
-                    <engine:Button text="Craft" name="Craft" class="btn-rect-med btn-confirm" style="align-self: center;" />
+                    <engine:Button text="Cancel" name="Cancel" class="btn-cancel" style="align-self: center;" />
+                    <engine:Button text="Craft" name="Craft" class="btn-confirm" style="align-self: center;" />
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>

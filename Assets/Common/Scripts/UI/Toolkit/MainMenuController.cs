@@ -24,6 +24,7 @@ public class MainMenuController : MonoBehaviour
 
         continueButton.clicked += () => GameManager.Instance.LoadSave(SaveSlot.AutoSave);
         newgameButton.clicked += () => GameManager.Instance.StartNewGame();
+        newgameButton.clicked += () => Debug.Log("Deesnuts");
         loadButton.clicked += () => {
             _loadMenu.style.visibility = Visibility.Visible;
             _mainMenu.style.visibility = Visibility.Hidden;

@@ -12,6 +12,5 @@ public class QuestingBehaviour : MonoBehaviour
 
     void Start() {
         Questing = new(this,  _quests);
-        Questing.Initilize(GetComponent<CurrencyBehaviour>().Currency, GetComponent<InventoryBehaviour>().Inventory);
     }
 }

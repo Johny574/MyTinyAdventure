@@ -8,7 +8,8 @@ using UnityEngine;
 public class WeaponStatemachine : Statemachine<string>
 {
     HealthComponent _health;
-
+    LayerMask _enemyLayer;
+    
     protected override List<StatemachineTrasition<string>> CreateAnyTransitions() {
         return new() {
             new StatemachineTrasition<string>(null, "Default",   States["Default"].GetTransitionCondition),
@@ -23,9 +24,13 @@ public class WeaponStatemachine : Statemachine<string>
         RangedBehaviour ranged = GetComponent<RangedBehaviour>();
         MeleeBehaviour melee = GetComponent<MeleeBehaviour>();
         HandsBehaviour hands = GetComponent<HandsBehaviour>();
+        StatpointsBehaviour stats = GetComponent<StatpointsBehaviour>();
         _health = GetComponent<HealthBehaviour>().Health;
 
-        return new() { { "Default",    new WeaponDefaultState(this, hands.Hands, gear.Gear, aim.Aim) }, { "Ranged",     new WeaponRangedState(this, hands.Hands, gear.Gear, aim.Aim, ranged.Ranged) }, { "Melee",      new WeaponMeleeState(this, hands.Hands, gear.Gear, aim.Aim, melee.Melee) }
+        return new() {
+            { "Default",    new WeaponDefaultState(this, hands.Hands, gear.Gear, aim.Aim, _enemyLayer, stats)},
+            { "Ranged",     new WeaponRangedState(this, hands.Hands, gear.Gear, aim.Aim, ranged.Ranged) },
+            { "Melee",      new WeaponMeleeState(this, hands.Hands, gear.Gear, aim.Aim, melee.Melee) }
         };
     }
 

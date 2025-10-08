@@ -3,18 +3,8 @@
 
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IPoolObject<Enemy>
+public class Enemy : Entity , IPoolObject<Enemy>
 {
-    [SerializeField] Sprite _minimapMarker;
-    void Start() {
-        SceneTracker.Instance.Register<Enemy>(gameObject);
-        MiniMapController.Instance.Register(gameObject, _minimapMarker);
-    }
-
-    void OnDisable() {
-        SceneTracker.Instance?.Unregister<Enemy>(gameObject);
-    }
-
     public void Bind(Enemy variant) {
         bool melee = variant.GetComponent<MeleeEnemyStatemachine>().enabled;
         bool ranged = variant.GetComponent<MeleeEnemyStatemachine>().enabled;

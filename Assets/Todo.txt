@@ -1,29 +1,55 @@
-
 re mother fucking factor
 
 # test
-coins
-orb drops
-storage position
-stamina stops sprint
-currency margins
-armor equipable
+hand damage
+skills fine print
+crafting
 # --- 
 
-blink particles
+! game stuff
+navmesh surface rebake
+sorting layers
+armor equipable
+prices
+recipes
+item skills
+patrol points
 feedback on load remove
 sound on load remove
-minimap 1st scene needs to be moved
-minimap marker moet beweeg
-navmesh surface rebake
-
-! game stuff
-prices
 ! --- 
 
+!! story
+write all the dialogue out
+signs interactable
+!! --- 
 
-UI
-menu headings
-tooltip
-skills fine print
+
+! stack controller
+font stack controller
+
+! tooltip
+tooltip update 
+tooltip singleton
+
+! ghosticon
+ghost icon singleton
 skills drag and drop
+
+
+! drag and drops
+inventory
+container
+hotbar add remove
+
+! clicks
+inventory
+container
+hotbar add remove
+
+! skills
+    blink skill particles
+    blink skill trail renderer
+
+? level
+    battlefield setting where goblins faught humans
+? ---

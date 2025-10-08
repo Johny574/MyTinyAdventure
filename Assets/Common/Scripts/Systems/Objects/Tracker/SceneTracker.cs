@@ -9,7 +9,14 @@ public class SceneTracker : Singleton<SceneTracker>
 
     protected override void Awake() {
         base.Awake();
-        Objects = new() { { typeof(Enemy),  new() }, { typeof(NPC),  new() }, { typeof(ItemBehaviour),  new() }, { typeof(Coin),  new() }, { typeof(Container),  new() }, { typeof(Resource),  new() }, { typeof(ResourceSource),  new() }, { typeof(TravelPoint),  new() },
+        Objects = new() {
+            {typeof(Entity), new()},
+            { typeof(ItemBehaviour),  new() },
+            { typeof(Coin),  new() },
+            { typeof(Container),  new() },
+            { typeof(Resource),  new() },
+            { typeof(ResourceSource),  new() },
+            { typeof(TravelPoint),  new() },
         };  
     }
 

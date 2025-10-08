@@ -6,14 +6,14 @@ public class ShopPanelBehaviour : Singleton<ShopPanelBehaviour>
 {
     [SerializeField] VisualTreeAsset _slot_t, _ghost_t, _stats_t;
     [SerializeField] UIDocument _document;
-    [SerializeField] VisualTreeAsset _panel_t;
+    [SerializeField] VisualTreeAsset _panel_t, _tooltip_t;
     [SerializeField] bool _dragable = true;
     public ShopPanelController Panel;
     [SerializeField] protected AudioSource _openAudio, _closeAudio;
 
     protected override void Awake() {
         base.Awake();
-        Panel = new ShopPanelController(_panel_t, _document.rootVisualElement, _dragable, _openAudio, _closeAudio, _ghost_t, _stats_t);
+        Panel = new ShopPanelController(_panel_t, _tooltip_t, _document.rootVisualElement, _dragable, _openAudio, _closeAudio, _ghost_t, _stats_t);
         Panel.Awake();
     }
 

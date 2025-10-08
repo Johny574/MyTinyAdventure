@@ -15257,7 +15257,7 @@ GameObject:
   - component: {fileID: 8878765576532255447}
   - component: {fileID: 6624526226321857605}
   - component: {fileID: 7741522930366157046}
-  - component: {fileID: 5204372957656289968}
+  - component: {fileID: 9215434446232805781}
   m_Layer: 7
   m_Name: NPC
   m_TagString: Untagged
@@ -15456,9 +15456,7 @@ MonoBehaviour:
   _questEmote: {fileID: -1485742316, guid: 5c7a296f416913b4a8b1acfa4512f3bb, type: 3}
   _dialogueEmote: {fileID: 824473626, guid: 5c7a296f416913b4a8b1acfa4512f3bb, type: 3}
   _defaultAction:
-    <Dialogue>k__BackingField:
-    - Gooooddmooorning motherfuuuckers
-    - was good baby
+    Exchanges: []
 --- !u!114 &9058656061512504282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15778,8 +15776,9 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 9eb5add959a46a84d9622353adf279d4, type: 2}
     Count: 1
   _dialogue:
-  - o
---- !u!114 &5204372957656289968
+  - <Lines>k__BackingField: []
+    Speaker: {fileID: 0}
+--- !u!114 &9215434446232805781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15788,7 +15787,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2782120668206029418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3eea5c35fd44204ba2853b04d482749, type: 3}
+  m_Script: {fileID: 11500000, guid: e1bcf8db52c8d0742a68f05cb4178d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _minimapMarker: {fileID: 1003146855, guid: 66fc38681fe32f24fa63658adb5ece9e, type: 3}

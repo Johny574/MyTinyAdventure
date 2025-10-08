@@ -1,7 +1,6 @@
 .slot-small {
     width: 15px;
     height: 15px;
-    padding: 3px;
     margin: 0;
     justify-content: center;
 }

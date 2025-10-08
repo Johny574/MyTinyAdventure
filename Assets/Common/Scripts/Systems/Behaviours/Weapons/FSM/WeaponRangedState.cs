@@ -30,9 +30,8 @@ public class WeaponRangedState : StatemachineState<WeaponStatemachine, string>, 
         // _gear.Slots[GearItemSO.Slot.Primary].Object.transform.rotation = Quaterniozn.Euler(0, 0, Rotation2D.LookAngle(_aim.Aim));
         // _gear.Slots[GearItemSO.Slot.Primary].Object.transform.position = _statemachine.transform.position + Rotation2D.GetPointOnCircle(_statemachine.transform.position, _aim.LookAngle) * .5f;
 
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
             _ranged.Fire(_aim.AimDelta, _gear.Gear[GearItemSO.Slot.Primary].Object.transform.position);
-        }
 
         _gear.Gear[GearItemSO.Slot.Primary].Object.transform.rotation = Quaternion.Euler(0, 0, Rotation2D.LookAngle(_aim.AimDelta));
         _gear.Gear[GearItemSO.Slot.Primary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Primary].Object.transform.position, (Vector2)_statemachine.transform.position + _hands.PrimaryWeaponPos + _aim.AimDelta * .4f, _hands.DampSpeed);

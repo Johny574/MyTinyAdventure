@@ -4,6 +4,7 @@
         <ui:Label text="You Died!" class="title" style="-unity-text-align: middle-center; color: rgb(255, 0, 0); top: 100px;" />
         <ui:VisualElement style="width: 100%; align-items: center; justify-content: center; height: 44%; align-self: center; bottom: 0; position: absolute;">
             <ui:Button text="Load Last Save" name="Load" style="color: rgb(255, 255, 255);" />
+            <ui:Button text="Load Game" name="Load" style="color: rgb(255, 255, 255);" />
             <ui:Button text="Return to Main Menu" name="Menu" style="color: rgb(255, 255, 255);" />
         </ui:VisualElement>
     </ui:VisualElement>

@@ -5,7 +5,7 @@ public class ShopBehaviour : MonoBehaviour
 {
     public ShopComponent Shop { get; private set; }
     [SerializeField] ItemStack[] _items;
-    [SerializeField] string[] _dialogue;
+    [SerializeField] DialogueExchange[] _dialogue;
     void Awake() {
         Shop = new(this, _items, _dialogue);  
     }

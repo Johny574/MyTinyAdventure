@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Common/UI/Components/Components.uss?fileID=7433441132597879392&amp;guid=47ee1c243e2a449469e547a40ca6f224&amp;type=3#Components" />
     <engine:VisualElement name="Currency" data-source-type="Currency, Core" style="height: 17px; flex-direction: row;">
-        <engine:VisualElement name="Container" class="row" style="width: auto;">
+        <engine:VisualElement name="Currency-Container" class="row" style="width: auto;">
             <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Coins/MonedaD.png?fileID=6088342627132289551&amp;guid=f67d9f7b161d02a48a5baa8f1d97bd60&amp;type=3#MonedaD_0&quot;); -unity-background-scale-mode: scale-to-fit; width: 15px; height: 100%;" />
             <engine:Label text="100" name="Label" class="space-zero label" >
                 <Bindings>
@@ -9,7 +9,7 @@
                 </Bindings>
             </engine:Label>
         </engine:VisualElement>
-        <engine:VisualElement name="Container" class="row" style="width: auto; margin-left:5px">
+        <engine:VisualElement name="Currency-Container" class="row" style="width: auto; margin-left:5px">
             <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Coins/MonedaP.png?fileID=-7909743977867431446&amp;guid=10d476a5bc15fba48bf8bb788263365c&amp;type=3#MonedaP_0&quot;); -unity-background-scale-mode: scale-to-fit; width: 15px; height: 100%;" />
             <engine:Label text="100" class="space-zero label">
                 <Bindings>
@@ -17,7 +17,7 @@
                 </Bindings>
             </engine:Label>
         </engine:VisualElement>
-        <engine:VisualElement name="Container" class="row" style="width: auto; margin-left:5px">
+        <engine:VisualElement name="Currency-Container" class="row" style="width: auto; margin-left:5px">
             <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Coins/MonedaR.png?fileID=-8983588557262335523&amp;guid=a128992c349b19c42a78b0af8b0ddb53&amp;type=3#MonedaR_4&quot;); -unity-background-scale-mode: scale-to-fit; width: 15px; height: 100%;" />
             <engine:Label text="100" class="space-zero label">
                 <Bindings>

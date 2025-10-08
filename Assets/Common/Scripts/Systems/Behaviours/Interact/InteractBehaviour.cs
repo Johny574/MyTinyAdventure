@@ -10,7 +10,7 @@ public class InteractBehaviour : MonoBehaviour
     }
 
     void Start() {
-        Interact.Initilize();
+        Interact.Initilize(GetComponent<StaminaBehaviour>().Stamina);
     }
 
     void Update() {

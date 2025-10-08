@@ -8,7 +8,7 @@ public class EmoteBehaviour : MonoBehaviour {
     void Awake() {
         var emote = Instantiate(_emotePrefab).GetComponent<Emote>();
         emote.GetComponent<Follower>().Follow(gameObject);
-        Emotes = new(this, emote, _remove);
+        Emotes = new(this, emote, _remove, GetComponent<HealthBehaviour>().Health);
     }
 
     void Update() {

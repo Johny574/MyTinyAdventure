@@ -12,7 +12,7 @@ public class ShopComponent : Component
 {
     public InventoryComponent Shop { get; set; }
     public ObservableCollection<ShopCommand> Cart { get; set; }
-    string[] _dialogue;
+    DialogueExchange[] _dialogue;
     public Currency Total;
 
     public List<ItemStack> Items {
@@ -20,10 +20,10 @@ public class ShopComponent : Component
     }
 
     public Dialogue Dialogue(GameObject accesor) {
-        return new Dialogue(_dialogue, () => ShopEvents.Instance.Open.Invoke(this, accesor));
+        return new Dialogue(() => ShopEvents.Instance.Open.Invoke(this, accesor), _dialogue);
     }
 
-    public ShopComponent(MonoBehaviour behaviour, ItemStack[] items, string[] dialogue) : base(behaviour) {
+    public ShopComponent(MonoBehaviour behaviour, ItemStack[] items, DialogueExchange[] dialogue) : base(behaviour) {
         Shop = new(behaviour, items);
         Cart = new();
         _dialogue = dialogue;

@@ -11835,7 +11835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57713a80fa1ec604ea953854bdc76a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testbuff: {fileID: 0}
 --- !u!114 &5598761733956639553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11886,6 +11885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _remove: 1
+  _emotePrefab: {fileID: 6520027790441105780, guid: b5e7af9a648d059479c7121b6a54cbad, type: 3}
 --- !u!114 &4366689694905994038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12187,6 +12187,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   AgroProximity: 5
+  _visionLight: {fileID: 0}
   AttackSpeed: 2
   AttackSpeedTimer: 0
   CanAttack: 1
@@ -12244,6 +12245,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   AgroProximity: 5
+  _visionLight: {fileID: 0}
   _attackSpeed: 5
   _attackRange: 5
   _attackType: 0
@@ -12264,6 +12266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minimapMarker: {fileID: 1751324127, guid: 66fc38681fe32f24fa63658adb5ece9e, type: 3}
+  UID: 0
 --- !u!195 &1834245518236547733
 NavMeshAgent:
   m_ObjectHideFlags: 0

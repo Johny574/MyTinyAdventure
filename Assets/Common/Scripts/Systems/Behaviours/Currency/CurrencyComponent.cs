@@ -35,15 +35,16 @@ public class CurrencyComponent : Component, ISerializedComponent<Currency>
         if (Currency.TotalCopper == 0)
             return;
 
+        // todo coin modifier 
         int numberOfCoins = UnityEngine.Random.Range(3, 6);  
 
         if (Currency.TotalCopper < numberOfCoins) 
-            new CurrencyCommands.DropCommand(Currency.TotalCopper, Behaviour.transform.position).Execute();
+            CoinFactory.Instance.Drop(Behaviour.transform.position, Currency.TotalCopper);
         else {
             for (int i = 0; i < numberOfCoins; i++) 
-                new CurrencyCommands.DropCommand(Currency.TotalCopper / numberOfCoins, Behaviour.transform.position).Execute();
+                CoinFactory.Instance.Drop(Behaviour.transform.position, Currency.TotalCopper / numberOfCoins);
 
-            new CurrencyCommands.DropCommand(Currency.TotalCopper % numberOfCoins, Behaviour.transform.position).Execute();
+            CoinFactory.Instance.Drop(Behaviour.transform.position, Currency.TotalCopper % numberOfCoins);
         }
     }
 }

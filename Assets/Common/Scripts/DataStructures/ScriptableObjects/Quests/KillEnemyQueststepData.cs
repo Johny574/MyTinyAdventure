@@ -3,7 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "_queststep", menuName = "Quests/KillEnemyQueststepData", order = 2)]
 
-public class KillEnemyQueststepData : QueststepData {
+public class KillEnemyQueststepData : QueststepSO {
     public SerializableDictionary<int, int> Target;
     // public override Queststep Queststep(Quest quest, EntityService parttaker)
     // {

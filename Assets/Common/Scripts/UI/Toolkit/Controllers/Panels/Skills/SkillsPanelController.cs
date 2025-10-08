@@ -13,12 +13,19 @@ public class SkillsPanelController : PanelController
         _slot_t = slot_t;
         _ghostIcon_t = ghostIcon_t;
     }
+    
+    public void Open()
+    {
+        Enable();
+        Refresh(Player.Instance.Gear.Gear.Gear, Player.Instance.Skills.Skills);
+    }
 
     public override void Setup() {
         _ghostIcon = CreateGhostIcon(_ghostIcon_t);
         GearComponent gear = Player.Instance.Gear.Gear;
         SkillsComponent skills = Player.Instance.Skills.Skills;
 
+        _fineprint = _panel.Q<Label>("Fineprint");
         //  create grid
         _gridView = new VisualElement();
         ScrollView scrollView = _panel.Q<ScrollView>("Slots-view");
@@ -29,49 +36,66 @@ public class SkillsPanelController : PanelController
         Refresh(gear.Gear, skills);
     }
 
-    private void Refresh(GearSlots gear, SkillsComponent skills) {
+    private void Refresh(GearSlots gear, SkillsComponent skills)
+    {
         VisualElement skillslots = _root.Q<VisualElement>("Skills");
         _gridView.Clear();
-        // loop over all gears
-        foreach (var key in gear.Keys) {
-            // todo : check if its assignable from weapon - this is o(n) where as there are only 2 slots so if u reference directly it will be o(2);
-            if (gear[key].Item != null && typeof(WeaponItemData).IsAssignableFrom(gear[key].Item.GetType())) {
-                WeaponItemData weapon = gear[key].Item as WeaponItemData;
-                // loop over all skill classes
-                foreach (var skillClass in weapon.SkillClasses) {
-                    VisualElement skillClassContainer = new VisualElement();
-                    skillClassContainer.style.width = Length.Auto();
-                    skillClassContainer.style.height = Length.Auto();
-                    
-                    // loop over all the skills inside class
-                    foreach (var skill in skillClass.Skills) {
-                        VisualElement slot = _slot_t.CloneTree();
-                        slot.dataSource = skill;
-                        slot.style.alignSelf = new StyleEnum<Align>(Align.FlexStart);
 
-                        DragAndDropManipulator dragAndDrop = new DragAndDropManipulator(_ghostIcon);
-                        slot.AddManipulator(dragAndDrop);
-                        var s = skill;
+        WeaponItemData primaryweapon = gear[GearItemSO.Slot.Primary].Item == null ? null : gear[GearItemSO.Slot.Primary].Item as WeaponItemData;
+        WeaponItemData secondaryweapon = gear[GearItemSO.Slot.Secondary].Item == null ? null : gear[GearItemSO.Slot.Secondary].Item as WeaponItemData;
 
-                        dragAndDrop.DropSlot += () => skillslots.Children().Where(x => x.worldBound.Overlaps(this._ghostIcon.worldBound)).FirstOrDefault() as UISlot;
+        RefreshWeaponSkills(skills, primaryweapon, skillslots);
+        RefreshWeaponSkills(skills, secondaryweapon, skillslots);
 
-                        dragAndDrop.DragStart += () => {
-                            _ghostIcon.Q<VisualElement>("Icon").style.backgroundImage = new StyleBackground(s.Icon);
-                        };
+        if (primaryweapon == null && secondaryweapon == null)
+            _fineprint.style.visibility = Visibility.Visible;
+        else
+            _fineprint.style.visibility = Visibility.Hidden;
+    }
 
-                        dragAndDrop.OnDrop += (from, to) => {
-                            skills.Add(skill, Player.Instance.gameObject, skillslots.IndexOf(to));
-                        };
+    void RefreshWeaponSkills(SkillsComponent skills, WeaponItemData weapon, VisualElement slots)
+    { 
+        if (weapon == null)
+            return;
 
-                        dragAndDrop.DragStop += () => {
-                            _ghostIcon.style.visibility = Visibility.Hidden;
-                        };
+        // loop over all skill classes
+        foreach (var skillClass in weapon.SkillClasses)
+        {
+            VisualElement skillClassContainer = new VisualElement();
+            skillClassContainer.style.width = Length.Auto();
+            skillClassContainer.style.height = Length.Auto();
 
-                        skillClassContainer.Add(slot);
-                    }
-                    _gridView.Add(skillClassContainer);
-                }
+            // loop over all the skills inside class
+            foreach (var skill in skillClass.Skills)
+            {
+                VisualElement slot = _slot_t.CloneTree();
+                slot.dataSource = skill;
+                slot.style.alignSelf = new StyleEnum<Align>(Align.FlexStart);
+
+                DragAndDropManipulator dragAndDrop = new DragAndDropManipulator(_ghostIcon);
+                slot.AddManipulator(dragAndDrop);
+                var s = skill;
+
+                dragAndDrop.DropSlot += () => slots.Children().Where(x => x.worldBound.Overlaps(this._ghostIcon.worldBound)).FirstOrDefault() as UISlot;
+
+                dragAndDrop.DragStart += () =>
+                {
+                    _ghostIcon.Q<VisualElement>("Icon").style.backgroundImage = new StyleBackground(s.Icon);
+                };
+
+                dragAndDrop.OnDrop += (from, to) =>
+                {
+                    skills.Add(skill, Player.Instance.gameObject, slots.IndexOf(to));
+                };
+
+                dragAndDrop.DragStop += () =>
+                {
+                    _ghostIcon.style.visibility = Visibility.Hidden;
+                };
+
+                skillClassContainer.Add(slot);
             }
+            _gridView.Add(skillClassContainer);
         }
     }
 }

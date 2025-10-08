@@ -27,7 +27,7 @@ public class GearTests {
         _gear = new GearComponent(null, gear);
 
         StatPoints stats = new(new(){ { StatPoints.Stat.Strength, 0 } }, new(){ { StatPoints.Stat.Melee, 0 } }, new(){ { StatPoints.Stat.Magic, 0 } });
-        ExperienceComponent xp = new(null, new());
+        ExperienceComponent xp = new(null, new(), 0);
         _stats = new(null, stats, xp);
 
         _inventory = new InventoryComponent(null, new ItemStack[16]);

@@ -12,7 +12,8 @@ public class ShopPanelController : SlotPanelController
     VisualElement _cart;
     VisualElement _total;
 
-    public ShopPanelController(VisualTreeAsset panel_t, VisualElement root, bool dragable, AudioSource openaudio, AudioSource closeaudio, VisualTreeAsset ghostIcon_t, VisualTreeAsset stats_t) : base(panel_t, root, dragable, openaudio, closeaudio, ghostIcon_t, stats_t) {
+    public ShopPanelController(VisualTreeAsset panel_t, VisualTreeAsset tooltip_t, VisualElement root, bool dragable, AudioSource openaudio, AudioSource closeaudio, VisualTreeAsset ghostIcon_t, VisualTreeAsset stats_t) : base(panel_t, tooltip_t, root, dragable, openaudio, closeaudio, ghostIcon_t, stats_t)
+    {
     }
 
     public override void Setup() {
