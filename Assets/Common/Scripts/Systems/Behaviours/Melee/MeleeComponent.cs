@@ -89,8 +89,11 @@ public class MeleeComponent : Component
 
             _hands.PrimaryHand.transform.position = swingpos;
             _hands.PrimaryHand.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, _swingAngle - 90));
-            _hands.SecondaryHand.transform.position = swingpos;
-            _hands.SecondaryHand.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, _swingAngle - 90));
+            if (_gear.Gear[GearItemSO.Slot.Secondary].Item == null)
+            {
+                _hands.SecondaryHand.transform.position = swingpos;
+                _hands.SecondaryHand.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, _swingAngle - 90));
+            }
 
             RaycastHit2D hit = Physics2D.Raycast(Behaviour.transform.position, swingDirection, ((MeleeWeaponItemData)_gear.Gear[GearItemSO.Slot.Primary].Item).Reach, _enemies);
 
@@ -114,16 +117,16 @@ public class MeleeComponent : Component
         if (_trailRenderer.emitting)
             _trailRenderer.emitting = false;
 
-        _gear.Gear[GearItemSO.Slot.Primary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Primary].Object.transform.position, (Vector2)Behaviour.transform.position + _hands.PrimaryWeaponPos, _hands.DampSpeed);
+        _gear.Gear[GearItemSO.Slot.Primary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Primary].Object.transform.position, (Vector2)Behaviour.transform.position + _hands.PrimaryHandPosition, _hands.DampSpeed);
         _gear.Gear[GearItemSO.Slot.Primary].Object.transform.rotation = Quaternion.Lerp(_gear.Gear[GearItemSO.Slot.Primary].Object.transform.rotation, Quaternion.Euler(Vector3.zero), _hands.DampSpeed);
         _hands.PrimaryHand.transform.position = Vector2.Lerp(_hands.PrimaryHand.transform.position, (Vector2)Behaviour.transform.position + _hands.PrimaryHandPosition, _hands.DampSpeed);
 
         if (_gear.Gear[GearItemSO.Slot.Secondary].Item == null)
-            _hands.SecondaryHand.transform.position = Vector2.Lerp(_hands.SecondaryHand.transform.position, (Vector2)Behaviour.transform.position + new Vector2(_hands.PrimaryWeaponPos.x, _hands.PrimaryHandPosition.y - .2f), _hands.DampSpeed);
-        else
-            _hands.SecondaryHand.transform.position = Vector2.Lerp(_hands.SecondaryHand.transform.position, (Vector2)Behaviour.transform.position + _hands.SecondaryHandPosition, _hands.DampSpeed);
+            _hands.SecondaryHand.transform.position = Vector2.Lerp(_hands.SecondaryHand.transform.position, (Vector2)Behaviour.transform.position + new Vector2(_hands.PrimaryHandPosition.x, _hands.PrimaryHandPosition.y - .2f), _hands.DampSpeed);
+        // else
+            // _hands.SecondaryHand.transform.position = Vector2.Lerp(_hands.SecondaryHand.transform.position, (Vector2)Behaviour.transform.position + _hands.SecondaryHandPosition, _hands.DampSpeed);
 
-        _gear.Gear[GearItemSO.Slot.Secondary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Secondary].Object.transform.position, (Vector2)Behaviour.transform.position + _hands.SecondaryWeaponPos, _hands.DampSpeed);
+        // _gear.Gear[GearItemSO.Slot.Secondary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Secondary].Object.transform.position, (Vector2)Behaviour.transform.position + _hands.SecondaryWeaponPos, _hands.DampSpeed);
         _swingAngle = _swingStartAngle;
     }
 }

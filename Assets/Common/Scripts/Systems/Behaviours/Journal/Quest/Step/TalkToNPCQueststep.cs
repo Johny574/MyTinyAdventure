@@ -10,8 +10,8 @@ public class DialogueQueststep : Queststep {
     public override Vector2 Closestpoint(Vector2 origin) {
         var currentScene = SceneManager.GetActiveScene().name;
         if (SO.Scene != currentScene) {
-            var path = Locations.SearchPath(currentScene, SO.Scene);
-            return SceneTracker.Instance.Objects[typeof(TravelPoint)].Find(x => x.GetComponent<TravelPoint>().Destination.Equals(path)).transform.position;
+            var path = LocationManager.Instance.BFS(currentScene, SO.Scene);
+            return SceneTracker.Instance.Objects[typeof(TravelPoint)].Find(x => x.GetComponent<TravelPoint>().Destination.Equals(path[1])).transform.position;
         }
 
         return SceneTracker.Instance.Objects[typeof(Entity)].Find(x => x.GetComponent<Entity>().UID.Equals(((DialogueQueststepSO)SO).Target.GetComponent<Entity>().UID)).transform.position;

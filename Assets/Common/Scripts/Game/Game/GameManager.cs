@@ -39,14 +39,15 @@ public class GameManager : Singleton<GameManager>
     {
         _loadingCanvas.SetActive(true);
         Serializer.DeleteSave(SaveSlot.AutoSave);
-        // await LoadScene("GnurksCave"); // opening scene
-        await LoadScene("Forest1-1"); // opening scene
+        await LoadScene("GnurksCave"); // opening scene
+        MainCamera.Instance.OnNewGame();
+        // await LoadScene("Shop"); 
     }
 
     public async Task LoadSaveAsync(SaveSlot slot) {
         PlayerSaveData save = Serializer.LoadFile<PlayerSaveData>("Player.json", slot);
         Serializer.SaveFile(save, "Player.json", SaveSlot.AutoSave);
-        await LoadScene(Locations.Scenes[save.CurrentScene]);
+        await LoadScene(save.CurrentScene);
     }
 
     public async void LoadSave(SaveSlot slot) => await LoadSaveAsync(slot);

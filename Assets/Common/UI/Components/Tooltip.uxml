@@ -13,12 +13,14 @@
             <ui:Label text="Label" class="text" />
         </ui:VisualElement>
         <ui:Label text="sadjkwqhdjkhdkwhqjdwkjqhdjkwqhdjkwqhdjwqhdwqkjhdwkqjdhqwkdjqwdkhqwjdhwqkjdhwqjkdhwqjkdhwqjkdhqwkjdhwqkj" name="Label" class="label" style="flex-grow: 1; white-space: normal;" />
-        <ui:Instance template="Statpoints" />
-        <ui:Instance template="Statpoints" />
-        <ui:Instance template="Statpoints" />
-        <ui:Instance template="Statpoints" />
-        <ui:Instance template="Statpoints" />
-        <ui:Instance template="Statpoints" />
+        <ui:VisualElement name="Stats">
+            <ui:Instance name="Melee Attack" template="Statpoints" />
+            <ui:Instance name="Ranged Attack" template="Statpoints" />
+            <ui:Instance name="Magic Attack" template="Statpoints" />
+            <ui:Instance name="Melee Attack" template="Statpoints" />
+            <ui:Instance name="Ranged Attack" template="Statpoints" />
+            <ui:Instance name="Magic Attack" template="Statpoints" />
+        </ui:VisualElement>
         <ui:Instance template="Currency" />
     </ui:VisualElement>
 </ui:UXML>

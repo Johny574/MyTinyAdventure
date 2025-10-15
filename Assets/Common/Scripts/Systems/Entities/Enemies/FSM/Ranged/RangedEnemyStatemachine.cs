@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RangedEnemyStatemachine : EnemyStateMachine  {
     [SerializeField] private float _attackSpeed = 5f, _attackRange = 5f;
-    [SerializeField] private WeaponItemData.Type _attackType;
+    [SerializeField] private WeaponItemSO.Type _attackType;
     [SerializeField] private Projectile _projectile;
     [SerializeField] private LayerMask _walls;
 

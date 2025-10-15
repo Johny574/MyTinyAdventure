@@ -8,9 +8,15 @@ using UnityEngine;
 public class QuestingBehaviour : MonoBehaviour
 {
     public QuestingComponent Questing { get; set; }
-    [SerializeField] List<QuestSO> _quests;
+    [SerializeField] List<QuestSO> _quests = new();
 
-    void Start() {
-        Questing = new(this,  _quests);
+    void Awake()
+    {
+        Questing = new(this, _quests);
+    }
+
+    void Start()
+    {
+        Questing.Initilize();
     }
 }

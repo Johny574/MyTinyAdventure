@@ -33,7 +33,6 @@ public class HUDController : MonoBehaviour
         SetupInteract(_root, Player.Instance.Interact.Interact);
     }
 
-
     void Update() {
         VisualElement hotbar = _root.Q<VisualElement>("Hotbar");
         VisualElement skillslots = hotbar.Q<VisualElement>("Skills");
@@ -135,7 +134,6 @@ public class HUDController : MonoBehaviour
         
         QuestsRefresh(journal, gridview, _quest_t, _queststep_t);
         journal.StepCompleted += (step) =>QuestsRefresh(journal, gridview, _quest_t, _queststep_t);
-        journal.StepCompleted += (step) => Debug.Log( "littlenuts");
     }
 
     void SetupHotbar(VisualElement root, SkillsComponent skills, ConsumableComponent consumables, GearComponent gear) {
@@ -145,21 +143,42 @@ public class HUDController : MonoBehaviour
         VisualElement consumableslots = hotbar.Q<VisualElement>("Consumables");
 
         skills.Updated += (skills) => RefreshHotbarSkills(skills, skillslots);
+
+        foreach (var child in skillslots.Children()) {
+            var slot = child as HotbarUISlot;
+            child.RegisterCallback<MouseDownEvent>(evt => {
+                Player.Instance.Skills.Skills.Remove(slot.Index);
+                RefreshHotbarSkills(skills.Skills, skillslots);
+            });
+        }
+
+        foreach (var child in consumableslots.Children()) {
+            var slot = child as ConsumableUISlot;
+            child.RegisterCallback<MouseDownEvent>(evt => {
+                Player.Instance.Consumables.Consumables.Remove(slot.Index);
+                RefreshHotbarConsumables(consumables.Consumables, consumableslots);
+            });
+        }
+
         RefreshHotbarSkills(skills.Skills, skillslots);
 
-        // todo hotbar attack
-        gear.Updated += (consumables) => {
-
-        };
+        gear.Updated += (gear) => RefreshHotbarAttack(gear, attackslots);
 
         consumables.Updated += (consumables) => RefreshHotbarConsumables(consumables, consumableslots);
         RefreshHotbarConsumables(consumables.Consumables, consumableslots);
     }
 
     void RefreshHotbarAttack(GearSlots gear, VisualElement container) {
-        foreach (var child in container.Children()) {
-            AttackUISlot slot = child as AttackUISlot;
-            slot.Update(gear[slot.Slot]);
+        int index = 0;
+        
+        foreach (var child in container.Children())
+        {
+            var slot = child as AttackUISlot;
+            slot.Clear();
+            if (index == 0 && gear[GearItemSO.Slot.Primary] != null)
+                slot.Update(gear[GearItemSO.Slot.Primary].Item as WeaponItemSO);
+            else if (index == 1 && gear[GearItemSO.Slot.Secondary] != null)
+                slot.Update(gear[GearItemSO.Slot.Secondary].Item as WeaponItemSO);
         }
     }
 
@@ -173,6 +192,7 @@ public class HUDController : MonoBehaviour
     void RefreshHotbarSkills(Skill[] skills, VisualElement container) {
         foreach (var child in container.Children()) {
             HotbarUISlot slot = child as HotbarUISlot;
+            slot.Clear();
             slot.Update(skills[slot.Index]);
         }
     }

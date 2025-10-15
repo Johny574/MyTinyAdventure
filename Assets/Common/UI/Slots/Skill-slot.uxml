@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Common/UI/Slots/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
-    <engine:VisualElement name="Slot" data-source-type="SkillSO, DataStructures" class="inventory-slot" style="-unity-slice-scale: 0.75px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+    <engine:VisualElement name="Slot" data-source-type="SkillSO, DataStructures" class="inventory-slot" style="width:35px; height:35px; -unity-slice-scale: 0.75px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
         <engine:VisualElement class="inventory-slot-icon" style="flex-grow: 1; background-image: none;">
             <Bindings>
                 <engine:DataBinding property="style.backgroundImage" data-source-path="Icon" binding-mode="ToTarget" />

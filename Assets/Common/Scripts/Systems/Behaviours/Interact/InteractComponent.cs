@@ -10,13 +10,14 @@ public class InteractComponent : Component {
     List<IInteractable> _targets;
     public Action<IInteractable> TargetChanged;
     public string TargetName;
-
+    StaminaComponent _stamina;
     public InteractComponent(InteractBehaviour behaviour) : base(behaviour) {
     }
 
     public void Initilize(StaminaComponent stamina) {
-        if (stamina.Sprinting)
-            stamina.Sprinting = false;
+        _stamina = stamina;
+        if (_stamina.Sprinting)
+            _stamina.Sprinting = false;
             
         _targets = new();
     }
@@ -81,6 +82,8 @@ public class InteractComponent : Component {
             Target = _targets[_index];
             Target.Target();
             Target.Interact(Behaviour.gameObject);
+            if (_stamina.Sprinting)
+               _stamina.Sprinting = false;
         }
     }
 

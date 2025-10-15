@@ -19,10 +19,13 @@ public partial class AttackUISlot : UISlot
 
         if (item.Item.GetType() != typeof(GearItemSO))
             return;
-
     }
 
     public override void Update<T>(T data) {
+        WeaponItemSO item = data as WeaponItemSO;
+        if (item == null)
+            return;
         
+        Icon.style.backgroundImage = new StyleBackground(item.HotbarIcon);
     }
 }

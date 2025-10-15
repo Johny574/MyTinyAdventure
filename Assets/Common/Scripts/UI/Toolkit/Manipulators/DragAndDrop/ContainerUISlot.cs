@@ -1,8 +1,4 @@
-
-
-
-
-public class ContainerUISlot : ItemStackUISlot
+public partial class ContainerUISlot: ItemStackUISlot
 {
     ContainerPanelController _controller;
 
@@ -19,8 +15,8 @@ public class ContainerUISlot : ItemStackUISlot
 
         ItemStack item = (ItemStack)(object)data;
 
-        _controller.Player.Inventory.Remove(item);
-        _controller.Container.Inventory.Add(item);
-        _controller.Refresh(_controller.Container.Inventory.Inventory);
+        _controller.ContainerHandle.Inventory.Add(item);
+        Player.Instance.Inventory.Inventory.Remove(item);
+        _controller.Refresh(_controller.ContainerHandle.Inventory.Inventory);
     }
 }

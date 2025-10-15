@@ -62,6 +62,7 @@ public class DragAndDropManipulator : PointerManipulator
             _ghosticon.BringToFront();
             _ghosticon.transform.position = evt.position - new Vector3(_ghosticon.style.width.value.value/2, _ghosticon.style.height.value.value/2);
         }
+        
         evt.StopPropagation();
     }
 

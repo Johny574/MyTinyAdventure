@@ -26,7 +26,12 @@ public partial class HotbarUISlot : UISlot
     }
 
     public override void OnDrop<T>(T data) {
+        if (typeof(T) != typeof(SkillSO) || data == null)
+            return;
 
+        SkillSO skill = (SkillSO)(object)data;
+        
+        Player.Instance.Skills.Skills.Add(skill, Player.Instance.gameObject, Index);
     }
 
     public void Tick() {
@@ -35,12 +40,11 @@ public partial class HotbarUISlot : UISlot
         _fill.style.height = new StyleLength(Length.Percent(_skill.Fill * 100));
     }
 
-
     public override void Update<T>(T data) {
         if (data == null)
             return;
 
-        _skill  = (Skill)(object)data;
+        _skill = (Skill)(object)data;
         Icon.style.backgroundImage = new StyleBackground(_skill.Data.Icon);
     }
 }

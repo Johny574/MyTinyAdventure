@@ -13,7 +13,7 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
     bool _attacked = false;
     LayerMask _enemyLayer;
     StatpointsBehaviour _stats;
-    float _reach = 1f;
+    float _reach = 1.5f;
 
     public WeaponDefaultState(WeaponStatemachine statemachine, HandsComponent hands, GearComponent gear, AimComponent aim, LayerMask enemyLayer, StatpointsBehaviour stats) : base(statemachine) {
         _aim = aim;
@@ -28,6 +28,11 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
     }
 
     public void OnAwake() {
+        if (_gear.Gear[GearItemSO.Slot.Secondary].Item == null)
+        {
+            _attackHand = _hands.PrimaryHand;
+            return;
+        }
         _attackHand = Random.Range(0,2) == 0 ? _hands.PrimaryHand : _hands.SecondaryHand;
     }
 
@@ -56,7 +61,8 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
             else {
                 _attackTime = 0f;
                 _attacking = false;
-                _attackHand = Random.Range(0,2) == 0 ? _hands.PrimaryHand : _hands.SecondaryHand;
+                if (_gear.Gear[GearItemSO.Slot.Secondary].Item == null)
+                    _attackHand = Random.Range(0,2) == 0 ? _hands.PrimaryHand : _hands.SecondaryHand;
             }
             return;
         }
@@ -71,6 +77,10 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
             // this math just makes it look more like real hands but im calculating a offset because our characters sprite sits a bit lower, then im adding the hand pivot to it and then adding the look angle to that pivot times our hand distance
             // (offset + (handpos + lookangle) * distance
             _hands.PrimaryHand.transform.position = Vector2.Lerp(_hands.PrimaryHand.transform.position, offset + (_hands.PrimaryHandPosition + lookY) * _hands.HandDistance , _hands.DampSpeed);
+
+            if (_gear.Gear[GearItemSO.Slot.Secondary].Item != null)
+                return;
+
             _hands.SecondaryHand.transform.position = Vector2.Lerp(_hands.SecondaryHand.transform.position, offset + (_hands.SecondaryHandPosition + lookY) * _hands.HandDistance,_hands.DampSpeed);
         }
     }

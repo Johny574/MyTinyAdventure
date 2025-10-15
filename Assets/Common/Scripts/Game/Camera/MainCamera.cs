@@ -1,8 +1,8 @@
 
 
 
+using System.Collections;
 using DG.Tweening;
-using FletcherLibraries;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -51,19 +51,42 @@ public class MainCamera : Singleton<MainCamera>
         _shakeAmount = amount;
     }
 
-    public void FlashVignette(float durationIn = .2f, float durationOut = .4f) {
+    public void FlashVignette(Color color, float durationIn = .2f, float durationOut = .4f)
+    {
         float start = 0f;
         float stop = 0.5f;
+        _vignette.color.value = color;
+        _vignette.smoothness.value = .5f;
+        _vignette.rounded.value = false;
 
         DOTween.Sequence()
-        .Append(DOTween.To(() => start, x => {
+        .Append(DOTween.To(() => start, x =>
+        {
             start = x;
             _vignette.intensity.value = x;
         }, stop, durationIn)).SetEase(Ease.OutElastic)
-        .Append(DOTween.To(() => stop, x => {
+        .Append(DOTween.To(() => stop, x =>
+        {
             _vignette.intensity.value = x;
         }, start, durationOut)).SetEase(Ease.OutFlash);
     }
+
+    public void OnNewGame()
+    {
+        float start = 1f;
+        float stop = 0f;
+        _vignette.intensity.value = start;
+        _vignette.color.value = Color.black;
+        _vignette.smoothness.value = 0.01f;
+        _vignette.rounded.value = true;
+
+        DOTween.To(() => start, x =>
+        {
+            start = x;
+            _vignette.intensity.value = x;
+        }, stop, 1f);
+    }
+
 
     void OnDrawGizmos() {
         if (!_options.DrawCameraBounds)

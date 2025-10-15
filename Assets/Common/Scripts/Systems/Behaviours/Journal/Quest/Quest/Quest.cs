@@ -19,10 +19,15 @@ public class Quest {
         Steps = new();
         _parttaker = parttaker;
         Steps = SO.Steps.Select(x => QuestFactory.Queststeps[x.GetType()].Invoke(x, parttaker, this)).ToList();
+    }
+
+    public void Initialize()
+    {
         CreatePointer();
     }
 
-    async void CreatePointer() {
+    async void CreatePointer()
+    {
         Pointer = await PointerFactory.Instance.Pool.GetObject<PointerData>();
         Pointer.Bind(new PointerData(_parttaker.Behaviour.gameObject, CurrentStep().Closestpoint(_parttaker.Behaviour.transform.position)));
     }

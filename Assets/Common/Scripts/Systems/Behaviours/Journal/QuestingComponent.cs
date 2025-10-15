@@ -13,12 +13,21 @@ public class QuestingComponent : JournalComponent, ISerializedComponent<QuestDat
 
     public QuestingComponent(MonoBehaviour behaviour, List<QuestSO> quests) : base(behaviour, quests)
     {
-        ActiveQuests = quests.Select(x => new Quest(x, this, 0)).ToList();
+        ActiveQuests = new(); 
+
+        foreach (var quest in quests)
+            Add(quest);
+
         StepCompleted += (step) => DropRewards(step.SO.ItemRewards, step.SO.CurrencyRewards, step.SO.XpReward, Behaviour.transform.position);
     }
 
-    public void Add(QuestSO data) {
-        Quests.Remove(data);
+    public void Initilize() {
+        foreach (var quest in ActiveQuests)
+            quest.Initialize();
+    }
+
+    public void Add(QuestSO data)
+    {
         Quest quest = new Quest(data, this);
         ActiveQuests.Add(quest);
         quest.OnCompleted += OnQuestCompleted;
@@ -57,6 +66,7 @@ public class QuestingComponent : JournalComponent, ISerializedComponent<QuestDat
 
     public void Load(QuestData[] save) {
         ActiveQuests = new();
+        Quests = new();
         for (int i = 0; i < save.Length; i++) {
             QuestData quest = save[i]; // keep this reference in memory
 
@@ -64,8 +74,9 @@ public class QuestingComponent : JournalComponent, ISerializedComponent<QuestDat
             QuestSO.Completed += (itemso) => {
                 if (itemso.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Failed) 
                     throw new System.Exception($"Failed to load asset {quest.GUID}");
-
-                ActiveQuests.Add(new Quest(itemso.Result, this, quest.CurrentStep));
+                Quests.Add(itemso.Result);
+                var q = new Quest(itemso.Result, this, quest.CurrentStep);
+                ActiveQuests.Add(q);
             };
         }
     }

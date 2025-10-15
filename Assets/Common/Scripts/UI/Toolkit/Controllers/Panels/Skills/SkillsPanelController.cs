@@ -8,16 +8,18 @@ public class SkillsPanelController : PanelController
     VisualElement _ghostIcon;
     VisualElement _gridView;
     Label _fineprint;
+    VisualElement _hotbarslots, _panelSlots;
 
-    public SkillsPanelController(VisualTreeAsset panel_t, VisualElement root, bool dragable,AudioSource closeaudio, AudioSource openaudio,  VisualTreeAsset slot_t, VisualTreeAsset ghostIcon_t) : base(panel_t, root, dragable, closeaudio, openaudio) {
+    public SkillsPanelController(VisualTreeAsset panel_t, VisualElement root, bool dragable, AudioSource closeaudio, AudioSource openaudio, VisualTreeAsset slot_t, VisualTreeAsset ghostIcon_t) : base(panel_t, root, dragable, closeaudio, openaudio)
+    {
         _slot_t = slot_t;
         _ghostIcon_t = ghostIcon_t;
     }
     
-    public void Open()
+    public override void Open()
     {
         Enable();
-        Refresh(Player.Instance.Gear.Gear.Gear, Player.Instance.Skills.Skills);
+        Refresh(Player.Instance.Gear.Gear.Gear);
     }
 
     public override void Setup() {
@@ -26,34 +28,56 @@ public class SkillsPanelController : PanelController
         SkillsComponent skills = Player.Instance.Skills.Skills;
 
         _fineprint = _panel.Q<Label>("Fineprint");
-        //  create grid
         _gridView = new VisualElement();
-        ScrollView scrollView = _panel.Q<ScrollView>("Slots-view");
+        _gridView.style.height = new StyleLength(Length.Percent(100));
+        _gridView.style.width = new StyleLength(Length.Percent(100));
+        ScrollView scrollView = _panel.Q<ScrollView>("ScrollView");
         scrollView.Add(_gridView);
 
-        // refresh skills
-        gear.Updated += (gearslots) => Refresh(gearslots, skills);
-        Refresh(gear.Gear, skills);
+        gear.Updated += (gearslots) => Refresh(gearslots);
+        Refresh(gear.Gear);
+         _fineprint.style.position = Position.Relative;
+        _fineprint.style.display = DisplayStyle.None;
+        _fineprint.style.visibility = Visibility.Hidden;
+        _hotbarslots = _root.Q<VisualElement>("Skills");
+        _panelSlots = _panel.Q<VisualElement>("Slots");
+        scrollView.contentContainer.style.flexGrow = 1;
     }
 
-    private void Refresh(GearSlots gear, SkillsComponent skills)
+    void Refresh(GearSlots gear)
     {
-        VisualElement skillslots = _root.Q<VisualElement>("Skills");
         _gridView.Clear();
 
-        WeaponItemData primaryweapon = gear[GearItemSO.Slot.Primary].Item == null ? null : gear[GearItemSO.Slot.Primary].Item as WeaponItemData;
-        WeaponItemData secondaryweapon = gear[GearItemSO.Slot.Secondary].Item == null ? null : gear[GearItemSO.Slot.Secondary].Item as WeaponItemData;
+        WeaponItemSO primaryweapon = gear[GearItemSO.Slot.Primary].Item == null ? null : gear[GearItemSO.Slot.Primary].Item as WeaponItemSO;
+        WeaponItemSO secondaryweapon = gear[GearItemSO.Slot.Secondary].Item == null ? null : gear[GearItemSO.Slot.Secondary].Item as WeaponItemSO;
 
-        RefreshWeaponSkills(skills, primaryweapon, skillslots);
-        RefreshWeaponSkills(skills, secondaryweapon, skillslots);
+        RefreshWeaponSkills(primaryweapon, _hotbarslots);
+        RefreshWeaponSkills(secondaryweapon, _hotbarslots);
 
-        if (primaryweapon == null && secondaryweapon == null)
+        if (primaryweapon == null && secondaryweapon == null && Enabled)
+        {
+            _fineprint.style.display = DisplayStyle.Flex;
             _fineprint.style.visibility = Visibility.Visible;
+            _fineprint.style.position = Position.Absolute;
+        }
+        else
+        {
+            _fineprint.style.position = Position.Relative;
+            _fineprint.style.display = DisplayStyle.None;
+            _fineprint.style.visibility = Visibility.Hidden;
+        }
+    }
+
+    protected override void OnPanelClosed()
+    {
+        Debug.Log("a");
+        if (_fineprint == null)
+            Debug.LogWarning("_fineprint is null!");
         else
             _fineprint.style.visibility = Visibility.Hidden;
     }
 
-    void RefreshWeaponSkills(SkillsComponent skills, WeaponItemData weapon, VisualElement slots)
+    void RefreshWeaponSkills(WeaponItemSO weapon, VisualElement slots)
     { 
         if (weapon == null)
             return;
@@ -63,7 +87,8 @@ public class SkillsPanelController : PanelController
         {
             VisualElement skillClassContainer = new VisualElement();
             skillClassContainer.style.width = Length.Auto();
-            skillClassContainer.style.height = Length.Auto();
+            skillClassContainer.style.height = new StyleLength(Length.Percent(100));
+            skillClassContainer.style.justifyContent = Justify.FlexEnd;
 
             // loop over all the skills inside class
             foreach (var skill in skillClass.Skills)
@@ -76,7 +101,7 @@ public class SkillsPanelController : PanelController
                 slot.AddManipulator(dragAndDrop);
                 var s = skill;
 
-                dragAndDrop.DropSlot += () => slots.Children().Where(x => x.worldBound.Overlaps(this._ghostIcon.worldBound)).FirstOrDefault() as UISlot;
+                dragAndDrop.DropSlot += DropSlot;
 
                 dragAndDrop.DragStart += () =>
                 {
@@ -85,7 +110,7 @@ public class SkillsPanelController : PanelController
 
                 dragAndDrop.OnDrop += (from, to) =>
                 {
-                    skills.Add(skill, Player.Instance.gameObject, slots.IndexOf(to));
+                    to.OnDrop(this);
                 };
 
                 dragAndDrop.DragStop += () =>
@@ -98,4 +123,15 @@ public class SkillsPanelController : PanelController
             _gridView.Add(skillClassContainer);
         }
     }
+     UISlot DropSlot() {
+        var hotbarslot = _hotbarslots.Children().SelectMany(x => x.Children()).Where(x => x.worldBound.Contains(this._ghostIcon.worldBound.center)).FirstOrDefault() as UISlot;
+        if (hotbarslot != null)
+            return hotbarslot;
+
+        var panelSlot = _panelSlots.Children().Where(x => x.worldBound.Overlaps(this._ghostIcon.worldBound)).FirstOrDefault() as UISlot;
+        if (panelSlot != null)
+            return panelSlot;
+
+        return null;
+    } 
 }

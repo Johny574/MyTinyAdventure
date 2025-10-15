@@ -11,10 +11,12 @@ public class InventoryPanelBehaviour : Singleton<InventoryPanelBehaviour>
     [SerializeField] VisualTreeAsset _ghostIcon_t, _stats_t, _tooltip_t;
     public InventoryPanelController Panel;
     [SerializeField] protected AudioSource _openAudio, _closeAudio;
+    [SerializeField] ContainerPanelBehaviour _containerPanel;
+    [SerializeField] ShopPanelBehaviour _shopPanel;
 
     protected override void Awake() {
         base.Awake();
-        Panel = new InventoryPanelController(_panel_t, _tooltip_t, _document.rootVisualElement, _dragable, _closeAudio, _openAudio, _ghostIcon_t, _stats_t);
+        Panel = new InventoryPanelController(_panel_t, _tooltip_t, _document.rootVisualElement, _dragable, _closeAudio, _openAudio, _ghostIcon_t, _stats_t, _containerPanel, _shopPanel);
         Panel.Awake();
     }
     void Start() {
@@ -33,7 +35,7 @@ public class InventoryPanelBehaviour : Singleton<InventoryPanelBehaviour>
         ContainerEvents.Instance.Open -= ContainerOpen;
     }
 
-    void InventoryToggle(UnityEngine.InputSystem.InputAction.CallbackContext context) => Panel.Open();
+    void InventoryToggle(UnityEngine.InputSystem.InputAction.CallbackContext context) => Panel.Toggle();
     void ShopOpen(ShopComponent component, GameObject @object) => Panel.Open();
     void ContainerOpen(Container container) => Panel.Open();
 }

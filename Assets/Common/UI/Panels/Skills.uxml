@@ -13,16 +13,16 @@
         <engine:VisualElement name="Body" style="flex-grow: 1; height: 75%;">
             <engine:VisualElement name="Top" style="flex-grow: 1; height: 75%; flex-direction: row; justify-content: center;">
                 <engine:VisualElement style="width: 80%; height: 100%; position: relative; align-self: center;">
-                    <engine:ScrollView name="Slots-view" class="panel-light" style="width: 100%; height: 100%;" />
-                    <engine:Label name="Fineprint" text="You have no weapons equiped" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-font-definition: url(&quot;project://database/Assets/Common/UI/Fonts/Dungeon%20font%20HEAD.ttf?fileID=12800000&amp;guid=af008a01b3d76fb428395516ac50f9ed&amp;type=3#Dungeon font HEAD&quot;); font-size: 14px;" />
+                    <engine:ScrollView name="ScrollView" class="panel-light" style="width: 100%; height: 100%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-grow: 1;" />
+                    <engine:Label name="Fineprint" text="You have no weapons equiped" double-click-selects-word="false" triple-click-selects-line="false" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-font-definition: url(&quot;project://database/Assets/Common/UI/Fonts/Dungeon%20font%20HEAD.ttf?fileID=12800000&amp;guid=af008a01b3d76fb428395516ac50f9ed&amp;type=3#Dungeon font HEAD&quot;); font-size: 14px;" />
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement name="Bottom" style="flex-grow: 1; height: 25%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 50px;">
-                <engine:VisualElement class="row" style="justify-content: space-between; width: 35%;">
-                    <HotbarUISlot />
-                    <HotbarUISlot />
-                    <HotbarUISlot />
-                    <HotbarUISlot />
+                <engine:VisualElement name="Slots" class="row" style="justify-content: space-between; width: 35%;">
+                    <engine:VisualElement class="hotbar-slot slot-medium" />
+                    <engine:VisualElement class="hotbar-slot slot-medium" />
+                    <engine:VisualElement class="hotbar-slot slot-medium" />
+                    <engine:VisualElement class="hotbar-slot slot-medium" />
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>

@@ -14,7 +14,7 @@
         </engine:VisualElement>
         <engine:VisualElement name="Body" style="height: 85%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row;">
             <engine:VisualElement class="panel-light" style="width: 50%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px;">
-                <engine:ListView name="Slots-view" style="width: 100%; height: 100%;" />
+                <engine:ListView name="ListView" style="width: 100%; height: 100%;" />
             </engine:VisualElement>
             <engine:VisualElement style="width: 50%; margin-left: 7px;">
                 <engine:VisualElement class="panel-light space-small" style="width: 100%; height: 100%; justify-content: center;">
@@ -22,25 +22,42 @@
                         <engine:VisualElement class="panel-light" style="flex-grow: 1; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
                             <engine:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <engine:VisualElement style="width: 50px; height: 50px; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=770894370&amp;guid=f9e1bb27c7e71654eae0729c2eac6ba7&amp;type=3#tilemap_packed 1_1&quot;); padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
-                                    <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Entities/Characters/Player/sword_%20[iron].png?fileID=636123052&amp;guid=7e289bcdf02af6b40a610cd92189e1be&amp;type=3#sword_ [iron]_5&quot;);" />
+                                    <engine:VisualElement name="Head-Icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Entities/Characters/Player/sword_%20[iron].png?fileID=636123052&amp;guid=7e289bcdf02af6b40a610cd92189e1be&amp;type=3#sword_ [iron]_5&quot;);" />
                                 </engine:VisualElement>
-                                <engine:Label text="Dark sword" class="space-zero label" style="font-size: 14px; flex-grow: 1; height: 25px; -unity-text-align: middle-center;" />
+                                <engine:Label name="Head" text="Dark sword" class="space-zero label" style="font-size: 14px; flex-grow: 1; height: 25px; -unity-text-align: middle-center;" />
                             </engine:VisualElement>
-                            <engine:Instance template="Statpoints" />
-                            <engine:Instance template="Statpoints" />
-                            <engine:Instance template="Statpoints" />
-                            <engine:Instance template="Statpoints" />
-                            <engine:Instance template="Statpoints" />
-                            <engine:Instance template="Statpoints" />
+                            <engine:VisualElement name="Stats">
+                                <engine:Instance template="Statpoints" />
+                                <engine:Instance template="Statpoints" />
+                                <engine:Instance template="Statpoints" />
+                                <engine:Instance template="Statpoints" />
+                                <engine:Instance template="Statpoints" />
+                                <engine:Instance template="Statpoints" />
+                            </engine:VisualElement>
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement name="VisualElement" style="justify-content: flex-start; margin-top: 10px;">
-                        <engine:VisualElement class="panel-light" style="height: 35px; justify-content: space-evenly; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; flex-direction: row;">
-                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
-                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
-                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
-                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
-                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center;" />
+                        <engine:VisualElement name="Recipe-slots" class="panel-light" style="height: 35px; justify-content: space-evenly; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; flex-direction: row;">
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+                                <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: none;" />
+                                <engine:Label name="Count" class="space-zero" style="-unity-text-align: middle-center; position: absolute; bottom: 2px; right: 5px; font-size: 6px;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+                                <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: none;" />
+                                <engine:Label name="Count" class="space-zero" style="-unity-text-align: middle-center; position: absolute; bottom: 2px; right: 5px; font-size: 6px;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+                                <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: none;" />
+                                <engine:Label name="Count" class="space-zero" style="-unity-text-align: middle-center; position: absolute; bottom: 2px; right: 5px; font-size: 6px;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+                                <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: none;" />
+                                <engine:Label name="Count" class="space-zero" style="-unity-text-align: middle-center; position: absolute; bottom: 2px; right: 5px; font-size: 6px;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="VisualElement" class="panel-light" style="width: 20px; height: 20px; align-self: center; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+                                <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: none;" />
+                                <engine:Label name="Count" class="space-zero" style="-unity-text-align: middle-center; position: absolute; bottom: 2px; right: 5px; font-size: 6px;" />
+                            </engine:VisualElement>
                         </engine:VisualElement>
                     </engine:VisualElement>
                 </engine:VisualElement>

@@ -10,12 +10,14 @@ public class HandsComponent : Component
     #endregion
 
     #region Pivots
-    Vector2 _primaryWeaponPivot;
+    Vector2 _primaryHandPivot;
+    Vector2 _secondaryWeaponPivot;
     #endregion
 
-    public HandsComponent(HandsBehaviour behaviour,  GameObject primaryHand, GameObject secondaryHand,  Vector2 primaryHandPivot, float dampspeed) : base(behaviour) {
+    public HandsComponent(HandsBehaviour behaviour,  GameObject primaryHand, GameObject secondaryHand,  Vector2 primaryHandPivot, Vector2 secondaryHandPivot, float dampspeed) : base(behaviour) {
         DampSpeed = dampspeed;
-        _primaryWeaponPivot = primaryHandPivot;
+        _primaryHandPivot = primaryHandPivot;
+        _secondaryWeaponPivot = secondaryHandPivot;
         PrimaryHand = primaryHand;
         SecondaryHand = secondaryHand;
     }
@@ -24,8 +26,7 @@ public class HandsComponent : Component
         _flip = flip;
     }
 
-    public Vector2 PrimaryWeaponPos         => _flip.Flipped ? new Vector2(Mathf.Abs(_primaryWeaponPivot.x), _primaryWeaponPivot.y) : _primaryWeaponPivot;
-    public Vector2 SecondaryWeaponPos       => _flip.Flipped ? _primaryWeaponPivot : new Vector2(Mathf.Abs(_primaryWeaponPivot.x), _primaryWeaponPivot.y);
-    public Vector2 PrimaryHandPosition           => _flip.Flipped ? new Vector2(Mathf.Abs(_primaryWeaponPivot.x), _primaryWeaponPivot.y) : _primaryWeaponPivot;
-    public Vector2 SecondaryHandPosition    => _flip.Flipped ? _primaryWeaponPivot : new Vector2(Mathf.Abs(_primaryWeaponPivot.x), _primaryWeaponPivot.y);
+    // todo this can be fixed
+    public Vector2 PrimaryHandPosition           => _flip.Flipped ? new Vector2(Mathf.Abs(_primaryHandPivot.x), _primaryHandPivot.y) : _primaryHandPivot;
+    public Vector2 SecondaryHandPosition    => _flip.Flipped ? _secondaryWeaponPivot : new Vector2(Mathf.Abs(_secondaryWeaponPivot.x), _secondaryWeaponPivot.y);
 }

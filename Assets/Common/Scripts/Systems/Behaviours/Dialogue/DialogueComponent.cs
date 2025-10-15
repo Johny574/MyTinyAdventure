@@ -10,6 +10,7 @@ public class DialogueComponent : Component
     EmoteComponent _emote;
     Sprite _questEmote, _dialogueEmote;
     Entity _entity;
+    
     public DialogueComponent(DialogueBehaviour behaviour, Dialogue action, EmoteComponent emote, Sprite questEmote, Sprite dialogueEmote) : base(behaviour)
     {
         _defaultActiveDialogue = action;
@@ -30,6 +31,10 @@ public class DialogueComponent : Component
         MainCamera.Instance?.CameraController.Focus(Behaviour.gameObject);
         ActiveDialogue = GetActiveDialogue(accesor);
         DialogueController.Instance.Open(ActiveDialogue);
+        DialogueController.Instance.OnClose = () => {
+            MainCamera.Instance?.CameraController.UnFocus();
+            _emote.Remove();
+        };
         _emote.Add(_dialogueEmote);
     }
 

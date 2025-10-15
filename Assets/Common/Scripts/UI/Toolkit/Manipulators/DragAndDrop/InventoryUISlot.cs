@@ -7,10 +7,14 @@ public partial class InventoryUISlot : ItemStackUISlot
         AddToClassList("inventory-slot");
     }
 
-    public override void OnDrop<T>(T data) {
+    public override void OnDrop<T>(T data)
+    {
         if (typeof(T) != typeof(ItemStack) || data == null)
             return;
 
         ItemStack item = (ItemStack)(object)data;
+
+        Player.Instance.Inventory.Inventory.Add(item);
+        
     }
 }

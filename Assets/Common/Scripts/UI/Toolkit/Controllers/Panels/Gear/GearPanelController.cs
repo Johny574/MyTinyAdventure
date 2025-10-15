@@ -1,3 +1,5 @@
+using System.Linq;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -46,6 +48,12 @@ public class GearPanelController : PanelController
     }
 
     void RefreshStatBars(StatPoints stats) {
+        foreach (var key in stats.BaseStats.Keys) {
+            var counter = _panel.Q<TemplateContainer>($"{key}");
+            counter.Q<Label>("Key").text = key.ToString();
+            counter.Q<Label>("Value").text = stats.BaseStats[key].ToString();
+        }
+
         foreach (var key in stats.AttackStats.Keys) {
             var statpoint = _panel.Q<VisualElement>($"{key} Attack");
             statpoint.Q<Label>("Key").text = $"{key} Attack";

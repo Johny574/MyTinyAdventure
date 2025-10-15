@@ -8,15 +8,34 @@ public class SkillsComponent : Component, ISerializedComponent<SkillData[]>
     public Skill[] Skills = new Skill[4];
     AimComponent _aim;
     ManaComponent _mana;
-
     public Action<Skill[]> Updated;
+
     public SkillsComponent(SkillsBehaviour behaviour, Skill[] skills) : base(behaviour) {
         Skills = skills;
     }
 
-    public void Initilize() {
+    public void Initilize(GearComponent gear) {
         _aim = Behaviour.GetComponent<AimBehaviour>().Aim;
         _mana = Behaviour.GetComponent<ManaBehaviour>().Mana;
+        gear.Unequiped += ItemUnequipped;
+    }
+
+    void ItemUnequipped(GearItemSO sO)
+    {
+        if (sO.GetType() != typeof(WeaponItemSO))
+            return;
+
+        WeaponItemSO weapon = sO as WeaponItemSO;
+
+        foreach (var skill in weapon.SkillClasses) {
+            foreach (var skillSO in skill.Skills) {
+                var matchingskill = Skills.Any(x => x != null && x.Data == skillSO);
+                if (matchingskill) {
+                    int index = Array.FindIndex(Skills, x => x != null && x.Data == skillSO);
+                    Remove(index);
+                }
+            }
+        }
     }
 
     public void Load(SkillData[] save) {
@@ -46,20 +65,23 @@ public class SkillsComponent : Component, ISerializedComponent<SkillData[]>
         Updated.Invoke(Skills);
     }
 
-    // public override void Remove<T>(T obj) {
-    //     var skill = (int)(object)obj;
-    //     _skills[skill] = null;
-    //    GameEvents.Instance.HotbarEvents.Update?.Invoke(_skills as ISkill[]);
-    // 
+    public void Remove(int index)
+    {
+        Skills[index] = null;
+        Updated.Invoke(Skills);
+    }
 
-    public void Update() {
-        for (int i = 0; i < Skills.Length; i++) {
+    public void Update()
+    {
+        for (int i = 0; i < Skills.Length; i++)
+        {
             if (Skills[i] == null)
                 return;
 
             Skills[i].Tick();
 
-            if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), $"Alpha{i + 1}"))) {
+            if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), $"Alpha{i + 1}")) && _mana.Data.Amount >= Skills[i].Data.ManaCost)
+            {
                 if (Skills[i].Cooldown)
                     return;
 

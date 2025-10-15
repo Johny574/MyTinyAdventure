@@ -1,55 +1,48 @@
-re mother fucking factor
+# x refactor 
+# ui classes ve's reference
+# player singleton reference
+# public property getters and setters
+# container command transfer
+# shop command sell
+# uislots
 
-# test
-hand damage
-skills fine print
-crafting
-# --- 
+# - game stuff
+# prices
+# recipes
+# itemso skills
+# patrol points
+# navmesh surface rebake
 
-! game stuff
-navmesh surface rebake
-sorting layers
-armor equipable
-prices
-recipes
-item skills
-patrol points
-feedback on load remove
-sound on load remove
-! --- 
+# ! queststep
+#     so targets
+
+# ! items
+#     so data
+#     sprites
+
+# ! enities
+#     defualt Dialogue
+#     stats refine
+#     sorting layers          
 
 !! story
-write all the dialogue out
-signs interactable
-!! --- 
+    write all the dialogue out
 
-
-! stack controller
-font stack controller
-
-! tooltip
-tooltip update 
-tooltip singleton
-
-! ghosticon
-ghost icon singleton
-skills drag and drop
-
-
-! drag and drops
-inventory
-container
-hotbar add remove
-
-! clicks
-inventory
-container
-hotbar add remove
+~ level
+    battlefield setting where goblins faught humans
 
 ! skills
     blink skill particles
     blink skill trail renderer
+    
+! ghosticon
+ghost icon singleton
+skills drag and drop
 
-? level
-    battlefield setting where goblins faught humans
-? ---
+? test
+hand damage
+feedback on load remove
+secondary attack
+
+- sound
+    sound on load remove

@@ -1,7 +1,7 @@
 <engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
-    <engine:Template name="Counter" src="project://database/Assets/Common/UI/Components/Counter.uxml?fileID=9197481963319205126&amp;guid=ef2d7769cc3a8ce429658c6e007d0286&amp;type=3#Counter" />
     <engine:Template name="Statpoints" src="project://database/Assets/Common/UI/Components/Statpoints.uxml?fileID=9197481963319205126&amp;guid=b74dc3a5c861181478506efb90ebb15a&amp;type=3#Statpoints" />
     <engine:Template name="Bar" src="project://database/Assets/Common/UI/Components/Bar.uxml?fileID=9197481963319205126&amp;guid=d27967a320039f1459a29ffbaa5f3a6c&amp;type=3#Bar" />
+    <engine:Template name="Counter" src="project://database/Assets/Common/UI/Components/Counter.uxml?fileID=9197481963319205126&amp;guid=ef2d7769cc3a8ce429658c6e007d0286&amp;type=3#Counter" />
     <Style src="project://database/Assets/Common/UI/USS/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
     <Style src="project://database/Assets/Common/UI/USS/Spacing.uss?fileID=7433441132597879392&amp;guid=f8eeec346359d744dab02629fa9b3e7e&amp;type=3#Spacing" />
     <Style src="project://database/Assets/Common/UI/USS/Panels.uss?fileID=7433441132597879392&amp;guid=df56a46d877a0234fabf76ab49d0e916&amp;type=3#Panels" />
@@ -36,10 +36,10 @@
                             <GearUISlot name="Boots" />
                         </engine:VisualElement>
                     </engine:VisualElement>
-                    <engine:VisualElement name="BaseStats" style="flex-shrink: 1; height: 50px; justify-content: space-around; margin-left: 10px;">
-                        <engine:Instance name="Strength" template="Counter" />
-                        <engine:Instance name="Agility" template="Counter" />
-                        <engine:Instance name="Intelligence" template="Counter" />
+                    <engine:VisualElement name="BaseStats" style="flex-grow:1;flex-shrink: 1; height: 50px; justify-content: space-around; margin-left: 10px;">
+                        <engine:Instance template="Counter" name="Strength" />
+                        <engine:Instance template="Counter" name="Agility" />
+                        <engine:Instance template="Counter" name="Intelligence"/>
                     </engine:VisualElement>
                 </engine:VisualElement>
                 <engine:VisualElement name="Statpoints" style="flex-shrink: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">

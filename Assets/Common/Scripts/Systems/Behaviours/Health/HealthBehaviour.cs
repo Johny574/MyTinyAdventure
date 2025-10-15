@@ -18,4 +18,15 @@ public class HealthBehaviour : MonoBehaviour
     }
 
     public void Die() => Health.Die();
+
+
+
+    #if UNITY_EDITOR
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.L)) {
+            Health.Update(-1);
+        }
+    }
+    #endif
+
 }

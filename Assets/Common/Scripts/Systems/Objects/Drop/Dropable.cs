@@ -9,8 +9,8 @@ public class Dropable : MonoBehaviour {
         gameObject.SetActive(true);
 
         float distance = 1f;
-        Vector2 start = gameObject.transform.position;
-        Vector2 finish = (Vector2)gameObject.transform.position + (Random.insideUnitCircle * distance);
+        Vector2 start = origin;
+        Vector2 finish = (Vector2)origin + (Random.insideUnitCircle * distance);
 
         DOTween.To(() => start, x =>
         {

@@ -12,13 +12,16 @@ public class DeathMenu : MonoBehaviour
         _deathMenu_e = _deathMenu_t.CloneTree().Children().First();
         _document.rootVisualElement.Add(_deathMenu_e);
         _deathMenu_e.style.visibility = Visibility.Hidden;
-        Player.Instance.Health.Health.Death += OnDeath;
 
         var loadButton = _deathMenu_e.Q<Button>("Load");
         var menuButton = _deathMenu_e.Q<Button>("Menu");
 
         loadButton.clicked += LoadClicked;
         menuButton.clicked += MainMenuClicked;
+    }
+
+    void Start() {
+        Player.Instance.Health.Health.Death += OnDeath;
     }
 
     void OnDeath() => _deathMenu_e.schedule.Execute(() => _deathMenu_e.style.visibility = Visibility.Visible).StartingIn(2000);

@@ -19,7 +19,7 @@ public class WeaponRangedState : StatemachineState<WeaponStatemachine, string>, 
         if (_gear.Gear[GearItemSO.Slot.Primary] == null || _gear.Gear[GearItemSO.Slot.Primary].Item == null)
             return false;
 
-        return ((WeaponItemData)_gear.Gear[GearItemSO.Slot.Primary].Item).DamageType.Equals(WeaponItemData.Type.Ranged) || ((WeaponItemData)_gear.Gear[GearItemSO.Slot.Primary].Item).DamageType.Equals(WeaponItemData.Type.Magic);
+        return ((WeaponItemSO)_gear.Gear[GearItemSO.Slot.Primary].Item).DamageType.Equals(WeaponItemSO.Type.Ranged) || ((WeaponItemSO)_gear.Gear[GearItemSO.Slot.Primary].Item).DamageType.Equals(WeaponItemSO.Type.Magic);
     }
 
     public void OnAwake() {
@@ -34,9 +34,9 @@ public class WeaponRangedState : StatemachineState<WeaponStatemachine, string>, 
             _ranged.Fire(_aim.AimDelta, _gear.Gear[GearItemSO.Slot.Primary].Object.transform.position);
 
         _gear.Gear[GearItemSO.Slot.Primary].Object.transform.rotation = Quaternion.Euler(0, 0, Rotation2D.LookAngle(_aim.AimDelta));
-        _gear.Gear[GearItemSO.Slot.Primary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Primary].Object.transform.position, (Vector2)_statemachine.transform.position + _hands.PrimaryWeaponPos + _aim.AimDelta * .4f, _hands.DampSpeed);
+        _gear.Gear[GearItemSO.Slot.Primary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Primary].Object.transform.position, (Vector2)_statemachine.transform.position + _hands.PrimaryHandPosition + _aim.AimDelta * .4f, _hands.DampSpeed);
         _hands.PrimaryHand.transform.position =  (Vector2)_gear.Gear[GearItemSO.Slot.Primary].Object.transform.position - _aim.AimDelta * .2f;
-        _gear.Gear[GearItemSO.Slot.Secondary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Secondary].Object.transform.position, (Vector2)_statemachine.transform.position + _hands.SecondaryWeaponPos, _hands.DampSpeed); 
+        _gear.Gear[GearItemSO.Slot.Secondary].Object.transform.position = Vector2.Lerp(_gear.Gear[GearItemSO.Slot.Secondary].Object.transform.position, (Vector2)_statemachine.transform.position + _hands.SecondaryHandPosition, _hands.DampSpeed); 
     }
 
     public void TransitionEnter() {

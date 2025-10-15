@@ -19,8 +19,7 @@ public class WeaponMeleeState : StatemachineState<WeaponStatemachine, string>, I
         if (_gear.Gear[GearItemSO.Slot.Primary] == null || _gear.Gear[GearItemSO.Slot.Primary].Item == null)
             return false;
             
-
-        return ((WeaponItemData)_gear.Gear[GearItemSO.Slot.Primary].Item).DamageType.Equals(WeaponItemData.Type.Melee);
+        return ((WeaponItemSO)_gear.Gear[GearItemSO.Slot.Primary].Item).DamageType.Equals(WeaponItemSO.Type.Melee);
     }
 
     public void OnAwake() {

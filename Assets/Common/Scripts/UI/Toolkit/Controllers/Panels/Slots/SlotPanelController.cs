@@ -8,12 +8,12 @@ public abstract class SlotPanelController : PanelController
     protected VisualElement _ghostIcon;
     protected ScrollView _scrollView;
     protected VisualElement _gridView;
-    VisualElement _tooltip; 
+    // VisualElement _tooltip; 
     public SlotPanelController(VisualTreeAsset panel_t, VisualTreeAsset tooltip_t, VisualElement root, bool dragable, AudioSource openaudio, AudioSource closeaudio, VisualTreeAsset ghostIcon_t, VisualTreeAsset stats_t) : base(panel_t, root, dragable, openaudio, closeaudio) {
         _ghostIcon_t = ghostIcon_t;
         _stats_t = stats_t;
-        _tooltip = tooltip_t.CloneTree();
-        _tooltip.style.visibility = Visibility.Hidden;
+        // _tooltip = tooltip_t.CloneTree();
+        // _tooltip.style.visibility = Visibility.Hidden;
     }
 
     public void Initilize() {
@@ -24,13 +24,9 @@ public abstract class SlotPanelController : PanelController
         _gridView.AddToClassList("gridview");
         _gridView.AddToClassList("row");
         _scrollView.Add(_gridView);
-    
-        // _tooltip = new();
-        // _tooltip.Setup(_stats_t);
-        // _root.Add(_tooltip);
 
         Setup();
-        _panel.Add(_tooltip);
+        // _panel.Add(_tooltip);
     }
 
     public void Refresh(Array data) {
@@ -41,27 +37,22 @@ public abstract class SlotPanelController : PanelController
     }
 
     public abstract void Create(Array data);
-
     protected void Draw() {
         foreach (var slot in _gridView.Children()) {
             ScaleManipulator slotScaleManipulator = new ScaleManipulator(new Vector2(1.2f, 1.2f));
             slot.AddManipulator(slotScaleManipulator);
             slot.RegisterCallback<MouseEnterEvent>(evt => {
                 Vector2 mousePos = evt.mousePosition + new Vector2(1f, 1f);
-                // _tooltip.Show(new ItemStack(), mousePos);
-                _tooltip.style.left = mousePos.x;
-                _tooltip.style.top = mousePos.y;
-                _tooltip.style.visibility = Visibility.Visible;
-                _tooltip.BringToFront();
+                // TooltipBehaviour.Instance.Show(mousePos,);
             });
             slot.RegisterCallback<MouseLeaveEvent>(evt => {
-                _tooltip.style.visibility = Visibility.Hidden;
+                // _tooltip.style.visibility = Visibility.Hidden;
                 // _tooltip.Hide();
             });
             slot.style.alignSelf = new StyleEnum<Align>(Align.FlexStart);
         }
     }
-
+    
     protected void Clear() => _gridView.hierarchy.Clear();
     protected abstract void Update(Array data);
 }

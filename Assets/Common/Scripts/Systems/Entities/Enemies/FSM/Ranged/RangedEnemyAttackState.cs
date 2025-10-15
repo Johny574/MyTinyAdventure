@@ -6,7 +6,7 @@ public class RangedEnemyAttackState : StatemachineState<RangedEnemyStatemachine,
     private LayerMask _walls;
     private float _attackTimer, _attackSpeed;
     private Projectile _projectile;
-    private WeaponItemData.Type _attackType;
+    private WeaponItemSO.Type _attackType;
     private LayerMask _enemyProjectileLayer;
 
     private float _attackRange;

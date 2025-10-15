@@ -15,9 +15,9 @@ public class PlayerSaveData
     public QuestData[] Journal;
     public ConsumableData[] Consumables;
     public float X, Y;
-    public int CurrentScene;
+    public string CurrentScene;
 
-    public PlayerSaveData(BarData health, BarData mana, BarData stamina, BarData experience, StatPoints stats, ItemStackData[] inventory, Currency currency, List<BuffData> buffs, SkillData[] skills, GearSlotData[] gear, QuestData[] journal, ConsumableData[] consumables, float x, float y, int currentScene) {
+    public PlayerSaveData(BarData health, BarData mana, BarData stamina, BarData experience, StatPoints stats, ItemStackData[] inventory, Currency currency, List<BuffData> buffs, SkillData[] skills, GearSlotData[] gear, QuestData[] journal, ConsumableData[] consumables, float x, float y, string currentScene) {
         Health = health;
         Mana = mana;
         Stamina = stamina;

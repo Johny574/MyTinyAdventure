@@ -13,7 +13,6 @@ public class MeleeBehaviour : MonoBehaviour
     void Awake() {
         Melee = new MeleeComponent(this, _trailRenderer, _meleeSwingArcDegrees, _enemies, _whooshAudio);
     }
-
     
     void Start() {
         Melee.Initilize(GetComponent<GearBehaviour>().Gear, GetComponent<HandsBehaviour>().Hands, GetComponent<FlipBehaviour>().Flip, GetComponent<StatpointsBehaviour>().Stats);

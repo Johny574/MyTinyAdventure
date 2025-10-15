@@ -13,7 +13,7 @@ public class CraftingPanelBehaviour : Singleton<CraftingPanelBehaviour>
     [SerializeField] VisualTreeAsset _panel_t;
     [SerializeField] bool _dragable = true;
     [SerializeField] VisualTreeAsset _slot_t;
-    public PanelController Panel;
+    public CraftingPanelController Panel;
     [SerializeField] protected AudioSource _openAudio, _closeAudio;
 
     protected override void Awake() {

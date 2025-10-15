@@ -13,7 +13,7 @@ public class StaminaComponent : StatComponent, ISerializedComponent<BarData>
     public void Initilize() {
         _stats = Behaviour.GetComponent<StatpointsBehaviour>().Stats;
         Data = new(_stats.StaminaPool, _stats.StaminaPool);
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, 0);
     }
 
     public void Tick() {
@@ -34,13 +34,13 @@ public class StaminaComponent : StatComponent, ISerializedComponent<BarData>
         Data.Amount+= amount;
         Data.Amount = Mathf.Clamp(Data.Amount, 0f, _stats.StaminaPool);
         Data.CalculateFill();
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, amount);
     }
 
     public BarData Save() => Data;
 
     public void Load(BarData save) {
         Data = save;
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, 0);
     }
 }

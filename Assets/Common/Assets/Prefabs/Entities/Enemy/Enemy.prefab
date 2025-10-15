@@ -11676,6 +11676,7 @@ GameObject:
   - component: {fileID: 7241094474159346009}
   - component: {fileID: -1180821219613850675}
   - component: {fileID: 1834245518236547733}
+  - component: {fileID: 6770388513514247183}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -11872,6 +11873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce85400f9dfff79468acbd98bcb2f1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _amount: 0
 --- !u!114 &2815443144512688269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11902,6 +11904,7 @@ MonoBehaviour:
   - XPRequirement: 50000
     StatPointsReward: 0
     InventorySlots: 16
+  _xp: 0
 --- !u!114 &8730556084532999568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11920,21 +11923,27 @@ MonoBehaviour:
     - Item: {fileID: 0}
       Object: {fileID: 2140315528091844435}
       Animator: {fileID: 6555619840587183426}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 562787348315932323}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 5246023534425107869}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 9201580478711694591}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 5015891857514632200}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 1097158296552219313}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
 --- !u!114 &7968573959448943508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12114,7 +12123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a107e6fab5baffe44932cb3f3b421705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _primaryWeaponPivot: {x: -0.5, y: -0.5}
+  _primaryHandPivot: {x: -0.25, y: -0.5}
+  _secondaryHandPivot: {x: -0.25, y: -0.5}
   _dampSpeed: 0.1
   _primaryHand: {fileID: 2771766198482048010}
   _secondaryHand: {fileID: 765541705506649912}
@@ -12265,8 +12275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d7f0e2f792fc34eba64cc08a1e8c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minimapMarker: {fileID: 1751324127, guid: 66fc38681fe32f24fa63658adb5ece9e, type: 3}
-  UID: 0
+  _minimapMarkerSprite: {fileID: 0}
+  UID: 1567749511
 --- !u!195 &1834245518236547733
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12289,6 +12299,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6770388513514247183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234000566070818428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1bcf8db52c8d0742a68f05cb4178d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minimapMarkerSprite: {fileID: 0}
+  UID: 1277590341
 --- !u!1 &6777323065750153521
 GameObject:
   m_ObjectHideFlags: 0

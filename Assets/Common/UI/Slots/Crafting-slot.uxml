@@ -2,10 +2,18 @@
     <Style src="project://database/Assets/Common/UI/USS/Buttons.uss?fileID=7433441132597879392&amp;guid=ebf97e02173f5a84caa14728c65d121c&amp;type=3#Buttons" />
     <Style src="project://database/Assets/Common/UI/USS/Slots.uss?fileID=7433441132597879392&amp;guid=26e8ca4acf61134488296dd94b61a10e&amp;type=3#Slots" />
     <Style src="project://database/Assets/Common/UI/USS/Fonts.uss?fileID=7433441132597879392&amp;guid=059e35186be6b3b46b2b64fa14c2371c&amp;type=3#Fonts" />
-    <engine:Button name="Crafting-slot" class="crafting-slot" style="height: 25px; align-items: center; justify-content: flex-start; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-slice-left: 20; -unity-slice-top: 20; -unity-slice-right: 20; -unity-slice-bottom: 20; -unity-slice-scale: 0.5px; margin-top: 5px; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+    <engine:Button name="Crafting-slot" data-source-type="Recipe, DataStructures" class="crafting-slot" style="height: 30px; align-items: center; justify-content: flex-start; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-slice-left: 20; -unity-slice-top: 20; -unity-slice-right: 20; -unity-slice-bottom: 20; -unity-slice-scale: 0.5px; margin-top: 5px; margin-right: 0; margin-bottom: 0; margin-left: 0;">
         <engine:VisualElement name="Icon-container" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=1763678719&amp;guid=f9e1bb27c7e71654eae0729c2eac6ba7&amp;type=3#tilemap_packed 1_13&quot;); width: 15px; height: 15px; -unity-slice-left: 1; -unity-slice-top: 1; -unity-slice-right: 1; -unity-slice-bottom: 1; margin-left: 10px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
-            <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Entities/Characters/Player/sword_%20[dark].png?fileID=-1942936023&amp;guid=8fa9a38b0d502e0448306e687e5f3e2d&amp;type=3#sword_ [dark]_4&quot;);" />
+            <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/Entities/Characters/Player/sword_%20[dark].png?fileID=-1942936023&amp;guid=8fa9a38b0d502e0448306e687e5f3e2d&amp;type=3#sword_ [dark]_4&quot;);">
+                <Bindings>
+                    <engine:DataBinding property="style.backgroundImage" data-source-path="Result.Item.Sprite" binding-mode="ToTarget" />
+                </Bindings>
+            </engine:VisualElement>
         </engine:VisualElement>
-        <engine:Label text="Label" name="Label" class="space-zero label" style="margin-left: 5px; -unity-text-align: middle-left; font-size: 10px;" />
+        <engine:Label text="Label" name="Label" class="space-zero label" style="margin-left: 5px; -unity-text-align: middle-left; font-size: 10px;">
+            <Bindings>
+                <engine:DataBinding property="text" data-source-path="Result.Item.DisplayName" binding-mode="ToTarget" />
+            </Bindings>
+        </engine:Label>
     </engine:Button>
 </engine:UXML>

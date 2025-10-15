@@ -10,15 +10,9 @@ public class Entity : MonoBehaviour
 #if UNITY_EDITOR
     void OnValidate()
     {
-        string[] guid = AssetDatabase.FindAssets($"t:{typeof(Entity)}");
-
-        for (int i = 0; i < guid.Length; i++)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(guid[i]);
-            Entity asset = AssetDatabase.LoadAssetAtPath<Entity>(path);
-            asset.UID = i + 1;
-            EditorUtility.SetDirty(asset);
-        }
+        if (UID != 0) return;
+        UID = Mathf.Abs(System.Guid.NewGuid().GetHashCode());
+        UnityEditor.EditorUtility.SetDirty(this);
     }
 #endif
 

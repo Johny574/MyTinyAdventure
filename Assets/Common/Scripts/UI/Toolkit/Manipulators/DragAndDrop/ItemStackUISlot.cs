@@ -8,6 +8,7 @@ public abstract class ItemStackUISlot : UISlot
         Count = new Label();
         Count.AddToClassList("stack-label");
         Count.AddToClassList("label");
+        Count.name = "Count";
         Add(Count);
         AddToClassList("slot-medium");
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -8,13 +9,14 @@ public class DialogueController : Singleton<DialogueController>
     public bool Skip = false;
     [SerializeField] UIDocument _root;
     [SerializeField] VisualTreeAsset _dialogue_t;
-    VisualElement _dialogueIcon;
+    VisualElement _dialogueIcon, _skipButton;
     [SerializeField] VisualElement _dialogue_e;
     public string CurrentText = "";
     [SerializeField] AudioSource _dialogueAudio;
     Dialogue? _activeDialogue = null;
     SpriteRenderer _speaker;
 
+    public Action OnClose;
     protected override void Awake() {
         base.Awake();
         VisualElement root = _root.rootVisualElement;
@@ -23,7 +25,18 @@ public class DialogueController : Singleton<DialogueController>
         _dialogue_e = templateContainer.Q<VisualElement>("Dialogue");
         _dialogue_e.style.position = new StyleEnum<Position>(Position.Absolute);
         _dialogue_e.style.visibility = Visibility.Hidden;
-        _dialogueIcon = _dialogue_e.Q<VisualElement>("Icon");  
+        _dialogueIcon = _dialogue_e.Q<VisualElement>("Icon");
+        _skipButton = _dialogue_e.Q<VisualElement>("SkipButton");
+        _skipButton.style.visibility = Visibility.Hidden;
+
+        var start = _skipButton.transform.position;
+        var stop = start + new Vector3(0, 10, 0);
+
+        DOTween.To(() => start, x => {
+            start = x;
+            _skipButton.transform.position = x;
+        }, stop, 1f
+        ).SetLoops(-1, LoopType.Yoyo);
 
         display.Add(_dialogue_e);
 
@@ -42,13 +55,15 @@ public class DialogueController : Singleton<DialogueController>
             foreach (var line in dialogue.Exchanges[i].Lines) {
                 for (int c = 0; c < line.Length; c++) {
                     displayedText += line[c];
-                    yield return new WaitForSeconds(.1f);
+                    yield return new WaitForSeconds(.01f);
                     CurrentText = displayedText;
                     _dialogueAudio.Play();
                 }
             }
+            _skipButton.style.visibility = Visibility.Visible;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Skip);
             Skip = false;
+            _skipButton.style.visibility = Visibility.Hidden;
         }    
         Close();
     }
@@ -69,7 +84,9 @@ public class DialogueController : Singleton<DialogueController>
             start = x;
             _dialogue_e.style.bottom = new StyleLength(start);
         }, finish, .1f
-        ).OnComplete(() => _dialogue_e.style.bottom = finish);
+        ).OnComplete(() => {
+            _dialogue_e.style.bottom = finish;
+        });
     }
 
     public void Close(bool finishAction = true) {
@@ -87,6 +104,7 @@ public class DialogueController : Singleton<DialogueController>
                 if (finishAction)
                     _activeDialogue?.FinishAction?.Invoke();
                 _activeDialogue = null;
+                OnClose?.Invoke();
             }
         );
     }

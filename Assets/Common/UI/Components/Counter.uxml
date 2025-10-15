@@ -1,10 +1,10 @@
 <engine:UXML xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
     <engine:VisualElement style="justify-content: space-around; flex-direction: row;">
-        <engine:Label text="Label" class="space-zero" style="flex-shrink: 1; font-size: 7px;" />
+        <engine:Label name="Key" class="space-zero" style="width:50px; flex-shrink: 1; font-size: 7px;"/>
         <engine:VisualElement style="flex-direction: row; height: 9px; width: 50px; justify-content: space-around;">
-            <engine:Button text="+" name="Button" class="space-zero" style="flex-shrink: 1; font-size: 7px; width: 10px;" />
-            <engine:Label text="Label" class="space-zero" style="flex-shrink: 1; font-size: 7px;" />
-            <engine:Button text="-" class="space-zero" style="flex-shrink: 1; font-size: 7px; width: 10px;" />
+            <engine:Button text="+" name="Button" class="space-zero" style="flex-shrink: 1; font-size: 7px; width: 10px; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-892333524&amp;guid=f9e1bb27c7e71654eae0729c2eac6ba7&amp;type=3#tilemap_packed 1_0&quot;);" />
+            <engine:Label name="Value" class="space-zero" style="flex-shrink: 1; font-size: 7px;" />
+            <engine:Button text="-" class="space-zero" style="flex-shrink: 1; font-size: 7px; width: 10px; background-image: url(&quot;project://database/Assets/Common/Assets/Textures/UI/tilemap_packed%201.png?fileID=-892333524&amp;guid=f9e1bb27c7e71654eae0729c2eac6ba7&amp;type=3#tilemap_packed 1_0&quot;);" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

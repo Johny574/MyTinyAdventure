@@ -10,7 +10,7 @@ public class ManaComponent : StatComponent, ISerializedComponent<BarData>
     public void Initilize() {
         _stats = Behaviour.GetComponent<StatpointsBehaviour>().Stats;
         Data = new (_stats.ManaPool, _stats.ManaPool);
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, 0);
     }
 
     public void Tick() {
@@ -23,7 +23,7 @@ public class ManaComponent : StatComponent, ISerializedComponent<BarData>
         Data.Amount += amount;
         Data.Amount = Mathf.Clamp(Data.Amount, 0, _stats.ManaPool);
         Data.CalculateFill();
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, 0);
     }
 
     // todo : change invoke
@@ -34,6 +34,6 @@ public class ManaComponent : StatComponent, ISerializedComponent<BarData>
 
     public void Load(BarData save) {
         Data = save;
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, 0);
     }
 }

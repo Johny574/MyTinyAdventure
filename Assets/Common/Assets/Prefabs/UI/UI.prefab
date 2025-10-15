@@ -88,6 +88,8 @@ MonoBehaviour:
   _tooltip_t: {fileID: 9197481963319205126, guid: 421dd196a7d93af48a3ff7be259590bf, type: 3}
   _openAudio: {fileID: 5417997228513206250}
   _closeAudio: {fileID: 4570348407867857699}
+  _containerPanel: {fileID: 7014110356282760905}
+  _shopPanel: {fileID: 6705477569428070330}
 --- !u!114 &7046609108248073102
 MonoBehaviour:
   m_ObjectHideFlags: 0

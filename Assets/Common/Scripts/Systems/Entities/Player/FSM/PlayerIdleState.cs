@@ -3,11 +3,11 @@ using UnityEngine;
 public class PlayerIdleState : StatemachineState<PlayerStateMachine, string>, IStatemachineState{
     Animator _animator;
     AudioSource _walkAudio;
-
-
-    public PlayerIdleState(PlayerStateMachine statemachine, Animator animator, AudioSource walkaudio) : base(statemachine) {
+    GearBehaviour _gear;
+    public PlayerIdleState(PlayerStateMachine statemachine, Animator animator, AudioSource walkaudio, GearBehaviour gear) : base(statemachine) {
         _animator = animator;
         _walkAudio = walkaudio;
+        _gear = gear;  
     }
 
     public bool GetTransitionCondition() => false;
@@ -24,6 +24,7 @@ public class PlayerIdleState : StatemachineState<PlayerStateMachine, string>, IS
         // }
         _walkAudio.Stop();
         _animator.CrossFade("Idle", 0f);
+        _gear.Gear.Animate("Idle", 0f);
     }
 
     public void TransitionExit() {

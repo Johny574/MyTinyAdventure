@@ -34,7 +34,6 @@ public class ShopComponent : Component
     private void CartChanged(object sender, NotifyCollectionChangedEventArgs e) {
         ObservableCollection<ShopCommand> cart = sender as ObservableCollection<ShopCommand>;
         Total = new(cart.Sum(x => x.Stack.Item.CostPrice * x.Stack.Count));
-        Debug.Log(Total);
     }
 
     public void Checkout() {

@@ -15441,6 +15441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce85400f9dfff79468acbd98bcb2f1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _amount: 0
 --- !u!114 &8340220885189340606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15487,6 +15488,7 @@ MonoBehaviour:
   - XPRequirement: 50000
     StatPointsReward: 0
     InventorySlots: 16
+  _xp: 0
 --- !u!114 &6341170927373958917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15505,21 +15507,27 @@ MonoBehaviour:
     - Item: {fileID: 0}
       Object: {fileID: 2167559443201723943}
       Animator: {fileID: 579482405451191838}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 9093017507275752750}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 6736020942511983623}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 8360581207139753705}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 6312418737194004579}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
     - Item: {fileID: 0}
       Object: {fileID: 8781755065357782899}
       Animator: {fileID: 0}
+      Renderer: {fileID: 0}
 --- !u!114 &128907035646518708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15688,7 +15696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a107e6fab5baffe44932cb3f3b421705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _primaryWeaponPivot: {x: -0.5, y: -0.5}
+  _primaryHandPivot: {x: -0.25, y: -0.5}
+  _secondaryHandPivot: {x: -0.25, y: -0.5}
   _dampSpeed: 0.1
   _primaryHand: {fileID: 123582451658910743}
   _secondaryHand: {fileID: 2074783446202883228}
@@ -15790,8 +15799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1bcf8db52c8d0742a68f05cb4178d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minimapMarker: {fileID: 1003146855, guid: 66fc38681fe32f24fa63658adb5ece9e, type: 3}
-  UID: 0
+  _minimapMarkerSprite: {fileID: 0}
+  UID: 1913258829
 --- !u!1 &3148957202554146099
 GameObject:
   m_ObjectHideFlags: 0

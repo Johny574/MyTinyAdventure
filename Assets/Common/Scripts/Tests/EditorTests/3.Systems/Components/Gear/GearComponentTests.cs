@@ -24,7 +24,7 @@ public class GearTests {
 
         GearSlots gear = new GearSlots{ { _mockItemSlot, new Gearslot(null, null, null)} };
 
-        _gear = new GearComponent(null, gear);
+        _gear = new GearComponent(null, gear, null);
 
         StatPoints stats = new(new(){ { StatPoints.Stat.Strength, 0 } }, new(){ { StatPoints.Stat.Melee, 0 } }, new(){ { StatPoints.Stat.Magic, 0 } });
         ExperienceComponent xp = new(null, new(), 0);

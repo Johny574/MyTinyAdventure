@@ -4,7 +4,6 @@ using UnityEngine;
 public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
     public Action Death; 
     StatpointsComponent _stats;
-    FeedbackComponent _feedback;
     ParticleSystem _bloodparticles;
     IPoolObject<BarData> _healthbar;
     public bool Dead = false;
@@ -14,13 +13,18 @@ public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
     }
 
     public void Initilize() {
-        _feedback = new(); 
         _stats = Behaviour.GetComponent<StatpointsBehaviour>().Stats;
         Data = new BarData(_stats.HPPool, _stats.HPPool);
         Data.CalculateFill();
         CreateHealthBar();
-        Changed?.Invoke(Data);
-        Changed += async (bardata) => await _feedback.DisplayFeedback(new($"{bardata.Amount}", Color.red), Behaviour.transform.position);
+        Changed?.Invoke(Data, 0);
+        Changed += async (bardata, amount) =>
+        {
+            if (amount == 0 || bardata.Amount > bardata.Max)
+                return;
+                
+            await FeedbackFactory.Instance.Display(new($"{amount}", Color.red), Behaviour.transform.position);
+        };
     }
 
     async void CreateHealthBar() => _healthbar = await HealthbarFactory.Instance.CreateHealthBar(Data, this);
@@ -31,7 +35,7 @@ public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
         Dead = true;
     }
 
-    public void Update(int amount) {
+    public void Update(float amount) {
         Data.Amount += amount;
         Data.Amount = Mathf.Clamp(Data.Amount, 0, _stats.HPPool);
         if (Mathf.Sign(amount) < 0) {
@@ -39,7 +43,7 @@ public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
         }
 
         Data.CalculateFill();
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, amount);
         // _healthbar.Bind(Data);
         
         if (Data.Amount <= 0)
@@ -50,7 +54,7 @@ public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
 
     public void Load(BarData save) {
         Data = save;
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, 0);
         Dead = false;
     }
 }

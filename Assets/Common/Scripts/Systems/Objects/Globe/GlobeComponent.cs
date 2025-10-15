@@ -7,7 +7,7 @@ public abstract class GlobeComponent : Component, ICollectable
 {
     public float Amount { get; protected set; }
 
-    protected GlobeComponent(GlobeBehaviour behaviour, float amount) : base(behaviour) {
+    protected GlobeComponent(GlobeBehaviour behaviour, float amount, SpriteRenderer color) : base(behaviour) {
         Amount = amount;
     }
 

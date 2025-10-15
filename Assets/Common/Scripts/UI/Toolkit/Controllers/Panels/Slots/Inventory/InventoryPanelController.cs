@@ -7,15 +7,19 @@ using UnityEngine.UIElements;
 public class InventoryPanelController : SlotPanelController
 {
     VisualElement _containerSlots, _shopSlots, _gearSlots;
-    VisualElement _consumableslots, _skillslots, _attackslots;
+    VisualElement _consumableslots;
+    ContainerPanelBehaviour _containerPanel;
+    ShopPanelBehaviour _shopPanel;
 
-    public InventoryPanelController(VisualTreeAsset panel_t, VisualTreeAsset tooltip_t, VisualElement root, bool dragable, AudioSource openaudio, AudioSource closeaudio, VisualTreeAsset ghostIcon_t, VisualTreeAsset stats_t) : base(panel_t, tooltip_t, root, dragable, openaudio, closeaudio, ghostIcon_t, stats_t)
+    public InventoryPanelController(VisualTreeAsset panel_t, VisualTreeAsset tooltip_t, VisualElement root, bool dragable, AudioSource openaudio, AudioSource closeaudio, VisualTreeAsset ghostIcon_t, VisualTreeAsset stats_t, ContainerPanelBehaviour containerPanel, ShopPanelBehaviour shopPanel) : base(panel_t, tooltip_t, root, dragable, openaudio, closeaudio, ghostIcon_t, stats_t)
     {
+        _containerPanel = containerPanel;
+        _shopPanel = shopPanel;
     }
 
-    public void Open()
+    public override void Open()
     {
-        Enable();
+        base.Open();
         Refresh(Player.Instance.Inventory.Inventory.Inventory);
     }
 
@@ -35,55 +39,79 @@ public class InventoryPanelController : SlotPanelController
         _shopSlots = _root.Q<VisualElement>("Shop").Q<ScrollView>("ScrollView");
         var hotbar = _root.Q<VisualElement>("Hotbar");
         _gearSlots = _root.Q<VisualElement>("GearSlots");
-
         _consumableslots = hotbar.Q<VisualElement>("Consumables");
-        _skillslots = hotbar.Q<VisualElement>("Skills");
-        _attackslots = hotbar.Q<VisualElement>("Consumables");
 
         var currency = _panel.Q<VisualElement>("Currency");
         currency.dataSource = Player.Instance.Currency.Currency;
-        inventory.Added += (item, inventory) => Update(inventory);
-        inventory.Removed += (item, inventory) => Update(inventory);
+        inventory.Added += (item, inventory) => Refresh(inventory);
+        inventory.Removed += (item, inventory) => Refresh(inventory);
     }
 
     protected override void Update(Array data) {
         IList<ItemStack> items = data as IList<ItemStack>;
+        var slots = _gridView.Children().Cast<InventoryUISlot>().ToList();
         int index = 0;
 
-        foreach (InventoryUISlot slot in _gridView.Children()) {
-            if (items[index].Count <= 0) {
-                slot.Icon.style.display = DisplayStyle.None;
-                slot.Count.text = "";
+        // todo this needs to loop over the array rather
+        foreach (var item in items)
+        {
+            if (item.Count <= 0)
+            {
+                slots[index].Icon.style.display = DisplayStyle.None;
+                slots[index].Count.text = "";
             }
-            else {
-                slot.Icon.style.backgroundImage = new StyleBackground(items[index].Item?.Sprite);
-                slot.Icon.style.display = DisplayStyle.Flex;
-                slot.Count.text = items[index].Count.ToString();
+            else
+            {
+                slots[index].Icon.style.backgroundImage = new StyleBackground(item.Item?.Sprite);
+                slots[index].Icon.style.display = DisplayStyle.Flex;
+                slots[index].Count.text = item.Count.ToString();
             }
-
             DragAndDropManipulator dragAndDropManipulator = new DragAndDropManipulator(this._ghostIcon);
             dragAndDropManipulator.DropSlot += DropSlot;
-     
-            int i = index;
 
-            dragAndDropManipulator.DragStart += () => {
-                _ghostIcon.Q<VisualElement>("Icon").style.backgroundImage = new StyleBackground(((ItemStack[])data)[i].Item?.Sprite);
+            dragAndDropManipulator.DragStart += () =>
+            {
+                _ghostIcon.Q<VisualElement>("Icon").style.backgroundImage = new StyleBackground(item.Item?.Sprite);
             };
 
-            dragAndDropManipulator.OnDrop += (from, to) => {
+            dragAndDropManipulator.OnDrop += (from, to) =>
+            {
                 _ghostIcon.style.visibility = Visibility.Hidden;
 
                 if (to == null)
                     return;
-
-                to.OnDrop(((ItemStack[])data)[i]);
+                    
+                to.OnDrop(item);
             };
 
-            dragAndDropManipulator.DragStop += () => {
+            dragAndDropManipulator.DragStop += () =>
+            {
                 _ghostIcon.style.visibility = Visibility.Hidden;
             };
 
-            slot.AddManipulator(dragAndDropManipulator);
+            slots[index].RegisterCallback<MouseDownEvent>(evt =>
+            {
+                if (evt.button != (int)MouseButton.RightMouse)
+                    return;
+
+                Player.Instance.Inventory.Inventory.Remove(item);
+
+                if (_containerPanel.Panel.Enabled)
+                {
+                    _containerPanel.Panel.ContainerHandle.Inventory.Add(item);
+                   _containerPanel.Panel.Refresh(_containerPanel.Panel.ContainerHandle.Inventory.Inventory); 
+                }
+
+                else if (_shopPanel.Panel.Enabled)
+                    Player.Instance.Currency.Currency.Add((int)(item.Item.CostPrice * item.Item.SellPercentage));
+                    
+                else
+                    ItemFactory.Instance.DropItem(Player.Instance.transform.position, item);
+
+                evt.StopPropagation();
+            });
+
+            slots[index].AddManipulator(dragAndDropManipulator);
             index++;
         }
     }

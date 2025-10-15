@@ -6,11 +6,11 @@ using System;
 [Serializable]
 public struct GearSlotData
 {
-    public GearItemSO.Slot Slot;
+    public GearItemSO.Slot _Slot;
     public string ItemGUID;
 
     public GearSlotData(GearItemSO.Slot slot, string itemGUID) {
-        Slot = slot;
+        _Slot = slot;
         ItemGUID = itemGUID;
     }
 }

@@ -13,7 +13,8 @@ public class SkillsBehaviour : MonoBehaviour
     }
 
     void Start() {
-        Skills.Initilize();
+        var gear = GetComponent<GearBehaviour>().Gear;
+        Skills.Initilize(gear);
     }
     
     void Update() {

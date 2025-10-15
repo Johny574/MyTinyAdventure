@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class LocationComponent : Component, ISerializedComponent<Vector2>
 {
-    public int CurrentScene = 1;
+    public string CurrentScene;
 
     public LocationComponent(LocationBehaviour behaviour) : base(behaviour) {
     }
 
     public void Initilize() {
-        CurrentScene = Array.IndexOf(Locations.Scenes, SceneManager.GetActiveScene().name);
+        CurrentScene = SceneManager.GetActiveScene().name;
     }
 
     public void Load(Vector2 save) => Behaviour.transform.position = save;

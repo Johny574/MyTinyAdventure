@@ -9,7 +9,7 @@ public class ItemStackPanelBehaviour : Singleton<ItemStackPanelBehaviour>
     [SerializeField] UIDocument _document;
     [SerializeField] VisualTreeAsset _panel_t;
     [SerializeField] bool _dragable = true;
-    public ItemStackPanelController Panel { get; set; }
+    public ItemStackPanel Panel { get; set; }
     [SerializeField] protected AudioSource _openAudio, _closeAudio;
     protected override void Awake() {
         base.Awake();

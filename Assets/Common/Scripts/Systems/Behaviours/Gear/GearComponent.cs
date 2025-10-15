@@ -8,9 +8,12 @@ public class GearComponent : Component, ISerializedComponent<GearSlotData[]>
     public GearSlots Gear;
     public Action<GearItemSO> Equiped, Unequiped;
     public Action<GearSlots> Updated;
+    Animator _characterAnimator;
 
-    public GearComponent(GearBehaviour behaviour, GearSlots gear) : base(behaviour) {
+    public GearComponent(GearBehaviour behaviour, GearSlots gear, Animator characterAnimator) : base(behaviour)
+    {
         Gear = gear;
+        _characterAnimator = characterAnimator;
     }
 
     public void Initilize(HealthComponent health) {
@@ -22,7 +25,7 @@ public class GearComponent : Component, ISerializedComponent<GearSlotData[]>
 
         foreach (var key in Gear.Keys) {
             if (Gear[key].Object != null && Gear[key].Item != null) {
-                Gear[key].Object.GetComponent<SpriteRenderer>().sprite = Gear[key].Item.Sprite;
+                Gear[key].Renderer.sprite = Gear[key].Item.Sprite;
                 Gear[key].Object.gameObject.SetActive(true);
             }
             else 
@@ -34,18 +37,17 @@ public class GearComponent : Component, ISerializedComponent<GearSlotData[]>
         if (!typeof(GearItemSO).IsInstanceOfType(item)) 
             return;
 
-
         GearItemSO gearitem = item as GearItemSO;
 
         UnEquipt(gearitem.Target);
 
-        if (typeof(WeaponItemData).IsAssignableFrom(gearitem.GetType())) {
-            // Weapons[item.ID].Object.GetComponent<Animator>().runtimeAnimatorController = ((WeaponItemData)item).Animation;
-        }
-
         Gear[gearitem.Target].Item = gearitem;
 
         if (Gear[gearitem.Target].Object != null && Gear[gearitem.Target].Item != null) {
+            var stateInfo = _characterAnimator.GetCurrentAnimatorStateInfo(0);
+            float normalizedTime = stateInfo.normalizedTime % 1;
+            Gear[gearitem.Target].Animator.runtimeAnimatorController = gearitem.Animation;
+            Gear[gearitem.Target].Animator.Play(stateInfo.shortNameHash, -1, normalizedTime);
             Gear[gearitem.Target].Object.GetComponent<SpriteRenderer>().sprite = item.Sprite;
             Gear[gearitem.Target].Object.gameObject.SetActive(true);
         }
@@ -63,14 +65,21 @@ public class GearComponent : Component, ISerializedComponent<GearSlotData[]>
 
         if (Gear[slot].Object != null && Gear[slot].Item == null) {
             Gear[slot].Object.gameObject.SetActive(false);
-
         }
+
         Updated?.Invoke(Gear);
     }
 
-    public GearSlotData[] Save() {
-        return Gear.Where(x => x.Value?.Item != null).Select(x => new GearSlotData(x.Key, x.Value.Item.GUID)).ToArray();
-    }
+    public void Animate(string name, float transitionDuration = 0.1f)
+    {
+        foreach (var key in Gear.Keys) {
+            if (Gear[key].Object != null && Gear[key].Item != null) {
+                Gear[key].Animator.CrossFade(name, transitionDuration);
+            }
+        }
+    } 
+
+    public GearSlotData[] Save() => Gear.Where(x => x.Value?.Item != null).Select(x => new GearSlotData(x.Key, x.Value.Item.GUID)).ToArray();
 
     public void Load(GearSlotData[] save) {
         for (int i = 0; i < save.Length; i++) {

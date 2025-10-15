@@ -5,16 +5,14 @@ public class CurrencyComponent : Component, ISerializedComponent<Currency>
 {
     public Currency Currency = new(0);
     public Action<int> Changed;
-    FeedbackComponent _feedback;
 
     public CurrencyComponent(CurrencyBehaviour behaviour, int amount) : base(behaviour) {
         Currency = new(amount);
-        _feedback = new();
         Behaviour.GetComponent<HealthBehaviour>().Health.Death += OnDeath;
     }
 
     public void Initilize() {
-        Changed += async (amount) => await _feedback.DisplayFeedback(new FeedbackData($"{amount}", Color.yellow), Behaviour.transform.position);
+        Changed += async (amount) => await FeedbackFactory.Instance.Display(new FeedbackData($"{amount}", Color.yellow), Behaviour.transform.position);
         Currency = new(0);
     }
 

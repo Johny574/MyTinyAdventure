@@ -5,15 +5,18 @@ public class ExperienceComponent : StatComponent, ISerializedComponent<BarData>
     private List<Level> _levels = new();
     public int Level { get; private set; } = 0;
     public int AvailableStatPoints { get; set; } = 0;
-    FeedbackComponent _feedback;
     IPoolObject<string> _levelTag;
     
     public ExperienceComponent(ExperienceBehaviour behaviour, List<Level> levels, float xp) : base(behaviour) {
         _levels = levels;
-        _feedback = new();
         Data = new(xp, _levels[Level].XPRequirement);
-        Changed?.Invoke(Data);
-        Changed += async (data) => await _feedback.DisplayFeedback(new FeedbackData($"{data.Amount}", Color.blue), Behaviour.transform.position);
+        Changed?.Invoke(Data, 0);
+        Changed += async (bardata, amount) =>
+        {
+            if (Mathf.Sign(amount) == 0)
+                return;
+            await FeedbackFactory.Instance.Display(new($"{amount}", Color.blue), Behaviour.transform.position);
+        };
     }
 
     public void Initilize(HealthComponent health)
@@ -31,7 +34,7 @@ public class ExperienceComponent : StatComponent, ISerializedComponent<BarData>
     public void Update(float amount) {
         Data.Amount += amount;
         Data.CalculateFill();
-        Changed?.Invoke(Data);
+        Changed?.Invoke(Data, amount);
         if (Data.Amount > _levels[Level].XPRequirement)
             LevelUp();
     }

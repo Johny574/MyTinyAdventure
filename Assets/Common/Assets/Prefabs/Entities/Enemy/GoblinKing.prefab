@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1180821219613850675, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
+      propertyPath: UID
+      value: 459051521
+      objectReference: {fileID: 0}
     - target: {fileID: 4587174156160491559, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,9 +52,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5462516207564230339, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2054718817, guid: 46cf3ec5eaab5164ebb608182f62b41d, type: 3}
+    - target: {fileID: 5857640727603841634, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: e2862dbb3cebce040b8764de3e13e8ee, type: 2}
     - target: {fileID: 6234000566070818428, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
       propertyPath: m_Name
-      value: Enemy Variant
+      value: GoblinKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770388513514247183, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
+      propertyPath: UID
+      value: 2121098237
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

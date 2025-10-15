@@ -5,6 +5,17 @@ public class TravelPoint : MonoBehaviour, IInteractable {
     [field:SerializeField] public string Destination { get; protected set; }
     [SerializeField] Vector2 _arrivePoint; 
 
+    public int UID;
+
+    #if UNITY_EDITOR
+        void OnValidate()
+        {
+            if (UID != 0) return;
+            UID = Mathf.Abs(System.Guid.NewGuid().GetHashCode());
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+    #endif
+
     void Awake() {
         SceneTracker.Instance.Register<TravelPoint>(gameObject);   
     }
@@ -20,7 +31,7 @@ public class TravelPoint : MonoBehaviour, IInteractable {
 
     public void Interact(GameObject accesor) {
         PlayerSaveData _playerSave = accesor.GetComponent<PlayerSave>().Save();
-        _playerSave.CurrentScene = Locations.Index(Destination);
+        _playerSave.CurrentScene = Destination;
         _playerSave.X = _arrivePoint.x;
         _playerSave.Y = _arrivePoint.y;
         Serializer.SaveFile(_playerSave, "Player.json", SaveSlot.AutoSave);

@@ -89,7 +89,7 @@
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Common/Editor/Textures/Icons/UI/Minus/64px/Minus%20White%2064px.png?fileID=56007701658540983&amp;guid=51fbca9b1dd882742a40c8e87acdbe93&amp;type=3#Minus White 64px_0&quot;); -unity-background-image-tint-color: rgb(0, 0, 0); -unity-background-scale-mode: scale-to-fit;" />
                         </engine:Button>
                     </engine:VisualElement>
-                    <engine:VisualElement name="Quests-container" class="quest-container panel-light" style="padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; height: 45%;">
+                    <engine:VisualElement name="Quests-container" class="quest-container panel-light" style="padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; height: 250px;">
                         <engine:ScrollView name="ScrollView" style="width: 100%; height: 100%;" />
                     </engine:VisualElement>
                 </engine:VisualElement>
