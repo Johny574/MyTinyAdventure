@@ -10,5 +10,6 @@ public abstract class SerializedObject<T> : MonoBehaviour, ISerializedObject<T>
         if (Serializer.ContainsSave(SaveSlot.AutoSave, _savename, ".json"))
             Load(Serializer.LoadFile<T>(_savename + ".json", SaveSlot.AutoSave));
     }
+    
     void OnApplicationQuit() => Serializer.SaveFile(Save(), _savename + ".json", SaveSlot.AutoSave);
 }

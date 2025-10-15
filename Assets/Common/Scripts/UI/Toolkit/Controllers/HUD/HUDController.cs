@@ -132,7 +132,7 @@ public class HUDController : MonoBehaviour
 
         scrollview.Add(gridview);
         
-        QuestsRefresh(journal, gridview, _quest_t, _queststep_t);
+        scrollview.schedule.Execute(() => QuestsRefresh(journal, gridview, _quest_t, _queststep_t)).StartingIn(1000);
         journal.StepCompleted += (step) =>QuestsRefresh(journal, gridview, _quest_t, _queststep_t);
     }
 

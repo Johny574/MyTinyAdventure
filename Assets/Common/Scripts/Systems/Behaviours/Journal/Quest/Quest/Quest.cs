@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class Quest {
@@ -24,6 +25,14 @@ public class Quest {
     public void Initialize()
     {
         CreatePointer();
+
+        foreach (var scene in SO.EnabledObjects)
+            if (scene.Scene == SceneManager.GetActiveScene().name)
+                scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(true));
+
+        foreach (var scene in SO.DisabledObjects)
+            if (scene.Scene == SceneManager.GetActiveScene().name)
+                scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(false));
     }
 
     async void CreatePointer()

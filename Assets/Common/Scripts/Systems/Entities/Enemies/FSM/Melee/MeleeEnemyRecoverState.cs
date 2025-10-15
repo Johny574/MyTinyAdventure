@@ -1,7 +1,3 @@
-
-
-
-
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,12 +16,9 @@ public class MeleeEnemyRecoverState : StatemachineState<MeleeEnemyStatemachine, 
         _patrol = patrol;
         _movement = movement;
         _gear = gear;
-        
     }
 
-    public bool GetTransitionCondition() {
-        return _statemachine.CanAttack == false;
-    }
+    public bool GetTransitionCondition() => _statemachine.CanAttack.Equals(false);
 
     public void OnAwake() {
 
@@ -36,16 +29,8 @@ public class MeleeEnemyRecoverState : StatemachineState<MeleeEnemyStatemachine, 
         if (_agent.path == null || Vector2.Distance(_player.transform.position, retreatPoint) < ((MeleeWeaponItemData)_gear.Gear[GearItemSO.Slot.Primary].Item).Reach) {
             if (RandomPoint(_player.transform.position, 10f, out retreatPoint)) {
                 _path = new();
-                // _agent.CalculatePath((Vector3)retreatPoint, _path);
-                // _agent.SetPath(_path);
-                // Debug.DrawLine(_statemachine.transform.position, retreatPoint, Color.red);
-                // Debug.Break();
             }
         }
-        // else
-        // {
-        //     _movement.FrameInput = _agent.desiredVelocity.normalized;
-        // }
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result) {
@@ -62,7 +47,6 @@ public class MeleeEnemyRecoverState : StatemachineState<MeleeEnemyStatemachine, 
     }
 
     public void TransitionEnter() {
-        // _agent.path = null;
         retreatPoint = _statemachine.transform.position;
         _path = null;
     }

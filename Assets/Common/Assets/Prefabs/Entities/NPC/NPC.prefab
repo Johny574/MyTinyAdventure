@@ -15800,7 +15800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minimapMarkerSprite: {fileID: 0}
-  UID: 1913258829
+  _id: 1370642550
 --- !u!1 &3148957202554146099
 GameObject:
   m_ObjectHideFlags: 0

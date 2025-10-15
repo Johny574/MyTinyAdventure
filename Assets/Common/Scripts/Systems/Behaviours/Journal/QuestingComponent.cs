@@ -4,26 +4,22 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class QuestingComponent : JournalComponent, ISerializedComponent<QuestData[]>
+public class QuestingComponent : Component, ISerializedComponent<QuestData[]>
 {
     public List<Quest> ActiveQuests { get; set; } = new();
     public List<Quest> Completed { get; set; } = new();
-    public Action<Quest> Added, Removed;
     public Action<Queststep> StepCompleted;
 
-    public QuestingComponent(MonoBehaviour behaviour, List<QuestSO> quests) : base(behaviour, quests)
+    public QuestingComponent(MonoBehaviour behaviour) : base(behaviour)
     {
-        ActiveQuests = new(); 
-
-        foreach (var quest in quests)
-            Add(quest);
-
+        ActiveQuests = new();
         StepCompleted += (step) => DropRewards(step.SO.ItemRewards, step.SO.CurrencyRewards, step.SO.XpReward, Behaviour.transform.position);
     }
 
-    public void Initilize() {
-        foreach (var quest in ActiveQuests)
-            quest.Initialize();
+    public void Initilize(List<QuestSO> quests)
+    {
+        foreach (var quest in quests)
+            Add(quest);
     }
 
     public void Add(QuestSO data)
@@ -31,12 +27,12 @@ public class QuestingComponent : JournalComponent, ISerializedComponent<QuestDat
         Quest quest = new Quest(data, this);
         ActiveQuests.Add(quest);
         quest.OnCompleted += OnQuestCompleted;
+        quest.Initialize();
     }
 
     public void Remove(Quest quest) {
-        Quests.Remove(quest.SO);
         ActiveQuests.Remove(quest);
-        Removed?.Invoke(quest);
+        // Removed?.Invoke(quest);
         quest.OnCompleted -= OnQuestCompleted;
     }
 
@@ -66,30 +62,18 @@ public class QuestingComponent : JournalComponent, ISerializedComponent<QuestDat
 
     public void Load(QuestData[] save) {
         ActiveQuests = new();
-        Quests = new();
         for (int i = 0; i < save.Length; i++) {
-            QuestData quest = save[i]; // keep this reference in memory
+            QuestData questdata = save[i]; // keep this reference in memory
 
-            UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<QuestSO> QuestSO = Addressables.LoadAssetAsync<QuestSO>(new AssetReference(quest.GUID));
-            QuestSO.Completed += (itemso) => {
-                if (itemso.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Failed) 
-                    throw new System.Exception($"Failed to load asset {quest.GUID}");
-                Quests.Add(itemso.Result);
-                var q = new Quest(itemso.Result, this, quest.CurrentStep);
-                ActiveQuests.Add(q);
+            UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<QuestSO> QuestSO = Addressables.LoadAssetAsync<QuestSO>(new AssetReference(questdata.GUID));
+            QuestSO.Completed += (questso) => {
+                if (questso.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Failed)
+                    throw new System.Exception($"Failed to load asset {questdata.GUID}");
+
+                Add(questso.Result);
             };
         }
     }
-
-    // public override void Initilize(EntityComponent entity) {
-    //     base.Initilize(entity);
-    //     JournalAudio.Initilize(entity);
-    //     PlayerQuests = new();
-
-    //     foreach (var quest in _startingQuests) {
-    //         AddQuest(new Quest(quest.ID, 0, entity), false);
-    //     }
-    // }
 
     // public void Tick() {
     //     foreach (var quest in PlayerQuests) {

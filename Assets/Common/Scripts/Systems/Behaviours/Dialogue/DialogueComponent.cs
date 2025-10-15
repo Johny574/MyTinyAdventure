@@ -97,10 +97,10 @@ public class DialogueComponent : Component
     /// </summary>
     /// <param name="journal">The accesor's journal component.</param>
     /// <returns></returns>
-    Dialogue? GetActiveDialogueForQuests(JournalComponent accesor) {
+    Dialogue? GetActiveDialogueForQuests(QuestingComponent accesor) {
         if (_journal.Quests.Count > 0) {
             QuestSO firstAvailable = Behaviour.GetComponent<QuestingBehaviour>().Questing.ActiveQuests[0].SO;
-            return new Dialogue(() => accesor.Quests.Add(firstAvailable), new DialogueExchange[1] { new DialogueExchange(firstAvailable.StartDialogue, _entity) });
+            return new Dialogue(() => accesor.Add(firstAvailable), new DialogueExchange[1] { new DialogueExchange(firstAvailable.StartDialogue, _entity) });
         }
 
         return null;

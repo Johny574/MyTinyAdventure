@@ -12276,7 +12276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minimapMarkerSprite: {fileID: 0}
-  UID: 1567749511
+  _id: 1159523719
 --- !u!195 &1834245518236547733
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12312,7 +12312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minimapMarkerSprite: {fileID: 0}
-  UID: 1277590341
+  _id: 1797029072
 --- !u!1 &6777323065750153521
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,8 @@ public class JournalTests
 
         _inventory = new InventoryComponent(null, new ItemStack[16]);
 
-        _journal = new QuestingComponent(null, new());
+        _journal = new QuestingComponent(null);
+        _journal.Initilize(new());
 
         _journal.Add(_mockQuest);
         _journal.Add(_mockQuest);

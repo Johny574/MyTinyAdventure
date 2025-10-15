@@ -1,3 +1,4 @@
+
 # x refactor 
 # ui classes ve's reference
 # player singleton reference
@@ -34,6 +35,8 @@
 ! skills
     blink skill particles
     blink skill trail renderer
+    skill particles 
+    trail renderers
     
 ! ghosticon
 ghost icon singleton

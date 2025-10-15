@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaba0ed1c2fe1964dba43f32943605de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _color: {fileID: 987091220695402143}
 --- !u!114 &8162570085447449045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +339,7 @@ GameObject:
   - component: {fileID: 6163620953842467143}
   - component: {fileID: 987091220695402143}
   m_Layer: 8
-  m_Name: Square
+  m_Name: Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

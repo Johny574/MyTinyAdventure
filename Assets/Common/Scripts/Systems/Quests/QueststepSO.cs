@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [Serializable]
@@ -22,12 +21,20 @@ public abstract class QueststepSO : ScriptableObject {
     public List<ItemStack> ItemRewards = new();
     public int CurrencyRewards;
 
-    // public List<GameObject> 
+    public List<SceneObjects> DisabledObjects = new(); // List of UIDs that get disabled when step is completed
+    public List<SceneObjects> EnabledObjects = new(); // List of UIDs that get enabled when step is completed
 
-    // #if UNITY_INCLUDE_TESTS
-    // public void TestInit(int index) {
-    //     _id = index;
-    //     Description = ((char)('a' + index)).ToString();
-    // }
-    // #endif
+    #if UNITY_INCLUDE_TESTS
+    public void TestInit(int index) {
+        _id = index;
+        Description = ((char)('a' + index)).ToString();
+    }
+    #endif
+}
+
+[Serializable]
+public class SceneObjects
+{
+    public List<int> Objects;
+    public string Scene;
 }

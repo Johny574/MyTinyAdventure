@@ -12339,7 +12339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minimapMarkerSprite: {fileID: 0}
-  UID: 544734213
+  _id: 1710527882
 --- !u!114 &4854839984023226196
 MonoBehaviour:
   m_ObjectHideFlags: 0

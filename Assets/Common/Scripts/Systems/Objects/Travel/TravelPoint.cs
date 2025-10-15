@@ -1,27 +1,25 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Interactable))]
-public class TravelPoint : MonoBehaviour, IInteractable {
+public class TravelPoint : MonoBehaviour, IInteractable, IUnique {
     [field:SerializeField] public string Destination { get; protected set; }
-    [SerializeField] Vector2 _arrivePoint; 
 
-    public int UID;
+    public int UID { get => _id;  }
+    [SerializeField] int _id;
 
     #if UNITY_EDITOR
-        void OnValidate()
-        {
-            if (UID != 0) return;
-            UID = Mathf.Abs(System.Guid.NewGuid().GetHashCode());
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
+    void OnValidate()
+    {
+        if (_id != 0) return;
+        _id = Mathf.Abs(System.Guid.NewGuid().GetHashCode());
+        UnityEditor.EditorUtility.SetDirty(this);
+    }
     #endif
 
-    void Awake() {
-        SceneTracker.Instance.Register<TravelPoint>(gameObject);   
-    }
+    [SerializeField] Vector2 _arrivePoint; 
 
-    void OnDisable() {
-        SceneTracker.Instance?.Unregister<TravelPoint>(gameObject);   
+    void OnEnable() {
+        SceneTracker.Instance.RegisterUnique<TravelPoint>(gameObject, UID);   
     }
 
     public void CancelTarget() {

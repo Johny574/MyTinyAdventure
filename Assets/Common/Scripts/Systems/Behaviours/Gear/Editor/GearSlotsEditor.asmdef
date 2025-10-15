@@ -1,5 +1,5 @@
 {
-    "name": "GearEditor",
+    "name": "GearSlotsEditor",
     "rootNamespace": "",
     "references": [
         "GUID:700871136e40f154cae59cd69fa1632c",
