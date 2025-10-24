@@ -5,8 +5,7 @@ public class JournalPanelController : PanelController {
     VisualTreeAsset _slot_t;
 
     public JournalPanelController(VisualTreeAsset panel_t, VisualElement root, bool dragable, AudioSource openaudio, AudioSource closeaudio) : base(panel_t, root, dragable, openaudio, closeaudio) {
-        _openAudio = openaudio;
-        _closeAudio = closeaudio;
+
     }
 
     public override void Setup() {

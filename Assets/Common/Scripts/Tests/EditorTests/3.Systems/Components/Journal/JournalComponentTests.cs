@@ -42,7 +42,7 @@ public class JournalTests
 
         _mockQuest.Steps = _mockQuestSteps;
 
-        _currency = new CurrencyComponent(null, 0);
+        _currency = new CurrencyComponent(null);
 
         _inventory = new InventoryComponent(null, new ItemStack[16]);
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bar : MonoBehaviour, IPoolObject<BarData> {
     [SerializeField] TextMeshProUGUI _textField;
     [SerializeField] SlicedFilledImage _fill;
-    [SerializeField] bool _reverse = false;
+    // [SerializeField] bool _reverse = false;
 
     #if UNITY_EDITOR
     void OnValidate() {

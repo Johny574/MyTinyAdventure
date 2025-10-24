@@ -17,7 +17,7 @@ public abstract class EnemyStateMachine : EntityStatemachine  {
 
         Dictionary<string, IStatemachineState> states = DefaultStates();
 
-        states.Add("Patrol",    new EnemyPatrolState(this, patrol.Patrol, agent, renderer, movement.Movement));
+        states.Add("Patrol",    new EnemyPatrolState(this, patrol.Patrol, agent, renderer, movement.Movement, GameObject.FindGameObjectWithTag("Player"), cache));
         states.Add("Chase",     new EnemyChaseState(this, agent, flip.Flip, cache.Cache, movement.Movement, _walkAudio, animator, _visionLight));
 
         return states;

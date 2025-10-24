@@ -46,9 +46,10 @@ public class GameManager : Singleton<GameManager>
         _loadingCanvas.SetActive(true);
         Serializer.DeleteSave(SaveSlot.AutoSave);
         await LoadScene("GnurksCave"); // opening scene
+        // await LoadScene("Forest1-2"); 
+        // await LoadScene("Forest1-4"); 
         MainCamera.Instance.OnNewGame();
         OnNewGame?.Invoke();
-        // await LoadScene("Shop"); 
     }
 
     public async Task LoadSaveAsync(SaveSlot slot) {

@@ -8,7 +8,8 @@ public class CurrencyTests
 
     [SetUp]
     public void SetUp() {
-        _currency = new CurrencyComponent(null, 0);
+        _currency = new CurrencyComponent(null );
+        _currency.Initilize(0, null);
         _currency.Add(_testAmount);
     }   
 

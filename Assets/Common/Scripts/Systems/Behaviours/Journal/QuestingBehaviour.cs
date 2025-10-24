@@ -17,6 +17,8 @@ public class QuestingBehaviour : MonoBehaviour
         {
             _beginnerQuests.ForEach(x => Questing.Add(x));
         };
+
+        
     }
 
     void Start() {

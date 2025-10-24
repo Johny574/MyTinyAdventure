@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfaf45766c1d75248bc983b705334286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outlineShader: {fileID: 0}
-  _renderer: {fileID: 0}
+  _outlineShader: {fileID: -6465566751694194690, guid: 87844be889758f146ba551149af6e317, type: 3}
+  _renderer: {fileID: 6090400617032439153}
   _defaultColor: {r: 1, g: 1, b: 1, a: 1}
   _targetColor: {r: 1, g: 0, b: 0, a: 1}
   _targetThickness: 0.5
@@ -199,3 +199,4 @@ MonoBehaviour:
     Count: 0
   - Item: {fileID: 0}
     Count: 0
+  _id: 1631186938

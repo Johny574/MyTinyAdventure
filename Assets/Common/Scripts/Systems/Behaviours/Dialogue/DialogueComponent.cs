@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class DialogueComponent : Component
@@ -10,7 +11,9 @@ public class DialogueComponent : Component
     EmoteComponent _emote;
     Sprite _questEmote, _dialogueEmote;
     Entity _entity;
-    
+    IPoolObject<string> _tag;
+    bool _hasTag = false;
+
     public DialogueComponent(DialogueBehaviour behaviour, Dialogue action, EmoteComponent emote, Sprite questEmote, Sprite dialogueEmote) : base(behaviour)
     {
         _defaultActiveDialogue = action;
@@ -21,24 +24,25 @@ public class DialogueComponent : Component
 
     public void Initilize(JournalComponent journal) {
         _journal = journal;
-        CreateTag();
+        OnCreateTag();
 
         if (_journal.Quests.Count > 0)
             _emote.Add(_questEmote);
     }
 
-    public void Interact(GameObject accesor) {
+    public void Interact(GameObject accesor)
+    {
         MainCamera.Instance?.CameraController.Focus(Behaviour.gameObject);
         ActiveDialogue = GetActiveDialogue(accesor);
         DialogueController.Instance.Open(ActiveDialogue);
-        DialogueController.Instance.OnClose = () => {
+        DialogueController.Instance.OnClose = () =>
+        {
             MainCamera.Instance?.CameraController.UnFocus();
             _emote.Remove();
         };
         _emote.Add(_dialogueEmote);
     }
 
-    // loop over entitys talking then loop over each entitys dialogue...
     public void CancelTarget() {
         MainCamera.Instance.CameraController.UnFocus();
         DialogueController.Instance.Close(false);
@@ -48,16 +52,46 @@ public class DialogueComponent : Component
 
         if (_journal.Quests.Count > 0)
             _emote.Add(_questEmote);
-
     }
 
     public void Target() { }
 
-    async void CreateTag() {
-        IPoolObject<string> tag = await TagFactory.Instance.Pool.GetObject<string>();
-        ((MonoBehaviour)tag).GetComponent<Follower>().Follow(Behaviour.gameObject);
-        tag.Bind(Behaviour.gameObject.name);
+    async void OnCreateTag() => await CreateTag();
+
+    async Task CreateTag()
+    {
+        if (_hasTag)
+            return;
+
+        _hasTag = true;
+
+        _tag = await TagFactory.Instance.CreateTag(Behaviour.gameObject.name, Behaviour.gameObject);
+        // ((MonoBehaviour)_tag).GetComponent<Follower>().Follow(Behaviour.gameObject);
+        // _tag.Bind(Behaviour.gameObject.name);
     }
+
+    public void OnDisable()
+    {
+        if (_tag == null)
+            return;
+
+        var mono = _tag as MonoBehaviour;
+        
+        if (mono != null)
+            mono.gameObject.SetActive(false);
+
+        _tag = null;
+        _hasTag = false;
+    }
+
+    public void OnEnable()
+    {
+        if (TagFactory.Instance == null)
+            return;
+
+        OnCreateTag();
+    }
+
 
     /// <summary>
     /// Gets the active dialogue according to the current situation.
@@ -85,11 +119,8 @@ public class DialogueComponent : Component
     /// </summary>
     /// <returns></returns>
     Dialogue? GetActiveDialogueForShop(GameObject accesor) {
-        ShopBehaviour shop;
-        if (Behaviour.TryGetComponent(out shop))
-            return shop.Shop.Dialogue(accesor);
-        else
-            return null;
+        ShopBehaviour shop = Behaviour.GetComponent<ShopBehaviour>();
+        return shop.Shop.Items.Where(x => x.Item != null).Count() <= 0 ? null : shop.Shop.Dialogue(accesor);
     }
 
     /// <summary>
@@ -117,13 +148,12 @@ public class DialogueComponent : Component
         if (accesorQuests.Count <= 0)
             return null;
 
-        List<Quest> activeDialogueQuests = accesorQuests
-        .Where(x => x.CurrentStep().GetType().Equals(typeof(DialogueQueststep)))?
-        .Where(x => (x.CurrentStep().SO as DialogueQueststepSO).Target.GetComponent<Entity>().UID.Equals(Behaviour.GetComponent<Entity>().UID)).ToList();
+        var steps = accesorQuests.Where(x => x.CurrentStep().GetType().Equals(typeof(DialogueQueststep)));
+        List<Quest> activeDialogueQuests = steps?.
+        Where(x => (x.CurrentStep().SO as DialogueQueststepSO).Target.GetComponent<Entity>().UID.Equals(Behaviour.GetComponent<Entity>().UID)).ToList();
 
         if (activeDialogueQuests.Count <= 0)
             return null;
-
 
         //  (DialogueQueststepSO)activeDialogueQuests[0].CurrentStep().Data).Dialogue
         return new Dialogue(() => activeDialogueQuests[0].CurrentStep().Complete(), ((DialogueQueststepSO)activeDialogueQuests[0].CurrentStep().SO).Dialogue);

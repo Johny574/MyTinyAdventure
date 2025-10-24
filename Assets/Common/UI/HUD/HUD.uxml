@@ -117,18 +117,18 @@
                         </engine:VisualElement>
                         <engine:VisualElement name="Hotbar-container" style="flex-direction: row;">
                             <engine:VisualElement name="Skills" data-source-type="SkillsComponent, Systems" class="hotbar-section" style="width: 50%;">
-                                <HotbarUISlot index="0" />
-                                <HotbarUISlot index="1" />
-                                <HotbarUISlot index="2" />
-                                <HotbarUISlot index="3" />
+                                <HotbarUISlot index="0" name="Slot1" />
+                                <HotbarUISlot index="1" name="Slot2" />
+                                <HotbarUISlot index="2" name="Slot3" />
+                                <HotbarUISlot index="3" name="Slot4" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Attack" class="hotbar-section" style="width: 25%;">
-                                <AttackUISlot index="0" />
-                                <AttackUISlot index="0" />
+                                <AttackUISlot index="0" name="Attack1" />
+                                <AttackUISlot index="0" name="Attack2" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Consumables" class="hotbar-section" style="width: 25%;">
-                                <ConsumableUISlot index="0" />
-                                <ConsumableUISlot index="1" />
+                                <ConsumableUISlot index="0" name="Consumable1" />
+                                <ConsumableUISlot index="1" name="Consumable2" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                     </engine:VisualElement>

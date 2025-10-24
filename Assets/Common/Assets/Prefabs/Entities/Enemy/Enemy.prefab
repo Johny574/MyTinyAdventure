@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 387558365786407567}
   - component: {fileID: 6960191138115945724}
   - component: {fileID: 2758939545067171034}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Secondary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5007,7 +5007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3886563929637410246}
   - component: {fileID: 6648161000863244996}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: GruntAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5136,7 +5136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4430574146576914290}
   - component: {fileID: 3280061394499789893}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: CoinAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5266,7 +5266,7 @@ GameObject:
   - component: {fileID: 408100175162967144}
   - component: {fileID: 123660027494671002}
   - component: {fileID: 16107104965886840}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: SecondaryHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5375,7 +5375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6386961571425565340}
   - component: {fileID: 3316386280437266916}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5463,7 +5463,7 @@ GameObject:
   - component: {fileID: 4325242526027058930}
   - component: {fileID: 839077528789315838}
   - component: {fileID: 1458653399293564898}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5661,7 +5661,7 @@ GameObject:
   - component: {fileID: 4129920620471439868}
   - component: {fileID: 5071031062743961550}
   - component: {fileID: 7592644924026658738}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Primary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10677,7 +10677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 130825750586625573}
   - component: {fileID: 5141090643045278786}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: WooshAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10807,7 +10807,7 @@ GameObject:
   - component: {fileID: 5030317814494485860}
   - component: {fileID: 1512440824632989499}
   - component: {fileID: 1101062126496978650}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: PrimaryHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10916,7 +10916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3988338080537069926}
   - component: {fileID: 3030398990920932822}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: ImpactAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11045,8 +11045,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3776721672893650102}
   - component: {fileID: 4347053287982540312}
-  m_Layer: 11
-  m_Name: Source
+  m_Layer: 6
+  m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11129,7 +11129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4140902404720000036}
   - component: {fileID: 464917914233655551}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: SkillsAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11259,7 +11259,7 @@ GameObject:
   - component: {fileID: 2983026250082241604}
   - component: {fileID: 8237221295470245942}
   - component: {fileID: 2531009111377651755}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Pants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11454,7 +11454,7 @@ GameObject:
   - component: {fileID: 5754033952799386937}
   - component: {fileID: 8230803441945278528}
   - component: {fileID: 3569124479105007072}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11674,10 +11674,10 @@ GameObject:
   - component: {fileID: 4212085409817480575}
   - component: {fileID: 5598133887787443936}
   - component: {fileID: 7241094474159346009}
+  - component: {fileID: 5377360111787615595}
   - component: {fileID: -1180821219613850675}
   - component: {fileID: 1834245518236547733}
-  - component: {fileID: 6770388513514247183}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11815,7 +11815,7 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_Sprite: {fileID: 822338685233754840, guid: 4f95c5290cd08bd4597e3f161f515d6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}
@@ -11873,7 +11873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce85400f9dfff79468acbd98bcb2f1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amount: 0
+  _amount: 20
 --- !u!114 &2815443144512688269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11923,19 +11923,19 @@ MonoBehaviour:
     - Item: {fileID: 0}
       Object: {fileID: 2140315528091844435}
       Animator: {fileID: 6555619840587183426}
-      Renderer: {fileID: 0}
+      Renderer: {fileID: 938889138227473510}
     - Item: {fileID: 0}
       Object: {fileID: 562787348315932323}
       Animator: {fileID: 0}
-      Renderer: {fileID: 0}
+      Renderer: {fileID: 2382537679884104314}
     - Item: {fileID: 0}
       Object: {fileID: 5246023534425107869}
       Animator: {fileID: 0}
-      Renderer: {fileID: 0}
+      Renderer: {fileID: 8230803441945278528}
     - Item: {fileID: 0}
       Object: {fileID: 9201580478711694591}
       Animator: {fileID: 0}
-      Renderer: {fileID: 0}
+      Renderer: {fileID: 316456722002992057}
     - Item: {fileID: 0}
       Object: {fileID: 5015891857514632200}
       Animator: {fileID: 0}
@@ -12111,6 +12111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 5462516207564230339}
+  Invert: 0
 --- !u!114 &2929202892579782608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12123,11 +12124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a107e6fab5baffe44932cb3f3b421705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _primaryHandPivot: {x: -0.25, y: -0.5}
+  _primaryHandPivot: {x: -0.5, y: -0.5}
   _secondaryHandPivot: {x: -0.25, y: -0.5}
   _dampSpeed: 0.1
-  _primaryHand: {fileID: 2771766198482048010}
-  _secondaryHand: {fileID: 765541705506649912}
+  _primaryHand: {fileID: 5797024574790911508, guid: d4b200c280a13d7488500bded8fbc350, type: 3}
+  _secondaryHand: {fileID: 6553903054362181300, guid: d4b200c280a13d7488500bded8fbc350, type: 3}
 --- !u!114 &8236625517073673019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12190,14 +12191,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enableDebugging: 1
-  _gruntAudio: {fileID: 0}
-  _walkAudio: {fileID: 0}
-  _impactAudio: {fileID: 0}
+  _gruntAudio: {fileID: 6648161000863244996}
+  _walkAudio: {fileID: 4777413805428504925}
+  _impactAudio: {fileID: 3030398990920932822}
   _wall:
     serializedVersion: 2
     m_Bits: 0
   AgroProximity: 5
-  _visionLight: {fileID: 0}
+  _visionLight: {fileID: 3776721672893650102}
   AttackSpeed: 2
   AttackSpeedTimer: 0
   CanAttack: 1
@@ -12214,11 +12215,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meleeSwingArcDegrees: 135
-  _trailRenderer: {fileID: 0}
+  _trailRenderer: {fileID: 4129920620471439868}
   _enemies:
     serializedVersion: 2
-    m_Bits: 0
-  _whooshAudio: {fileID: 0}
+    m_Bits: 512
+  _whooshAudio: {fileID: 5141090643045278786}
 --- !u!114 &5598133887787443936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12233,8 +12234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 0
-  _projectile: {fileID: 0}
+    m_Bits: 512
+  _projectile: {fileID: 11400000, guid: 32f32b755da7d0144b58b5e6a5ce4614, type: 2}
 --- !u!114 &7241094474159346009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12248,21 +12249,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enableDebugging: 0
-  _gruntAudio: {fileID: 0}
-  _walkAudio: {fileID: 0}
-  _impactAudio: {fileID: 0}
+  _gruntAudio: {fileID: 6648161000863244996}
+  _walkAudio: {fileID: 4777413805428504925}
+  _impactAudio: {fileID: 3030398990920932822}
   _wall:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16
   AgroProximity: 5
-  _visionLight: {fileID: 0}
+  _visionLight: {fileID: 3776721672893650102}
   _attackSpeed: 5
   _attackRange: 5
-  _attackType: 0
-  _projectile: {fileID: 0}
+--- !u!114 &5377360111787615595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234000566070818428}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84914170827b51646b4693b1c0d9ed07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableDebugging: 0
+  _gruntAudio: {fileID: 6648161000863244996}
+  _walkAudio: {fileID: 4777413805428504925}
+  _impactAudio: {fileID: 3030398990920932822}
+  _wall:
+    serializedVersion: 2
+    m_Bits: 16
+  AgroProximity: 5
+  _visionLight: {fileID: 3776721672893650102}
   _walls:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16
+  BuildupDuration: 1
+  <ChargeDistance>k__BackingField: 5
+  _chargespeed: 0
+  _chargeCooldown: 5
+  _chargeCooldownTimer: 0
 --- !u!114 &-1180821219613850675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12275,8 +12300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d7f0e2f792fc34eba64cc08a1e8c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minimapMarkerSprite: {fileID: 0}
-  _id: 1159523719
+  _minimapMarkerSprite: {fileID: 1751324127, guid: 66fc38681fe32f24fa63658adb5ece9e, type: 3}
+  _id: 341109728
 --- !u!195 &1834245518236547733
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12299,20 +12324,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6770388513514247183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234000566070818428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1bcf8db52c8d0742a68f05cb4178d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _minimapMarkerSprite: {fileID: 0}
-  _id: 1797029072
 --- !u!1 &6777323065750153521
 GameObject:
   m_ObjectHideFlags: 0
@@ -12323,7 +12334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4111280506950287758}
   - component: {fileID: 2154191523373685674}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: QuestAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12453,7 +12464,7 @@ GameObject:
   - component: {fileID: 25094991229958869}
   - component: {fileID: 6363500997416661105}
   - component: {fileID: 6337518362914900710}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17343,7 +17354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5666616240023100573}
   - component: {fileID: 1012752452355949783}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: BuffAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17472,7 +17483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6718132426004225526}
   - component: {fileID: 5024704791917974533}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: ConsumableAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17601,7 +17612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8099714186075709130}
   - component: {fileID: 4777413805428504925}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: WalkAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17731,7 +17742,7 @@ GameObject:
   - component: {fileID: 1258246357279211573}
   - component: {fileID: 8598041591999924873}
   - component: {fileID: 2838788471137752291}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: MoveParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22564,7 +22575,7 @@ GameObject:
   - component: {fileID: 909981049354207736}
   - component: {fileID: 316456722002992057}
   - component: {fileID: 5645590469802177836}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}

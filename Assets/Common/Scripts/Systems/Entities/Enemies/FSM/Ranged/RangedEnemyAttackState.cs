@@ -1,82 +1,86 @@
 
 using UnityEngine;
+using UnityEngine.AI;
 
-public class RangedEnemyAttackState : StatemachineState<RangedEnemyStatemachine, string>, IStatemachineState {
-    // private EntityService _entity;
+public class RangedEnemyAttackState : StatemachineState<RangedEnemyStatemachine, string>, IStatemachineState
+{
     private LayerMask _walls;
     private float _attackTimer, _attackSpeed;
-    private Projectile _projectile;
-    private WeaponItemSO.Type _attackType;
-    private LayerMask _enemyProjectileLayer;
-
-    private float _attackRange;
-
-    public RangedEnemyAttackState(RangedEnemyStatemachine statemachine) : base(statemachine) {
+    float _attackRange;
+    CacheBehaviour _cache;
+    NavMeshAgent _agent;
+    MovementBehaviour _movement;
+    RangedBehaviour _ranged;
+    public RangedEnemyAttackState(RangedEnemyStatemachine statemachine, CacheBehaviour cache, NavMeshAgent agent, MovementBehaviour move, RangedBehaviour ranged, float attackspeed = 5f, float attackRange = 5f) : base(statemachine)
+    {
+        _cache = cache;
+        _agent = agent;
+        _attackRange = attackRange;
+        _movement = move;
+        _ranged = ranged;
+        _attackSpeed = attackspeed;
     }
 
-    // public RangedEnemyAttackState(EntityService entity, LayerMask walls, float attackspeed, float attackRange, WeaponItemData.Type attackType, Projectile projectile = null) {
-    //     _entity = entity;
-    //     _attackSpeed = attackspeed;
-    //     _attackRange = attackRange;
-    //     _projectile = projectile;
-    //     _walls = walls;
-    //     _attackType = attackType;
-    //     _enemyProjectileLayer = LayerMask.NameToLayer("EProjectile");
-
-    // }
-
-    public bool GetTransitionCondition() {
+    public bool GetTransitionCondition()
+    {
         // if (_entity.Service<HealthService>().Dead) {
         //     return false;
         // }
-        
-        // float distance = (float)Vector2.Distance(_entity.Component<Transform>().position, _entity.Service<CacheService>().Get<EntityService>().Component<Transform>().position);
 
-        // Vector2 dif = (_entity.Service<CacheService>().Get<EntityService>().Component<Transform>().position - _entity.Component<Transform>().position).normalized;
-        // RaycastHit2D wallhit = Physics2D.Raycast(_entity.Component<Transform>().position, dif, distance, _walls);
-        // if (wallhit) {
-        //     return false;
-        // }
+        float distance = (float)Vector2.Distance(_statemachine.transform.position, _cache.Cache.CachedEntity.transform.position);
 
-        // if (distance > _attackRange) {
-        //     return false;            
-        // }
-        
+        Vector2 dif = (_cache.Cache.CachedEntity.transform.position - _statemachine.transform.position).normalized;
+        RaycastHit2D wallhit = Physics2D.Raycast(_statemachine.transform.position, dif, distance, _walls);
+        if (wallhit)
+        {
+            return false;
+        }
+
+        if (distance > _attackRange)
+        {
+            return false;
+        }
+
         return true;
     }
 
-    public void OnAwake() {
+    public void OnAwake()
+    {
 
     }
 
-    public void Tick() {
-        // _entity.Component<Transform>().rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
-        // if (_attackTimer < _attackSpeed) {
-        //     _attackTimer += Time.deltaTime;
-        // }
-        // else {
-        //     _attackTimer = 0f;
-        //     Vector2 dif = (_entity.Service<CacheService>().Get<EntityService>().Component<Transform>().position - _entity.Component<Transform>().position).normalized;
-        //     if (_attackType == WeaponItemData.Type.Ranged) {
-        //         new ProjectileCommand.LaunchCommand(_entity, _entity.Component<Transform>().position, dif, _projectile, _enemyProjectileLayer).Execute();
-        //     }
-        // }
+    public void Tick()
+    {
+        _statemachine.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        if (_attackTimer < _attackSpeed)
+        {
+            _attackTimer += Time.deltaTime;
+        }
+        else
+        {
+            _attackTimer = 0f;
+            Vector2 dif = (_cache.Cache.CachedEntity.transform.position - _statemachine.transform.position).normalized;
+            // ProjectileLaunchData launchdata = new ProjectileLaunchData(_projectile, _projectileLater, dif, _statemachine.transform.position);
+            // ProjectileFactory.Instance.Launch(launchdata);
+            _ranged.Ranged.Fire(dif, _statemachine.transform.position);
+            // new ProjectileCommand.LaunchCommand(_entity, _statemachine.transform.position, dif, _projectile, _projectileLater).Execute();
+        }
     }
 
-    public void TransitionEnter() {
-        // _attackTimer = 0;
-        // _entity.Component<NavMeshAgent>().isStopped = true;
+    public void TransitionEnter()
+    {
+        _attackTimer = 0;
+        _agent.isStopped = true;
         // _entity.Component<Rigidbody2D>().linearVelocity = Vector2.zero;
-        
-        // if (_attackType == WeaponItemData.Type.Melee) {
-        //     return;
-        // }
+        _movement.Movement.FrameInput = Vector2.zero;
 
-        // Vector2 dif = (_entity.Service<CacheService>().Get<EntityService>().Component<Transform>().position - _entity.Component<Transform>().position).normalized;
-        // new ProjectileCommand.LaunchCommand(_entity, _entity.Component<Transform>().position, dif, _projectile, _enemyProjectileLayer).Execute();
+
+        Vector2 dif = (_cache.Cache.CachedEntity.transform.position - _statemachine.transform.position).normalized;
+        // new ProjectileCommand.LaunchCommand(_entity, _statemachine.transform.position, dif, _projectile, _enemyProjectileLayer).Execute();
     }
 
-    public void TransitionExit() {
-        
+    public void TransitionExit()
+    {
+
     }
 }

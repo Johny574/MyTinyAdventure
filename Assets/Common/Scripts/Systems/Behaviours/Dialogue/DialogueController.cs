@@ -15,8 +15,8 @@ public class DialogueController : Singleton<DialogueController>
     [SerializeField] AudioSource _dialogueAudio;
     Dialogue? _activeDialogue = null;
     SpriteRenderer _speaker;
-
     public Action OnClose;
+    
     protected override void Awake() {
         base.Awake();
         VisualElement root = _root.rootVisualElement;
@@ -55,7 +55,7 @@ public class DialogueController : Singleton<DialogueController>
             foreach (var line in dialogue.Exchanges[i].Lines) {
                 for (int c = 0; c < line.Length; c++) {
                     displayedText += line[c];
-                    yield return new WaitForSeconds(.01f);
+                    yield return new WaitForSeconds(.05f);
                     CurrentText = displayedText;
                     _dialogueAudio.Play();
                 }

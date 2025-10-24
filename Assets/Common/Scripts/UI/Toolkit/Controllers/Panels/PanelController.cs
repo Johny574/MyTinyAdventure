@@ -23,6 +23,9 @@ public abstract class PanelController
     public void Awake() {
         var templateContainer = _panel_t.CloneTree();
         _panel = templateContainer.Children().First();
+        _panel.RegisterCallback<PointerEnterEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+        _panel.RegisterCallback<PointerMoveEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+        _panel.RegisterCallback<PointerLeaveEvent>((evt) => Player.Instance.Weapons.CanAttack = true);
         var display = _root.Q<VisualElement>("HUD-container");
         display.Add(_panel);
 

@@ -4,13 +4,11 @@ using System.Threading.Tasks;
 using FletcherLibraries;
 using UnityEngine;
 
-[RequireComponent(typeof(PoolBehaviour))]
-public class ProjectileFactory: Singleton<ProjectileFactory> {
-    public PoolBehaviour Pool;
+public class ProjectileFactory: Factory<ProjectileFactory, ProjectileLaunchData> {
 
-    protected override void Awake() {
-        base.Awake();
-        Pool = GetComponent<PoolBehaviour>();
+    public async void Launch(ProjectileLaunchData launchData )
+    {
+        IPoolObject<ProjectileLaunchData> obj = await GetObject(launchData);
+        ((Projectile)obj).Launch(launchData);
     }
-
 }

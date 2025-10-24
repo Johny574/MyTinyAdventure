@@ -51,7 +51,7 @@ public class EnemyChaseState : StatemachineState<EnemyStateMachine, string>, ISt
         var delta = (_path.corners[1] - _statemachine.transform.position).normalized;
         _vision.rotation = Quaternion.Euler(0, 0, Rotation2D.LookAngle(delta));
         _movement.FrameInput = delta;
-        bool flipped = Vector3.SignedAngle(_statemachine.transform.up, delta, _statemachine.transform.forward) < 0 ? false : true;
+        bool flipped = Vector3.SignedAngle(_statemachine.transform.up, delta, _statemachine.transform.forward) < 0 ? true : false;
         _flip.Flip(flipped);
     }
 
@@ -61,6 +61,9 @@ public class EnemyChaseState : StatemachineState<EnemyStateMachine, string>, ISt
          _animator.CrossFade("Run", 0f);
     }
 
-    public void TransitionExit() {
+    public void TransitionExit()
+    {
+        _agent.isStopped = true;
+        
     }
 }

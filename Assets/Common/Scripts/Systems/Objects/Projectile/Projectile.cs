@@ -7,14 +7,6 @@ public class Projectile : MonoBehaviour, IPoolObject<ProjectileLaunchData>
     [SerializeField] private LayerMask _bounds;
     ProjectileLaunchData _launchData;
 
-
-    // [SerializeField] private AudioSource _audio;
-    // public bool HitDisable = true;
-    // [SerializeField] public AudioClip LaunchAudio, HitAudio;
-    // [SerializeField] private AnimatorOverrideController _hitEffect;
-    // [SerializeField] private List<BuffSO> _debuffs;
-    // GameObject _source;
-
     Animator _animator;
     SpriteRenderer _renderer;
     TrailRenderer _trialRenderer;
@@ -33,27 +25,14 @@ public class Projectile : MonoBehaviour, IPoolObject<ProjectileLaunchData>
         if (_trialRenderer == null)
             _trialRenderer = GetComponent<TrailRenderer>();
 
-
         _launchData = variant;
         _renderer.sprite = _launchData.Variant.Sprite;
-        gameObject.layer = _launchData.Layer;
-        Launch(variant);
-
-        // if (_variant.GetComponent<Animator>().runtimeAnimatorController != null)
-        // {
-        //     GetComponent<Animator>().runtimeAnimatorController = _variant.GetComponent<Animator>().runtimeAnimatorController;
-        //     GetComponent<Animator>().SetBool("Open", true);
-        // }
-
-        // LaunchAudio = _variant.LaunchAudio;
-        // HitAudio = _variant.HitAudio;
-        // HitDisable = _variant.HitDisable;
-        // Lookoffset = _variant.Lookoffset;
     }
 
     public void Launch(ProjectileLaunchData variant) {
         // _audio.clip = LaunchAudio;
         // _audio.Play();
+        Bind(variant);
         _direction = variant.Direction;
         transform.position = variant.Position;
         _trialRenderer.Clear();
@@ -75,23 +54,25 @@ public class Projectile : MonoBehaviour, IPoolObject<ProjectileLaunchData>
         transform.position = (Vector2)transform.position + _direction * _launchData.Variant.TravelSpeed * Time.deltaTime;
     }
 
-    // public float Damage() => _source.Service<StatService>().Stats["Attack"].Find(x => x.Data == Type.ToString()).Counter().Count;
-    // public GameObject Source() => _source.Behaviour.gameObject;
-    public void Hit(Collider2D collider) {
+
+    public void OnTriggerEnter2D(Collider2D col) {
+        if (!col.gameObject.layer.Equals(_launchData.Target))
+            return;
+
+        col.GetComponent<EntityStatemachine>().TakeDamage(transform.position, _launchData.Stats);
+        gameObject.SetActive(false);
+    }
+
+    public void Hit(Collider2D collider)
+    {
         // _audio.clip = HitAudio;
         // _audio.Play();
 
         // if (HitDisable) {
-            // GetComponent<Animator>().SetBool("Open", false);
-            // gameObject.SetActive(false);
+        // GetComponent<Animator>().SetBool("Open", false);
+        // gameObject.SetActive(false);
         // }
     }
 
-    // async void PlayHitEffect() {
-    //     GameObject effect = await CentralManager.Instance.Manager<ObjectManager>().Pooler(Pooler.Type.Object, "FX").GetObject();
-    //     effect.transform.position = transform.position;
-    //     effect.GetComponent<Animator>().runtimeAnimatorController = _hitEffect;
-    // }
-    // public List<BuffSO> Buffs() => _debuffs;
 
 }

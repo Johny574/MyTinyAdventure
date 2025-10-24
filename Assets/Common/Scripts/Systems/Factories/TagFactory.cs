@@ -1,15 +1,12 @@
-
 using System.Threading.Tasks;
-using FletcherLibraries;
 using UnityEngine;
 
-[RequireComponent(typeof(PoolBehaviour))]
-public class TagFactory : Singleton<TagFactory> {
-    public PoolBehaviour Pool;
-
-    protected override void Awake() {
-        base.Awake();
-        Pool = GetComponent<PoolBehaviour>();
+public class TagFactory : Factory<TagFactory, string> {
+      public async Task<IPoolObject<string>> CreateTag(string data, GameObject follow) {
+        IPoolObject<string> obj = await GetObject(data);
+        ((MonoBehaviour)obj).GetComponent<Follower>().Follow(follow);
+        // health.Changed += (data, amount) => obj.Bind(data);
+        return obj;
     }
-
+    
 }

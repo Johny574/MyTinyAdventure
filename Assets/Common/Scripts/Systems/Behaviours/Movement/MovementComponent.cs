@@ -5,7 +5,7 @@ public class MovementComponent : Component {
     ParticleSystem _moveParticles;
     Rigidbody2D _rb;
     public Vector2 FrameInput  = Vector2.zero;
-    float _currentSpeed;
+    public float CurrentSpeed;
     public bool CanMove = true;
 
     public MovementComponent(MovementBehaviour behaviour, Rigidbody2D rb, ParticleSystem moveParticles) : base(behaviour) {
@@ -25,9 +25,9 @@ public class MovementComponent : Component {
         if (!CanMove)
             return;
         
-        _currentSpeed = Stamina.Sprinting ? Stats.SprintSpeed : Stats.MoveSpeed;
+        CurrentSpeed = Stamina.Sprinting ? Stats.SprintSpeed : Stats.MoveSpeed;
 
-        _rb.linearVelocity = FrameInput * _currentSpeed;
+        _rb.linearVelocity = FrameInput * CurrentSpeed;
         // _behaviour.transform.position = new Vector3(_behaviour.transform.position.x, _behaviour.transform.position.y, 0f);
 
         HandleParticles();

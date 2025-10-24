@@ -17,6 +17,7 @@ public class Player : Singleton<Player> {
     public LocationBehaviour Location { get; private set; }
     public CacheBehaviour Cache { get; private set; }
     public SpriteRenderer Renderer { get; private set; }
+    public WeaponStatemachine Weapons { get; private set; }
     protected override void Awake() {
         base.Awake();
         Health = GetComponent<HealthBehaviour>();
@@ -35,5 +36,6 @@ public class Player : Singleton<Player> {
         Journal = GetComponent<QuestingBehaviour>();
         Location = GetComponent<LocationBehaviour>();
         Renderer = GetComponent<SpriteRenderer>();
+        Weapons = GetComponent<WeaponStatemachine>();
     }
 }

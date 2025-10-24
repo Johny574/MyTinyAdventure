@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5470341972013162349}
   - component: {fileID: 140482846410926895}
   - component: {fileID: 501160604645652251}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bounds:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16
 --- !u!61 &6283082992389430079
 BoxCollider2D:
   m_ObjectHideFlags: 0

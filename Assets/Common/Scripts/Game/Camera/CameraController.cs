@@ -16,7 +16,11 @@ public class CameraController
     }
 
     public void Awake() => Zoom(_options.ZoomMin);
-    public void Start() => Focus(_player);
+    public void Start()
+    {
+        Focus(_player);
+        Camera.transform.position = _player.transform.position;
+    }
 
     public void Move() {
         Vector2 lerpPoint = Vector2.Lerp(Camera.transform.position, _target.transform.position, Time.deltaTime * _options.Damping);
@@ -33,6 +37,7 @@ public class CameraController
         _zoom = Mathf.Clamp(_zoom, _options.ZoomMin, _options.ZoomMax);
         Camera.orthographicSize = _zoom;
     }
+    
 }
 
 

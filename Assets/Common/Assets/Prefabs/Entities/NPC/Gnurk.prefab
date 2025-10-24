@@ -64,10 +64,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -147235098238094630, guid: 87b30d04da17fc349860cad8aa815b33, type: 3}
-    - target: {fileID: 7741522930366157046, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
-      propertyPath: _dialogue.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9215434446232805781, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
       propertyPath: UID
       value: 384668540

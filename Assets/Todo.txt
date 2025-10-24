@@ -1,3 +1,11 @@
+step descriptions
+shops remove
+
+write all the dialogue out
+
+
+intro transition
+hotbar icons
 
 # x refactor 
 # ui classes ve's reference
@@ -8,7 +16,6 @@
 # uislots
 
 # - game stuff
-# prices
 # recipes
 # itemso skills
 # patrol points
@@ -27,7 +34,6 @@
 #     sorting layers          
 
 !! story
-    write all the dialogue out
 
 ~ level
     battlefield setting where goblins faught humans

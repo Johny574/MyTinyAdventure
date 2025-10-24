@@ -9,7 +9,8 @@ public class WeaponStatemachine : Statemachine<string>
 {
     HealthComponent _health;
     LayerMask _enemyLayer;
-    
+    public bool CanAttack = true;
+    [SerializeField] AudioSource _swingAudio;
     protected override List<StatemachineTrasition<string>> CreateAnyTransitions() {
         return new() {
             new StatemachineTrasition<string>(null, "Default",   States["Default"].GetTransitionCondition),
@@ -28,7 +29,7 @@ public class WeaponStatemachine : Statemachine<string>
         _health = GetComponent<HealthBehaviour>().Health;
 
         return new() {
-            { "Default",    new WeaponDefaultState(this, hands.Hands, gear.Gear, aim.Aim, _enemyLayer, stats)},
+            { "Default",    new WeaponDefaultState(this, hands.Hands, gear.Gear, aim.Aim, _enemyLayer, stats, _swingAudio)},
             { "Ranged",     new WeaponRangedState(this, hands.Hands, gear.Gear, aim.Aim, ranged.Ranged) },
             { "Melee",      new WeaponMeleeState(this, hands.Hands, gear.Gear, aim.Aim, melee.Melee) }
         };

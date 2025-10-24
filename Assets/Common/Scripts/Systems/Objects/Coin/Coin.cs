@@ -14,6 +14,8 @@ public class Coin : MonoBehaviour, ICollectable, IPoolObject<int> {
             _animator.runtimeAnimatorController = _coinSprites[1];
         else
             _animator.runtimeAnimatorController = _coinSprites[2];
+
+        _amount = variant;
     }
     
     void OnEnable() {

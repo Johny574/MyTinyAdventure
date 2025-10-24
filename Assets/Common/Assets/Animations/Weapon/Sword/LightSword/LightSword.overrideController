@@ -9,5 +9,5 @@ AnimatorOverrideController:
   m_Name: LightSword
   m_Controller: {fileID: 9100000, guid: 0747922d09f764c41a4ee554efbcf334, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: b7d94512648ef014b8e92081bef7e100, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 174ea8ad065ecea47a16564e1775f61f, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: ccff78ff0f6de864aa0e5f75ec0f315d, type: 2}

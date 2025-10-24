@@ -22,8 +22,6 @@ public class Entity : MonoBehaviour, IUnique
     }
 
     void Start() {
-        MiniMapController.Instance.Register(gameObject, _minimapMarkerSprite);
+        MiniMapController.Instance.Register(this, _minimapMarkerSprite);
     }
-
-
 }

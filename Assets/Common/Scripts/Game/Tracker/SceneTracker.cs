@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using FletcherLibraries;
 using UnityEngine;
 
 public class SceneTracker : Singleton<SceneTracker>
@@ -63,6 +62,9 @@ public class SceneTracker : Singleton<SceneTracker>
 
     public void Unregister<T>(GameObject obj)
     {
+        if (!Objects.ContainsKey(typeof(T)))
+            return;
+
         Objects[typeof(T)].Remove(obj);
 
         if (Objects[typeof(T)].Count <= 0)

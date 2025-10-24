@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _outlineShader: {fileID: -6465566751694194690, guid: 87844be889758f146ba551149af6e317, type: 3}
-  _renderer: {fileID: 7330439079460611486, guid: 9fbc0bdb0171638439fa11d18bf29ee8, type: 3}
+  _renderer: {fileID: 8551861580848609134}
   _defaultColor: {r: 1, g: 1, b: 1, a: 1}
   _targetColor: {r: 1, g: 0, b: 0, a: 1}
   _targetThickness: 0.5

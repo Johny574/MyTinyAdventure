@@ -14,13 +14,14 @@ public class PortalBehaviour : MonoBehaviour  {
         Debug.Log(portal.gameObject);
         // portal.transform.position = (Vector2)Entity.Component<Transform>().position + (Entity.Service<AimService>().Flipped ? Vector2.left : Vector2.right);
         portal.GetComponent<Portal>().Initilize(destination);
+        portal.transform.position = transform.position;
         portal.gameObject.SetActive(true);
         portal.GetComponent<Animator>().SetBool("Open", true);
     }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Tab)) {
-            // OpenPortal(CentralManager.Instance.Manager<LocationManager>().GetLastTown(CurrentScene));
+            OpenPortal("Forest1-1");
         }
     }
 }

@@ -12,8 +12,9 @@ public class InventoryComponent : Component, ISerializedComponent<ItemStackData[
         Inventory = inventory;
     }
 
-    public void Initilize(int size) {
-        Inventory = Enumerable.Repeat(new ItemStack(null, 0), size).ToArray();
+    public void Initilize(ItemStack[] inventory) {
+        Inventory = Enumerable.Repeat(new ItemStack(null, 0), inventory.Length).ToArray();
+        Inventory = inventory;
     }
 
     public void Add(ItemStack stack) {
@@ -112,13 +113,16 @@ public class InventoryComponent : Component, ISerializedComponent<ItemStackData[
 
     public void OnDeath() {
         for (int i = 0; i < Inventory.Length; i++) 
-            ItemFactory.Instance.DropItem(Behaviour.transform.position, Inventory[i]);
+            if (Inventory[i].Item != null)
+                ItemFactory.Instance.DropItem(Behaviour.transform.position, Inventory[i]);
     }
 
-    public ItemStackData[] Save() => Inventory.Where(x => x.Item != null).Select(x => new ItemStackData(x.Item.GUID, x.Count)).ToArray();
+    public ItemStackData[] Save() => Inventory.Where(x => x.Item != null).Select(x => new ItemStackData(x.Item.UID, x.Count)).ToArray();
 
     public void Load(ItemStackData[] save) {
-        Inventory = Enumerable.Repeat(new ItemStack(null, 0), Inventory.Length).ToArray();
+        if (Inventory.Length == 0)
+            Inventory = Enumerable.Repeat(new ItemStack(null, 0), Inventory.Length).ToArray();
+            
         for (int i = 0; i < save.Length; i++) {
             ItemStackData item = save[i]; // keep this reference in memory
 

@@ -42,7 +42,10 @@ public partial class HotbarUISlot : UISlot
 
     public override void Update<T>(T data) {
         if (data == null)
+        {
+            Icon.style.backgroundImage = null;
             return;
+        }
 
         _skill = (Skill)(object)data;
         Icon.style.backgroundImage = new StyleBackground(_skill.Data.Icon);

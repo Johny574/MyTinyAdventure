@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ChargeEnemyStatemachine : EnemyStateMachine {
     [SerializeField] private LayerMask _walls;
@@ -10,43 +11,46 @@ public class ChargeEnemyStatemachine : EnemyStateMachine {
     [SerializeField] float _chargeCooldown = 5f, _chargeCooldownTimer = 0f;
 
     protected override Dictionary<string, IStatemachineState> CreateStates() {
-        // Dictionary<string, StatemachineState<string>> states = base.CreateStates();
+        Dictionary<string, IStatemachineState> states = base.CreateStates();
 
-        //     ChargeEnemyBuildupState chargebuildupstate = new ChargeEnemyBuildupState(_entity.Service, this, _walls);
-        //     chargebuildupstate.OnChargeBuildup += () => CanCharge = false;
+        CacheBehaviour cache = GetComponent<CacheBehaviour>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        MovementBehaviour move = GetComponent<MovementBehaviour>();
 
-        //     states.Add("ChargeBuildup", chargebuildupstate);
-        //     states.Add("Charge", new ChargeEnemyAttackState(_entity.Service, _chargespeed, ChargeDistance, this, _walls, states["ChargeBuildup"] as ChargeEnemyBuildupState));
+        ChargeEnemyBuildupState chargebuildupstate = new ChargeEnemyBuildupState(this, _walls, cache, agent, move);
+        chargebuildupstate.OnChargeBuildup += () => CanCharge = false;
 
-        // return states;
-        return null;
+        states.Add("ChargeBuildup", chargebuildupstate);
+        states.Add("Charge", new ChargeEnemyAttackState(this, _chargespeed, ChargeDistance, _walls, states["ChargeBuildup"] as ChargeEnemyBuildupState, move, cache));
+
+        return states;
     }
 
-    // public override void Update() {
-    //     base.Update();
+    public override void Update() {
+        base.Update();
 
-    //     if (CanCharge) {
-    //         return;
-    //     }
+        // if (CanCharge) {
+        //     return;
+        // }
 
-    //     if (CurrentState == "Charge" || CurrentState == "ChargeBuildup") {
-    //         return;
-    //     }
+        // if (CurrentState == "Charge" || CurrentState == "ChargeBuildup") {
+        //     return;
+        // }
 
-    //     if (_chargeCooldownTimer < _chargeCooldown) {
-    //         _chargeCooldownTimer += Time.deltaTime;
-    //     }
-    //     else {
-    //         CanCharge = true;
-    //     }
-    // }
+        // if (_chargeCooldownTimer < _chargeCooldown) {
+        //     _chargeCooldownTimer += Time.deltaTime;
+        // }
+        // else {
+        //     CanCharge = true;
+        // }
+    }
 
     protected override List<StatemachineTrasition<string>> CreateTransitions() {
         return new() {
             new StatemachineTrasition<string>("Idle", "Chase", () => States["Chase"].GetTransitionCondition()),
             new StatemachineTrasition<string>("Idle", "Patrol", () => States["Patrol"].GetTransitionCondition() && !States["Idle"].GetTransitionCondition()),
 
-            new StatemachineTrasition<string>("Chase", "ChargeBuildup", () => States["Chase"].GetTransitionCondition() && States["ChargeBuildup"].GetTransitionCondition() && CanCharge),
+            new StatemachineTrasition<string>("Chase", "ChargeBuildup", () => States["Chase"].GetTransitionCondition() && States["ChargeBuildup"].GetTransitionCondition()),// && CanCharge),
             new StatemachineTrasition<string>("Chase", "Patrol", () =>  !States["Chase"].GetTransitionCondition() && States["Patrol"].GetTransitionCondition()),
 
             new StatemachineTrasition<string>("ChargeBuildup", "Charge", () => States["Chase"].GetTransitionCondition() && States["Charge"].GetTransitionCondition()),
@@ -61,9 +65,7 @@ public class ChargeEnemyStatemachine : EnemyStateMachine {
         };
     }
 
-
-
     protected override IStatemachineState Idle(Animator animator, AudioSource walkaudio) {
-        throw new System.NotImplementedException();
+         return new EnemyIdleState(this, GetComponent<PatrolBehaviour>().Patrol, GameObject.FindGameObjectWithTag("Player"), GetComponent<CacheBehaviour>().Cache, animator, walkaudio);
     }
 }

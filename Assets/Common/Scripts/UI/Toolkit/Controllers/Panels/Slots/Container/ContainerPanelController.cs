@@ -62,11 +62,20 @@ public class ContainerPanelController : SlotPanelController
             return inventorySlot;
 
         return null;
-    } 
+    }
 
-    public override void Setup() {
-        ContainerEvents.Instance.Open += (container) => Open(container);
+    public override void Setup()
+    {
+        ContainerEvents.Instance.Open += ContainerOpened;
         ContainerEvents.Instance.Close += Disable;
+    }
+
+    void ContainerOpened(Container container) => Open(container);
+    
+    public void OnDisable()
+    {
+        ContainerEvents.Instance.Open -= ContainerOpened;
+        ContainerEvents.Instance.Close -= Disable;
     }
 
     protected override void Update(Array data) {

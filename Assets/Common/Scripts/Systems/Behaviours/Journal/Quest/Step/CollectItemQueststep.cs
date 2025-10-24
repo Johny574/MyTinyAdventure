@@ -1,50 +1,47 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollectItemQueststep : Queststep {
-    public ItemStack[] Items;
+    public ItemStack Items;
 
     public CollectItemQueststep(QueststepSO data, QuestingComponent parttaker, Quest quest) : base(data, parttaker, quest) {
         Items = ((CollectItemQuestStepData)data).Items;
+        parttaker.Behaviour.GetComponent<InventoryBehaviour>().Inventory.Added +=  OnItemCollected;
         // Item = new Stack<ItemData>(item.Data, 0, item.Counter().Limit);
         // GameEvents.Instance.InventoryEvents.ItemAdded += OnItemCollected;
     }
 
+    private void OnItemCollected(ItemStack stack, ItemStack[] arg2)
+    {
+        Items.Count -= stack.Count;
+        if (Items.Count <= 0)
+            Complete();
+    }
 
     public override Vector2 Closestpoint(Vector2 origin) {
-        return Vector2.zero;
-        // if (GlobalTracker.Instance.Tracker<ItemTracker>().Objects.ContainsKey(typeof(ItemBehaviour))) {
-        //     var target = GlobalTracker.Instance.Tracker<ItemTracker>().GetClosestItem(typeof(ItemBehaviour), Item.Data, origin);
-        //     if (target != null) {
-        //         return target.transform.position;
-        //     }
-        // }
+        var currentScene = SceneManager.GetActiveScene().name;
+        if (SO.Scene != currentScene) {
+            var path = LocationManager.Instance.BFS(currentScene, SO.Scene);
+            return SceneTracker.Instance.Objects[typeof(TravelPoint)].Find(x => x.GetComponent<TravelPoint>().Destination.Equals(path[1])).transform.position;
+        }
+        
+        if (SceneTracker.Instance.Objects.ContainsKey(typeof(ItemBehaviour))) {
+            var items = SceneTracker.Instance.Objects[typeof(ItemBehaviour)].Where(x => x.GetComponent<ItemBehaviour>().Item.Stack.Item == Items.Item).ToList();
+            var target = SceneTracker.Instance.GetClosestObject(items, origin);
+            if (target != null) {
+                return target.transform.position;
+            }
+        }
 
-        // if (GlobalTracker.Instance.Tracker<EntityTracker>().Objects.ContainsKey(typeof(NPCEntityServiceBehaviour))) {
-        //     var merchants = GlobalTracker.Instance.Tracker<EntityTracker>().Objects[typeof(NPCEntityServiceBehaviour)].Where(x => x.GetComponent<NPCEntityServiceBehaviour>().Service.Service<InventoryService>().Inventory.Where(x => x != null).Where(x => x.Data != null).Where(x => x.Data.ID == Item.Data.ID).Count() > 0).ToList();
+        // if (SceneTracker.Instance.Objects.ContainsKey(typeof(Entity))) {
+        //     var merchants = SceneTracker.Instance.Objects[typeof(Entity)].Where(x => x.GetComponent<Entity>().GetComponent<InventoryBehaviour>().Inventory?.Inventory.Where(x => x.Item != null).Where(x => x.Item?.UID == Items.Item?.UID).Count() > 0).ToList();
         //     if (merchants.Count() > 0) {
         //         return merchants[0].transform.position;
         //     }
         // }
      
-        // return Vector2.zero;
+        return Vector2.zero;
     }
-
-    public void OnItemCollected(ItemStack stack) {
-        // if (!(Items.Item == stack.Item)) {
-        //     return;
-        // }
-
-        // if (Quest.Step() != this) {
-        //     return;
-        // }
-
-        // Items.Update(stack.Count);
-
-        // if (Items.Count >= ((ItemData)Items.Item).Limit) {
-        //     Complete();
-        // }
-    }
-
 }
 

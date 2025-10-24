@@ -10,14 +10,18 @@ public class EnemyPatrolState : StatemachineState<EnemyStateMachine, string>, IS
     float _stoppingDistance;
     SpriteRenderer _renderer;
     MovementComponent _movement;
+    GameObject _player;
+    CacheBehaviour _cache;
 
-    public EnemyPatrolState(EnemyStateMachine statemachine, PatrolComponent patrol, NavMeshAgent agent, SpriteRenderer renderer,  MovementComponent movement, float stoppingDistance = .1f) : base(statemachine) {
+    public EnemyPatrolState(EnemyStateMachine statemachine, PatrolComponent patrol, NavMeshAgent agent, SpriteRenderer renderer,  MovementComponent movement,  GameObject player, CacheBehaviour cache, float stoppingDistance = .1f) : base(statemachine) {
         _agent = agent;
         _patrol = patrol;
         _statemachine = statemachine;
         _stoppingDistance = stoppingDistance;
         _renderer = renderer;
         _movement = movement;
+        _player = player;
+        _cache = cache;
     }
 
     public bool GetTransitionCondition() {
@@ -35,6 +39,10 @@ public class EnemyPatrolState : StatemachineState<EnemyStateMachine, string>, IS
         _agent.CalculatePath(_patrol.CurrentPoint().Position, _path);
         // _agent.SetPath(_path);
          _movement.FrameInput = (_statemachine.transform.position - _path.corners[0]).normalized;
+          if (Vector2.Distance(_statemachine.transform.position, _player.transform.position) < _statemachine.AgroProximity) {
+            _cache.Cache.Add(_player);
+            Debug.Log("caching player");
+        }
     }
 
     public void TransitionEnter() {

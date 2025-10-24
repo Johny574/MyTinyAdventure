@@ -8,14 +8,38 @@ public abstract class Queststep  {
     protected QuestingComponent _parttaker;
     Quest _quest;
 
-    protected Queststep(QueststepSO data, QuestingComponent parttaker, Quest quest){
+    protected Queststep(QueststepSO data, QuestingComponent parttaker, Quest quest) {
         SO = data;
         _parttaker = parttaker;
         _quest = quest;
     }
 
+    
+    public void Initialize(bool completed)
+    {
+        foreach (var scene in SO.EnabledObjects)
+            if (scene.Scene == SceneManager.GetActiveScene().name)
+            {
+                if (completed)
+                    scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(true));
+                else
+                    scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(false));
+            }
+
+
+        foreach (var scene in SO.DisabledObjects)
+            if (scene.Scene == SceneManager.GetActiveScene().name)
+            {
+                if (completed)
+                    scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(false));
+                else
+                    scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(true));
+            }
+    }
+
     public virtual void Complete() {
         _quest.StepComplete(this);
+
          foreach (var scene in SO.EnabledObjects)
             if (scene.Scene == SceneManager.GetActiveScene().name)
                 scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(true));
@@ -23,7 +47,6 @@ public abstract class Queststep  {
         foreach (var scene in SO.DisabledObjects)
             if (scene.Scene == SceneManager.GetActiveScene().name)
                 scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(false));
-     
     }
 
     // void OnComplete() {

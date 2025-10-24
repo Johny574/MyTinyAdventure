@@ -84,15 +84,18 @@ public class MainCamera : Singleton<MainCamera>
         {
             start = x;
             _vignette.intensity.value = x;
-        }, stop, 1f);
+        }, stop, 2f);
     }
 
 
-    void OnDrawGizmos() {
+    public void OnDrawGizmos()
+    {
         if (!_options.DrawCameraBounds)
             return;
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(_options.Bounds.center, _options.Bounds.size);
     }
+    
+    
 }

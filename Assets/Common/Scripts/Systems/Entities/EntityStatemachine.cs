@@ -6,7 +6,7 @@ public abstract class EntityStatemachine : Statemachine<string> {
     [SerializeField] protected AudioSource _walkAudio;
     [SerializeField] protected AudioSource _impactAudio;
     [SerializeField] protected LayerMask _wall;
-        
+
     protected override List<StatemachineTrasition<string>> CreateAnyTransitions() => new() {
         new StatemachineTrasition<string>(null, "Damage", () => CurrentState != "Death" && States["Damage"].GetTransitionCondition()),
     };

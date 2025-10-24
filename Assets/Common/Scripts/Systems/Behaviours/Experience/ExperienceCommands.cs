@@ -21,7 +21,6 @@ namespace ExperienceCommands{
             GlobeData globeData = new GlobeData(GlobeComponent.Type.Experience, _amount);
             globe.Bind(globeData);
             ((MonoBehaviour)globe).GetComponent<Dropable>().Drop(_origin);
-            Debug.Break();
         }
     }
 }

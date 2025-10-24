@@ -24,7 +24,7 @@ public class PlayerIdleState : StatemachineState<PlayerStateMachine, string>, IS
         // }
         _walkAudio.Stop();
         _animator.CrossFade("Idle", 0f);
-        _gear.Gear.Animate("Idle", 0f);
+        // _gear.Gear.Animate("Idle", 0f);
     }
 
     public void TransitionExit() {

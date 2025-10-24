@@ -14,7 +14,7 @@ public class MeleeComponent : Component
     #endregion
 
     #region Audio
-    AudioSource _whooshAudio;
+    AudioSource _swingAudio;
     #endregion
 
     #region Random
@@ -32,7 +32,7 @@ public class MeleeComponent : Component
         _swingArcDegrees = meleeswingdegrees;
         _trailRenderer = trailRenderer;
         _enemies = enemies;
-        _whooshAudio = whooshaudio;
+        _swingAudio = whooshaudio;
     }
 
     public void Initilize(GearComponent gear, HandsComponent hands, FlipComponent flip, StatpointsComponent stats) {
@@ -72,7 +72,7 @@ public class MeleeComponent : Component
             _trailRenderer.emitting = true;
 
         if (!_setRandomSwing) {
-            _whooshAudio.Play();
+            _swingAudio.Play();
             _targetStartAngle = UnityEngine.Random.Range(0, 2) > 0 ? _swingStartAngle : _swingStopAngle;
             _targetEndAngle = _targetStartAngle == _swingStartAngle ? _swingStopAngle : _swingStartAngle;
             _setRandomSwing = true;

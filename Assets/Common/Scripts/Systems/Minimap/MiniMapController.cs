@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MiniMapController : Singleton<MiniMapController>
 {
-    Dictionary<GameObject, GameObject> _markers;
+    Dictionary<int, GameObject> _markers;
     [SerializeField] Canvas _canvas;
     protected override void Awake()
     {
@@ -13,7 +13,7 @@ public class MiniMapController : Singleton<MiniMapController>
         _markers = new();
     }
 
-    public void Register(GameObject key, Sprite markerSprite)
+    public void Register(Entity  key, Sprite markerSprite)
     {
         GameObject marker = new GameObject();
         Image renderer = marker.AddComponent<Image>();
@@ -23,8 +23,11 @@ public class MiniMapController : Singleton<MiniMapController>
         marker.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 1f);
         marker.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 1f);
         marker.transform.position = key.transform.position;
-        marker.GetComponent<Follower>().Follow(key);
+        marker.GetComponent<Follower>().Follow(key.gameObject);
         renderer.sprite = markerSprite;
-        _markers.Add(key, marker);
+        _markers.Add(key.UID, marker);
     }
+
+    public void ChangeIcon(Entity key, Sprite sprite) => _markers[key.UID].GetComponent<Image>().sprite = sprite;
+
 }

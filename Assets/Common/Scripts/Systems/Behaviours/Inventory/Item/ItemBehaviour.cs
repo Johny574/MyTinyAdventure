@@ -3,18 +3,18 @@ using DG.Tweening;
 using UnityEngine;
 
 public class ItemBehaviour : MonoBehaviour, IInteractable, IPoolObject<ItemStack>  {
-    ItemComponent _item; 
+    public ItemComponent Item; 
     protected IPoolObject<string> _tag;
     [SerializeField] Animator _animator;
     [SerializeField] ItemStack _stack;
     [SerializeField] SpriteRenderer _renderer;
 
     void Awake() {
-        _item = new(this, _stack, _renderer);
+        Item = new(this, _stack, _renderer);
     }
     
     void Start() {
-        _item.Initilize();
+        Item.Initilize();
         SceneTracker.Instance.Register<ItemBehaviour>(gameObject);   
         CreateTag();
     }
@@ -25,7 +25,7 @@ public class ItemBehaviour : MonoBehaviour, IInteractable, IPoolObject<ItemStack
 
     public void Interact(GameObject accesor) {
         var tagobj = ((MonoBehaviour)_tag).gameObject;
-        _item.Interact(accesor);
+        Item.Interact(accesor);
         tagobj.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
@@ -57,6 +57,6 @@ public class ItemBehaviour : MonoBehaviour, IInteractable, IPoolObject<ItemStack
     }
 
     public void Bind(ItemStack variant) {
-        _item.Bind(variant);
+        Item.Bind(variant);
     }
 }

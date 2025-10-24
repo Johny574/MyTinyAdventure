@@ -7,20 +7,22 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
     GearComponent _gear;
     bool _attacking = false;
     float _attackTime = 0f;
-    float _attackSpeed = .1f;
+    float _attackSpeed = .05f;
     HandsComponent _hands;
     GameObject _attackHand = null;
     bool _attacked = false;
     LayerMask _enemyLayer;
     StatpointsBehaviour _stats;
-    float _reach = 1.5f;
+    float _reach = 2f;
+    AudioSource _swingAudio;
 
-    public WeaponDefaultState(WeaponStatemachine statemachine, HandsComponent hands, GearComponent gear, AimComponent aim, LayerMask enemyLayer, StatpointsBehaviour stats) : base(statemachine) {
+    public WeaponDefaultState(WeaponStatemachine statemachine, HandsComponent hands, GearComponent gear, AimComponent aim, LayerMask enemyLayer, StatpointsBehaviour stats, AudioSource swingAudio) : base(statemachine) {
         _aim = aim;
         _gear = gear;
         _hands = hands;
         _enemyLayer = enemyLayer;
         _stats = stats;
+        _swingAudio = swingAudio;
     }
 
     public bool GetTransitionCondition() {
@@ -37,12 +39,14 @@ public class WeaponDefaultState : StatemachineState<WeaponStatemachine, string>,
     }
 
     public void Tick() {
-        if (!_attacking && Input.GetMouseButtonDown(0)) {
+        if (!_attacking && Input.GetMouseButtonDown(0) && _statemachine.CanAttack) {
             _attacking = true;
         }
 
         if (_attacking) {
             if (!_attacked) {
+                _attacked = true;
+                _swingAudio.Play();
                 RaycastHit2D hit = Physics2D.Raycast(_statemachine.transform.position, Rotation2D.GetPointOnCircle(_statemachine.transform.position, _aim.LookAngle), _reach, _enemyLayer);
 
                 if (hit)

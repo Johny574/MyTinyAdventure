@@ -41,7 +41,6 @@ public class MainMenuController : MonoBehaviour
         exitButton.RegisterCallback<PointerLeaveEvent>((evt) => ButtonAnimation(exitButton, end, start));
 
         newgameButton.clicked += () => GameManager.Instance.StartNewGame();
-        newgameButton.clicked += () => Debug.Log("Deesnuts");
         loadButton.clicked += () =>
         {
             _loadMenu.style.visibility = Visibility.Visible;

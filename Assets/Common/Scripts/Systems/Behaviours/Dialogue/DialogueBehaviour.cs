@@ -23,7 +23,19 @@ public class DialogueBehaviour : MonoBehaviour, IInteractable
         _interactable = GetComponent<Interactable>();
         _dialogue = new(this, _defaultAction,GetComponent<EmoteBehaviour>().Emotes, _questEmote, _dialogueEmote);
     }
-    void Start() {
+    void Start()
+    {
         _dialogue.Initilize(GetComponent<JournalBehaviour>().Journal);
+    }
+
+
+    void OnEnable()
+    {
+        _dialogue?.OnEnable();
+    }
+    
+    void OnDisable() {
+
+        _dialogue.OnDisable();
     }
 }

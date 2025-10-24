@@ -26,6 +26,6 @@ public class InventoryBehaviour : MonoBehaviour
         _health.Death += Inventory.OnDeath;
         _gear.Equiped += (item) => Inventory.Remove(new ItemStack(item, 1));
         _gear.Unequiped += (item) => Inventory.Add(new ItemStack(item, 1));
-        Inventory.Initilize(_xp.CurrentLevel.InventorySlots);
+        Inventory.Initilize( Items);
     }
 }

@@ -10,11 +10,12 @@ public class ExperienceComponent : StatComponent, ISerializedComponent<BarData>
     public ExperienceComponent(ExperienceBehaviour behaviour, List<Level> levels, float xp) : base(behaviour) {
         _levels = levels;
         Data = new(xp, _levels[Level].XPRequirement);
+        Data.CalculateFill();
         Changed?.Invoke(Data, 0);
-        Changed += async (bardata, amount) =>
-        {
+        Changed += async (bardata, amount) => {
             if (Mathf.Sign(amount) == 0)
                 return;
+
             await FeedbackFactory.Instance.Display(new($"{amount}", Color.blue), Behaviour.transform.position);
         };
     }
@@ -31,7 +32,27 @@ public class ExperienceComponent : StatComponent, ISerializedComponent<BarData>
         ((MonoBehaviour)_levelTag).GetComponent<Follower>().Follow(Behaviour.gameObject);
     }
 
-    public void Update(float amount) {
+    public void OnDisable()
+    {
+        if (_levelTag == null)
+            return;
+        
+        var mono = _levelTag as MonoBehaviour;
+        
+        if (mono != null)
+            mono.gameObject.SetActive(false);
+    }
+
+    public void OnEnable()
+    {
+        if (LevelTagFactory.Instance == null || _levelTag != null)
+            return;
+
+        CreateLevelTag();
+    }
+
+    public void Update(float amount)
+    {
         Data.Amount += amount;
         Data.CalculateFill();
         Changed?.Invoke(Data, amount);

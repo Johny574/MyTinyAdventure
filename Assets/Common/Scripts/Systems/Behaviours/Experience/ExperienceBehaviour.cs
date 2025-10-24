@@ -9,7 +9,18 @@ public class ExperienceBehaviour : MonoBehaviour
     void Awake() {
         Experience = new(this, _levels, _xp);
     }
-    void Start() {
+    void Start()
+    {
         Experience.Initilize(GetComponent<HealthBehaviour>().Health);
+    }
+
+     void OnEnable()
+    {
+        Experience?.OnEnable();
+    }
+
+    void OnDisable()
+    {
+        Experience?.OnDisable();
     }
 }

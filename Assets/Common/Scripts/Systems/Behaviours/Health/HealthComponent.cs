@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
@@ -12,22 +13,50 @@ public class HealthComponent : StatComponent, ISerializedComponent<BarData> {
         _bloodparticles = bloodparticles;
     }
 
-    public void Initilize() {
+  
+    public void Initilize()
+    {
         _stats = Behaviour.GetComponent<StatpointsBehaviour>().Stats;
         Data = new BarData(_stats.HPPool, _stats.HPPool);
         Data.CalculateFill();
-        CreateHealthBar();
+        CreatteHealthbar();
         Changed?.Invoke(Data, 0);
         Changed += async (bardata, amount) =>
         {
             if (amount == 0 || bardata.Amount > bardata.Max)
                 return;
-                
+
             await FeedbackFactory.Instance.Display(new($"{amount}", Color.red), Behaviour.transform.position);
         };
     }
 
-    async void CreateHealthBar() => _healthbar = await HealthbarFactory.Instance.CreateHealthBar(Data, this);
+    public void OnDisable()
+    {
+        if (_healthbar == null)
+            return;
+
+        var mono = _healthbar as MonoBehaviour;
+        
+        if (mono != null)
+            mono.gameObject.SetActive(false);
+    }
+
+    public void OnEnable()
+    {
+        if (HealthbarFactory.Instance == null || _healthbar != null)
+            return;
+        CreatteHealthbar();
+    }
+
+    async void CreatteHealthbar() => await OnCreateHealthBar();
+    async Task OnCreateHealthBar()
+    {
+        // await Task.Delay(100);
+        if (Data == null)
+            return;
+
+        _healthbar = await HealthbarFactory.Instance?.CreateHealthBar(Data, this);
+    }
 
     public void Die() {
         ((MonoBehaviour)_healthbar).gameObject.SetActive(false);

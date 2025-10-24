@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [Serializable]
 public class Quest {
@@ -22,17 +22,25 @@ public class Quest {
         Steps = SO.Steps.Select(x => QuestFactory.Queststeps[x.GetType()].Invoke(x, parttaker, this)).ToList();
     }
 
-    public void Initialize()
+    public async void Initialize()
     {
+        await OnInitilize();
+    }
+    async Task OnInitilize()
+    {
+        await Task.Delay(1000);
+        int i = 0;
+        foreach (var q in Steps)
+        {
+            if (i < Index)
+                q.Initialize(true);
+            else
+                q.Initialize(false);
+
+            i++;   
+        }
+
         CreatePointer();
-
-        foreach (var scene in SO.EnabledObjects)
-            if (scene.Scene == SceneManager.GetActiveScene().name)
-                scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(true));
-
-        foreach (var scene in SO.DisabledObjects)
-            if (scene.Scene == SceneManager.GetActiveScene().name)
-                scene.Objects.ForEach(x => SceneTracker.Instance.GetUnique(x).gameObject.SetActive(false));
     }
 
     async void CreatePointer()

@@ -30,7 +30,7 @@ public class ConsumableComponent : Component, ISerializedComponent<ConsumableDat
         }
     }
 
-    public ConsumableData[] Save() => Consumables.Select(x => x == null ? null : new ConsumableData(x.Stack.Item.GUID, x.Stack.Count, x.Timer)).ToArray();
+    public ConsumableData[] Save() => Consumables.Select(x => x == null ? null : new ConsumableData(x.Stack.Item.UID, x.Stack.Count, x.Timer)).ToArray();
 
     public void Add(int slot, ItemStack consumable) {
         if (consumable.Item.GetType() != typeof(ConsumableSO))

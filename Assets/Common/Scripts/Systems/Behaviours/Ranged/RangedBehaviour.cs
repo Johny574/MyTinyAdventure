@@ -18,6 +18,8 @@ public class RangedBehaviour : MonoBehaviour
             gear.Gear.Equiped += ItemEquiped;
             ItemEquiped(gear.Gear.Gear[GearItemSO.Slot.Primary].Item);
         }
+        var stats = GetComponent<StatpointsBehaviour>().Stats;
+        Ranged.Initilize(stats);
     }
     void ItemEquiped(GearItemSO item) {
         if (item?.Target != GearItemSO.Slot.Primary || item?.GetType() != typeof(RangedWeaponItemData)) {

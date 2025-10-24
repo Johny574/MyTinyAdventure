@@ -15684,6 +15684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 5848759626021045095}
+  Invert: 0
 --- !u!114 &2294909944253650372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15763,6 +15764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quests: []
+  QuestMinimapMarker: {fileID: 0}
 --- !u!114 &7741522930366157046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15775,18 +15777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7b1488e3994e44eb4286a306f19056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _items:
-  - Item: {fileID: 11400000, guid: 66e6b043fdf235043aaf73a46055cc92, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: f781caba88ae91a4daa4ad3e5ec57709, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 24580255210f1744898b0111a48af5dd, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 9eb5add959a46a84d9622353adf279d4, type: 2}
-    Count: 1
-  _dialogue:
-  - <Lines>k__BackingField: []
-    Speaker: {fileID: 0}
+  _items: []
+  _dialogue: []
 --- !u!114 &9215434446232805781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15799,7 +15791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1bcf8db52c8d0742a68f05cb4178d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minimapMarkerSprite: {fileID: 0}
+  _minimapMarkerSprite: {fileID: -1274400743, guid: 66fc38681fe32f24fa63658adb5ece9e, type: 3}
   _id: 1370642550
 --- !u!1 &3148957202554146099
 GameObject:

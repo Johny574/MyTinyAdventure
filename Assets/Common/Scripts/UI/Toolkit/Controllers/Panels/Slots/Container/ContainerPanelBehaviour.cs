@@ -17,7 +17,10 @@ public class ContainerPanelBehaviour : Singleton<ContainerPanelBehaviour>
         Panel.Awake();
     }
 
-    void Start() {
+    void Start()
+    {
         Panel.Initilize();
     }
+
+    void OnDisable() => Panel.OnDisable();
 }

@@ -38,7 +38,6 @@ public class InventoryPanelController : SlotPanelController
         _containerSlots = _root.Q<VisualElement>("Container").Q<ScrollView>("ScrollView");
         _shopSlots = _root.Q<VisualElement>("Shop").Q<ScrollView>("ScrollView");
         var hotbar = _root.Q<VisualElement>("Hotbar");
-        _gearSlots = _root.Q<VisualElement>("GearSlots");
         _consumableslots = hotbar.Q<VisualElement>("Consumables");
 
         var currency = _panel.Q<VisualElement>("Currency");
@@ -117,6 +116,7 @@ public class InventoryPanelController : SlotPanelController
     }
 
     UISlot DropSlot() {
+        _gearSlots = _root.Q<VisualElement>("GearSlots");
         var gearslot = _gearSlots.Children().SelectMany(x => x.Children()).Where(x => x.worldBound.Contains(this._ghostIcon.worldBound.center)).FirstOrDefault() as UISlot;
         if (gearslot != null)
             return gearslot;

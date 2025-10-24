@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RangedEnemyStatemachine : EnemyStateMachine  {
     [SerializeField] private float _attackSpeed = 5f, _attackRange = 5f;
-    [SerializeField] private WeaponItemSO.Type _attackType;
-    [SerializeField] private Projectile _projectile;
-    [SerializeField] private LayerMask _walls;
-
-
     protected override Dictionary<string, IStatemachineState> CreateStates() {
         Dictionary<string, IStatemachineState> states = base.CreateStates();
-        // states.Add("Attack", new RangedEnemyAttackState(_entity.Service, _walls, _attackSpeed, _attackRange, _attackType, _projectile));
+        CacheBehaviour cache = GetComponent<CacheBehaviour>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        RangedBehaviour ranged = GetComponent<RangedBehaviour>();
+        MovementBehaviour move = GetComponent<MovementBehaviour>();
+        states.Add("Attack", new RangedEnemyAttackState(this, cache, agent, move, ranged, _attackSpeed, _attackRange));
         return states;
     }
 
@@ -35,6 +35,6 @@ public class RangedEnemyStatemachine : EnemyStateMachine  {
 
 
     protected override IStatemachineState Idle(Animator animator, AudioSource walkaudio) {
-        throw new System.NotImplementedException();
+        return new EnemyIdleState(this, GetComponent<PatrolBehaviour>().Patrol, GameObject.FindGameObjectWithTag("Player"), GetComponent<CacheBehaviour>().Cache, animator, walkaudio);
     }
 }

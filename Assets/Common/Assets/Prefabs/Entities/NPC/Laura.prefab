@@ -64,18 +64,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1336111731346827145, guid: aef83fdafa78c8e4ba242b82129e099f, type: 3}
-    - target: {fileID: 7741522930366157046, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
-      propertyPath: _dialogue.Array.data[0].Speaker
-      value: 
-      objectReference: {fileID: 2743078079230374850}
-    - target: {fileID: 7741522930366157046, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
-      propertyPath: _dialogue.Array.data[0].<Lines>k__BackingField.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741522930366157046, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
-      propertyPath: '_dialogue.Array.data[0].<Lines>k__BackingField.Array.data[0]'
-      value: shop
-      objectReference: {fileID: 0}
     - target: {fileID: 9215434446232805781, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
       propertyPath: UID
       value: 1374366762
@@ -89,17 +77,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
---- !u!114 &2743078079230374850 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9215434446232805781, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}
-  m_PrefabInstance: {fileID: 6481403580492616279}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1bcf8db52c8d0742a68f05cb4178d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &5952314180483139307 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 821990506455291068, guid: 7c85d5dfb7c947846845ee24a465f482, type: 3}

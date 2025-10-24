@@ -125,3 +125,35 @@
     border-bottom-color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
 }
+
+#Skills > #Slot1 > .slot-icon {
+    background-image: url("project://database/Assets/Common/Assets/Textures/Input/Tilemap/tilemap_packed.png?fileID=-2452500989543857958&guid=ddf332d153c48c54baa8daa616d95b93&type=3#tilemap_packed_51");
+}
+
+#Skills > #Slot2 > .slot-icon {
+    background-image: url("project://database/Assets/Common/Assets/Textures/Input/Tilemap/tilemap_packed.png?fileID=-5337296085697385273&guid=ddf332d153c48c54baa8daa616d95b93&type=3#tilemap_packed_52");
+}
+
+#Skills > #Slot3 > .slot-icon {
+    background-image: url("project://database/Assets/Common/Assets/Textures/Input/Tilemap/tilemap_packed.png?fileID=2658747906679183987&guid=ddf332d153c48c54baa8daa616d95b93&type=3#tilemap_packed_53");
+}
+
+#Skills > #Slot4 > .slot-icon {
+    background-image: url("project://database/Assets/Common/Assets/Textures/Input/Tilemap/tilemap_packed.png?fileID=-5766062063545882839&guid=ddf332d153c48c54baa8daa616d95b93&type=3#tilemap_packed_54");
+}
+
+#Attack > #Attack1 > .slot-icon {
+    background-image: url("project://database/Assets/Common/Assets/Textures/Input/Tilemap/tilemap_packed.png?fileID=-6063519145960861328&guid=ddf332d153c48c54baa8daa616d95b93&type=3#tilemap_packed_77");
+}
+
+#Attack > #Attack2 > .slot-icon {
+    background-image: url("project://database/Assets/Common/Assets/Textures/Input/Tilemap/tilemap_packed.png?fileID=-6320955851382688295&guid=ddf332d153c48c54baa8daa616d95b93&type=3#tilemap_packed_78");
+}
+
+#Consumables > #Consumable1 > .slot-icon {
+    background-image: url("project://database/Assets/Common/Assets/Textures/Input/Tilemap/tilemap_packed.png?fileID=6296481076110622113&guid=ddf332d153c48c54baa8daa616d95b93&type=3#tilemap_packed_55");
+}
+
+#Consumables > #Consumable2 > .slot-icon {
+    background-image: url("project://database/Assets/Common/Assets/Textures/Input/Tilemap/tilemap_packed.png?fileID=5825491608552330040&guid=ddf332d153c48c54baa8daa616d95b93&type=3#tilemap_packed_56");
+}

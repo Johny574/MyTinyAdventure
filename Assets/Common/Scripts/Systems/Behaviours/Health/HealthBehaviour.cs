@@ -27,6 +27,15 @@ public class HealthBehaviour : MonoBehaviour
             Health.Update(-1);
         }
     }
-    #endif
+#endif
 
+    void OnEnable()
+    {
+        Health?.OnEnable();
+    }
+
+    void OnDisable()
+    {
+        Health?.OnDisable();
+    }
 }

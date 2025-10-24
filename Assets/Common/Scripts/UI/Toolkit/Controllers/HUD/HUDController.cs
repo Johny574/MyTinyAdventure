@@ -17,14 +17,14 @@ public class HUDController : MonoBehaviour
         _root = _hud.rootVisualElement;
         _interactdisplay = _root.Q<VisualElement>("Interact");
         _playerIcon = _root.Q<VisualElement>("Player-display").Q<VisualElement>("Icon").Children().First();
-        SetupPlayerDisplay(
+        _root.schedule.Execute(() => SetupPlayerDisplay(
             _root,
             Player.Instance.Health.Health,
             Player.Instance.Stamina.Stamina,
             Player.Instance.Mana.Mana,
             Player.Instance.Experience.Experience,
             Player.Instance.Currency.Currency
-        );
+        )).StartingIn(1000);
 
         SetupCache(_root, Player.Instance.Cache.Cache);
         SetupMinimap(_root);
@@ -106,12 +106,21 @@ public class HUDController : MonoBehaviour
         Button questsminimize = root.Q<Button>("QuestMaximize");
         Button questsmaximize = root.Q<Button>("QuestMinimize");
 
+        questsmaximize.RegisterCallback<PointerEnterEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+        questsmaximize.RegisterCallback<PointerMoveEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+        questsmaximize.RegisterCallback<PointerLeaveEvent>((evt) => Player.Instance.Weapons.CanAttack = true);
+
+        questsminimize.RegisterCallback<PointerEnterEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+        questsminimize.RegisterCallback<PointerMoveEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+        questsminimize.RegisterCallback<PointerLeaveEvent>((evt) => Player.Instance.Weapons.CanAttack = true);
+
+
         questsminimize.clicked += () => {
-            float start = 100f;
+            float start = 250f;
             float finish = 0f;
             DOTween.To(() => start, x => {
                     start = x;
-                    container.style.height = new StyleLength(Length.Percent(start));
+                    container.style.height = new StyleLength(start);
                 }, finish, 1f
             ).OnComplete(() => container.style.visibility = Visibility.Hidden);
         };
@@ -119,10 +128,10 @@ public class HUDController : MonoBehaviour
         questsmaximize.clicked += () => {
             container.style.visibility = Visibility.Visible;
             float start = 0f;
-            float finish = 100f;
+            float finish = 250f;
             DOTween.To(() => start, x => {
                     start = x;
-                    container.style.height = new StyleLength(Length.Percent(start));
+                    container.style.height = new StyleLength(start);
                 }, finish, 1f
             );
         };
@@ -132,7 +141,7 @@ public class HUDController : MonoBehaviour
 
         scrollview.Add(gridview);
         
-        scrollview.schedule.Execute(() => QuestsRefresh(journal, gridview, _quest_t, _queststep_t)).StartingIn(1000);
+        scrollview.schedule.Execute(() => QuestsRefresh(journal, gridview, _quest_t, _queststep_t)).StartingIn(3000);
         journal.StepCompleted += (step) =>QuestsRefresh(journal, gridview, _quest_t, _queststep_t);
     }
 
@@ -146,6 +155,9 @@ public class HUDController : MonoBehaviour
 
         foreach (var child in skillslots.Children()) {
             var slot = child as HotbarUISlot;
+            slot.RegisterCallback<PointerEnterEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+            slot.RegisterCallback<PointerMoveEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+            slot.RegisterCallback<PointerLeaveEvent>((evt) => Player.Instance.Weapons.CanAttack = true);
             child.RegisterCallback<MouseDownEvent>(evt => {
                 Player.Instance.Skills.Skills.Remove(slot.Index);
                 RefreshHotbarSkills(skills.Skills, skillslots);
@@ -154,6 +166,9 @@ public class HUDController : MonoBehaviour
 
         foreach (var child in consumableslots.Children()) {
             var slot = child as ConsumableUISlot;
+            slot.RegisterCallback<PointerEnterEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+            slot.RegisterCallback<PointerMoveEvent>((evt) => Player.Instance.Weapons.CanAttack = false);
+            slot.RegisterCallback<PointerLeaveEvent>((evt) => Player.Instance.Weapons.CanAttack = true);
             child.RegisterCallback<MouseDownEvent>(evt => {
                 Player.Instance.Consumables.Consumables.Remove(slot.Index);
                 RefreshHotbarConsumables(consumables.Consumables, consumableslots);
@@ -169,16 +184,16 @@ public class HUDController : MonoBehaviour
     }
 
     void RefreshHotbarAttack(GearSlots gear, VisualElement container) {
-        int index = 0;
+        // int index = 0;
         
         foreach (var child in container.Children())
         {
-            var slot = child as AttackUISlot;
-            slot.Clear();
-            if (index == 0 && gear[GearItemSO.Slot.Primary] != null)
-                slot.Update(gear[GearItemSO.Slot.Primary].Item as WeaponItemSO);
-            else if (index == 1 && gear[GearItemSO.Slot.Secondary] != null)
-                slot.Update(gear[GearItemSO.Slot.Secondary].Item as WeaponItemSO);
+            // var slot = child as AttackUISlot;
+            // slot.Clear();
+            // if (index == 0 && gear[GearItemSO.Slot.Primary] != null)
+            //     slot.Update(gear[GearItemSO.Slot.Primary].Item as WeaponItemSO);
+            // else if (index == 1 && gear[GearItemSO.Slot.Secondary] != null)
+            //     slot.Update(gear[GearItemSO.Slot.Secondary].Item as WeaponItemSO);
         }
     }
 
@@ -192,7 +207,7 @@ public class HUDController : MonoBehaviour
     void RefreshHotbarSkills(Skill[] skills, VisualElement container) {
         foreach (var child in container.Children()) {
             HotbarUISlot slot = child as HotbarUISlot;
-            slot.Clear();
+            // slot.Clear();
             slot.Update(skills[slot.Index]);
         }
     }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8083198841995580113}
   - component: {fileID: 6295578755281801462}
   - component: {fileID: -2782447210020150586}
+  - component: {fileID: 1368745389708549454}
   m_Layer: 7
   m_Name: Portal
   m_TagString: Travelpoint
@@ -171,14 +172,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4234d5a7bb219e49bf3d76122a4e1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outlineShader: {fileID: -6465566751694194690, guid: e9f002b89bf74e34a83f63d2901f3b21, type: 3}
+  <Destination>k__BackingField: Forest1-1
+  _id: 2029402056
+  _arrivePoint: {x: -32.5, y: 0}
+  _animator: {fileID: 8083198841995580113}
+--- !u!114 &1368745389708549454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600694567635736040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfaf45766c1d75248bc983b705334286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlineShader: {fileID: -6465566751694194690, guid: 87844be889758f146ba551149af6e317, type: 3}
   _renderer: {fileID: 6295578755281801462}
   _defaultColor: {r: 1, g: 1, b: 1, a: 1}
   _targetColor: {r: 1, g: 0, b: 0, a: 1}
-  _audioSource: {fileID: 0}
-  <Destination>k__BackingField: Forest1-1
-  <ArrivePoint>k__BackingField: {x: 0, y: 0}
-  _animator: {fileID: 8083198841995580113}
+  _targetThickness: 0.5
+  _thickness: 0.2
 --- !u!1 &2605465574485267828
 GameObject:
   m_ObjectHideFlags: 0

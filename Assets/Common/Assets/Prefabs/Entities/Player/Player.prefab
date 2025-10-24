@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8084409524579920111}
   - component: {fileID: 5995063146890257972}
   - component: {fileID: 6666352183801051310}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 3326493283206949581}
   - component: {fileID: 1565242724351613161}
   - component: {fileID: 1514117798223949}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Secondary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5248,7 +5248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 74539312405042297}
   - component: {fileID: 5283053918692695651}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: CoinAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5377,7 +5377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8189211558634623780}
   - component: {fileID: 3714030923428751387}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: ImpactAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5506,7 +5506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7526510600122226728}
   - component: {fileID: 1305805610602479020}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: ConsumableAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5636,7 +5636,7 @@ GameObject:
   - component: {fileID: 2301055454800639766}
   - component: {fileID: 3522446717198709104}
   - component: {fileID: 3944388512474221226}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5749,7 +5749,7 @@ GameObject:
   - component: {fileID: 4596444658647925706}
   - component: {fileID: 8610805756596920705}
   - component: {fileID: 6787337164261999343}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Primary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10765,7 +10765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8896955577910522673}
   - component: {fileID: 6762260168924689913}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: BuffAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10894,7 +10894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4209250884903873625}
   - component: {fileID: 5965786649777263899}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: WalkAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11023,7 +11023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6202440283708094624}
   - component: {fileID: 9208896030703946587}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: QuestAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11152,7 +11152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8169199752146696426}
   - component: {fileID: 5360833644114467634}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: GruntAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11283,7 +11283,7 @@ GameObject:
   - component: {fileID: 2770864905709715069}
   - component: {fileID: 5308808071496152837}
   - component: {fileID: 5338707977131268418}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Pants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11536,7 +11536,8 @@ GameObject:
   - component: {fileID: 7166850583194778117}
   - component: {fileID: 3309951647195588781}
   - component: {fileID: 4854839984023226196}
-  m_Layer: 13
+  - component: {fileID: -7871229809279769202}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -12022,6 +12023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 5585088375829726594}
+  Invert: 0
 --- !u!114 &1754962459015301489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12120,6 +12122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enableDebugging: 1
+  CanAttack: 1
+  _swingAudio: {fileID: 540498339776988795}
 --- !u!114 &2207041263366097305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12161,7 +12165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c017fdcf3dbe9144bbfc56b3bc6339dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quests:
+  _quests: []
+  _beginnerQuests:
   - {fileID: 11400000, guid: 02c2a908792f81541b1aece40bae5448, type: 2}
 --- !u!114 &3031727163138932798
 MonoBehaviour:
@@ -12179,7 +12184,7 @@ MonoBehaviour:
   _trailRenderer: {fileID: 6787337164261999343}
   _enemies:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2112
   _whooshAudio: {fileID: 540498339776988795}
 --- !u!114 &47209718169315851
 MonoBehaviour:
@@ -12355,6 +12360,19 @@ MonoBehaviour:
   _enemies:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &-7871229809279769202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969901322208024353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d2050ecf6263945bdb8ecca3239f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _portalPrefab: {fileID: 1600694567635736040, guid: 143f780e0d3018a4ab1c0c075922c107, type: 3}
 --- !u!1 &4984653538717140457
 GameObject:
   m_ObjectHideFlags: 0
@@ -12366,7 +12384,7 @@ GameObject:
   - component: {fileID: 477178512099317173}
   - component: {fileID: 3602518071936770690}
   - component: {fileID: 751589758009220770}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: MoveParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17199,7 +17217,7 @@ GameObject:
   - component: {fileID: 6161533193548842509}
   - component: {fileID: 6031390071502615959}
   - component: {fileID: 4410017007644532511}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22090,7 +22108,7 @@ GameObject:
   - component: {fileID: 1057625598286250879}
   - component: {fileID: 204143068319189665}
   - component: {fileID: 2002219340931123804}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: PrimaryHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22201,7 +22219,7 @@ GameObject:
   - component: {fileID: 5636119526420069759}
   - component: {fileID: 6175310649469770792}
   - component: {fileID: 9218433540190012075}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22418,7 +22436,7 @@ GameObject:
   - component: {fileID: 7852276322256941957}
   - component: {fileID: 4141863746284158436}
   - component: {fileID: 5952443877230074918}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: SecondaryHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22527,7 +22545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8413746886900951079}
   - component: {fileID: 7589696104604026452}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22611,7 +22629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2351588295710041205}
   - component: {fileID: 1595364129618381813}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: SkillsAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22740,8 +22758,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2754138197986555592}
   - component: {fileID: 540498339776988795}
-  m_Layer: 13
-  m_Name: WooshAudio
+  m_Layer: 9
+  m_Name: SwingAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

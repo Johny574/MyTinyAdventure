@@ -8,10 +8,15 @@ public class EmoteComponent : Component {
     public float Timer = 0f, Duration = 2f;
     bool _remove = true;
     Emote _emote;
-    public EmoteComponent(EmoteBehaviour behaviour, Emote emote, bool remove, HealthComponent health) : base(behaviour) {
+    public EmoteComponent(EmoteBehaviour behaviour, Emote emote, bool remove) : base(behaviour)
+    {
         _remove = remove;
         _emote = emote;
-        health.Death += OnDeath;
+    }
+
+    public void Initilize(HealthBehaviour health)
+    {
+        health.Health.Death += OnDeath;
     }
 
     public void Add(Sprite emote) {

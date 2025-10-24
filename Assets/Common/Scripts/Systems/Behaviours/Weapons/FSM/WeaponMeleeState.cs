@@ -29,7 +29,7 @@ public class WeaponMeleeState : StatemachineState<WeaponStatemachine, string>, I
     public void Tick() {
         _melee.Tick();
         
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && _statemachine.CanAttack) {
             _melee.Attack(_aim.AimDelta);
         }
     }

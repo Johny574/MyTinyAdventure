@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: UID
       value: 2062550432
       objectReference: {fileID: 0}
+    - target: {fileID: -1180821219613850675, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
+      propertyPath: _id
+      value: 1318554097
+      objectReference: {fileID: 0}
     - target: {fileID: 4587174156160491559, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -64,15 +68,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Demon
       objectReference: {fileID: 0}
-    - target: {fileID: 6770388513514247183, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
-      propertyPath: UID
-      value: 219846875
-      objectReference: {fileID: 0}
-    - target: {fileID: 6770388513514247183, guid: 11bf2094305a34c4498d7b42f3f42ed5, type: 3}
-      propertyPath: _id
-      value: 856796520
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

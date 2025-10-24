@@ -30,6 +30,7 @@ public class EnemyIdleState : StatemachineState<EnemyStateMachine, string>, ISta
         _idleTimer += Time.deltaTime;
         if (Vector2.Distance(_statemachine.transform.position, _player.transform.position) < _statemachine.AgroProximity) {
             _cache.Add(_player);
+            Debug.Log("caching player");
         }
     }
 

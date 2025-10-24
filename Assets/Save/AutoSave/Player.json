@@ -6,10 +6,10 @@
     "Display": "8/8"
   },
   "Stamina": {
-    "Amount": 8.0,
+    "Amount": 4.599922,
     "Max": 8,
-    "Fill": 100.0,
-    "Display": "8/8"
+    "Fill": 57.4990273,
+    "Display": "4.599922/8"
   },
   "Mana": {
     "Amount": 8.0,
@@ -40,12 +40,17 @@
       "Magic": 0
     }
   },
-  "Inventory": [],
+  "Inventory": [
+    {
+      "GUID": "1a9bade2b3ff1c140b2caa7d8b612c02",
+      "Count": 1
+    }
+  ],
   "Currency": {
-    "TotalCopper": 0,
+    "TotalCopper": 50,
     "Gold": 0,
     "Silver": 0,
-    "Copper": 0
+    "Copper": 50
   },
   "Buffs": [],
   "Skills": [
@@ -67,12 +72,17 @@
     }
   ],
   "Gear": [],
-  "Journal": [],
+  "Journal": [
+    {
+      "GUID": "02c2a908792f81541b1aece40bae5448",
+      "CurrentStep": 1
+    }
+  ],
   "Consumables": [
     null,
     null
   ],
-  "X": 0.0,
-  "Y": -2.36970735,
+  "X": -92.5099258,
+  "Y": 26.78565,
   "CurrentScene": "Forest1-1"
 }

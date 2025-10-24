@@ -6,11 +6,11 @@ public class ItemSO : ScriptableObject {
     #if UNITY_EDITOR
         protected void OnValidate() {
             string path = AssetDatabase.GetAssetPath(this);
-            GUID = AssetDatabase.AssetPathToGUID(path);
+            UID = AssetDatabase.AssetPathToGUID(path);
             EditorUtility.SetDirty(this);
         }
     #endif
-    public string GUID;
+    public string UID;
     public string DisplayName;
     public string Description;
     public Sprite Sprite;

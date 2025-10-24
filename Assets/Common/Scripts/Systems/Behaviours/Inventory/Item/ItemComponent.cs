@@ -22,7 +22,7 @@ public class ItemComponent : Component, IPoolObject<ItemStack> {
 
     public void Bind(ItemStack variant) {
         Stack = variant;
-        _renderer.sprite = variant.Item.Sprite;
+        _renderer.sprite = variant.Item?.Sprite;
     }
 
     public void Initilize() {
